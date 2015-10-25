@@ -18,6 +18,26 @@ module.exports = function(grunt) {
 	grunt.config.set('copy', {
 		dev: {
 			files: [{
+        expand: true,
+        cwd: './node_modules/jquery/dist/',
+        src: ['jquery.js'],
+        dest: './assets/js/dependencies/'
+      },{
+				expand: true,
+				cwd: './node_modules/bootstrap/dist/js/',
+				src: ['bootstrap.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/bootstrap/dist/css',
+				src: ['**/*'],
+				dest: './assets/styles/dependencies/'
+			}, {
+				expand: true,
+				cwd: './node_modules/bootstrap/dist/fonts',
+				src: ['**/*'],
+				dest: './assets/fonts/dependencies'
+			},{
 				expand: true,
 				cwd: './assets',
 				src: ['**/*.!(coffee|less)'],

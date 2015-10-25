@@ -1,0 +1,10 @@
+<div class="container">
+  <h1><%= board.name %></h1>
+  <a class="btn btn-warning" href="/board/edit/<%= board.id %>">Zmień nazwę</a>
+  </br>
+  <form action="/board/destroy/<%= board.id %>" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-sm btn-danger">Usuń</button>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+  </form>
+</div>

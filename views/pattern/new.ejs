@@ -1,0 +1,17 @@
+<form class="navbar-form navbar-left" action="/board/create" method="POST" class="form-create-board">
+  <div class="form-group">
+  <% if(flash && flash.err) { %>
+    <ul class="allert allert-success">
+  <% Object.keys(flash.err).forEach(function(error){ %>
+      <li><%- JSON.stringify(flash.err[error]) %></li>
+      <% }) %>
+      </ul>
+  <% } %>
+
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Nazwa tablicy" name="name">
+    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+    <button type="submit" class="btn btn-default">Wyślij</button>
+  </div>
+</div>
+</form>
