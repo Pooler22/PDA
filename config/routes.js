@@ -33,9 +33,11 @@ module.exports.routes = {
   ***************************************************************************/
 
   ////////////////////////////////////////////////////////////
-  // Server-rendered HTML webpages
+  // Server-rendered HTML
   ////////////////////////////////////////////////////////////
 
+  'GET /about': {view: 'about'},
+  'GET /login': {view: 'login'},
   'GET /signup': {view: 'signup'},
   'GET /': 'PageController.showHomePage',
 
@@ -43,14 +45,10 @@ module.exports.routes = {
   // JSON API
   ////////////////////////////////////////////////////////////
 
-  // User enrollment + authentication
+  // User + authentication
   'POST /signup': 'UserController.signup',
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout'
-
-  // '/': {
-  //   view: 'homepage'
-  // }
 
   /***************************************************************************
   *                                                                          *

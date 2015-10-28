@@ -1,19 +1,40 @@
-  <div ng-app="HomepageModule" ng-controller="HomepageController" ng-cloak>
-          <form ng-submit="submitLoginForm()" class="navbar-form navbar-right">
-              <div class="form-group">
-                  <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
-              </div>
-              <div class="form-group">
-                  <input ng-model="loginForm.password" type="password" placeholder="Password" name="password" class="form-control">
-              </div>
-              <button type="submit" class="btn btn-success">
-                <span ng-show="!loginForm.loading">Zaloguj</span>
-                <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
-                <span ng-show="loginForm.loading">Logowanie...</span>
-              </button>
-              <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-              <a href="/signup" class="btn  btn-success">Rejestracja</a>
-          </form>
-    </div>
+<%- include login.ejs %>
 
-<% include homepage_old.ejs %>
+<div class="page-header">
+  <h2>Pattern Design Academy</h2>
+  <h4>Witaj w serwisie do anuki wzorców porojektowych oraz zassad dobrego programowania.</h4>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h4>Wprowadzenie</h4>
+        <p>Dowiesz się tutaj o podstawach zasadach korzystania z serwisu.</p>
+        <p class="text-right"><a href="/intro" class="btn btn-primary" role="button">Więcej...</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h4>Wzorce projektowe</h4>
+        <p>Wybierz z dostępnych wzorców i zacznij naukę właśnie teraz.</p>
+        <p class="text-right"><a href="/pattern" class="btn btn-primary" role="button">Więcej...</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h4>Zasady dobrego programowania</h4>
+        <p>Uczń swój kod lelszym ucząc się zasad dobrego programowania.</p>
+        <p class="text-right"><a href="/best-practice" class="btn btn-primary" role="button">Więcej...</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>

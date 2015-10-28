@@ -21,7 +21,7 @@ module.exports = {
         return res.redirect('/pattern/new/');
       }
       //if successful then redirect to Pattern page
-      return res.redirect('/pattern/show/'+pattern.id);
+      return res.redirect('/pattern/');
     });
   },
 

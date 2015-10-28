@@ -11,6 +11,27 @@ module.exports = {
     name: {
       type: 'string',
       required: true
+    },
+    application: {
+      type: 'string'
+    },
+    shortdescription: {
+      type: 'string'
+    },
+    fulldescription: {
+     type: 'string'
+    },
+    exercises: {
+     type: 'string'
+    },
+    repeatation: {
+     type: 'string'
+    },
+    project: {
+     type: 'string'
+    },
+    summary: {
+     type: 'string'
     }
   }
 };

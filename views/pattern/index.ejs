@@ -6,9 +6,11 @@
       <% _.each(patterns, function (pattern) { %>
       <tr data-id="<%= pattern.id%>" data-model="pattern">
         <td><p><%= pattern.name %></p></td>
+        <td><p><%= pattern.shortdescription %></p></td>
         <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Rozpocznij</a></td>
       </tr>
       <% }) %>
     </table>
+
   </div>
 </div>

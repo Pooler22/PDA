@@ -1,17 +1,23 @@
 <div ng-app="HomepageModule" ng-controller="HomepageController" ng-cloak>
-        <form ng-submit="submitLoginForm()" class="navbar-form navbar-right">
-            <div class="form-group">
-                <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <input ng-model="loginForm.password" type="password" placeholder="Password" name="password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">
-              <span ng-show="!loginForm.loading">Zaloguj</span>
-              <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
-              <span ng-show="loginForm.loading">Logowanie...</span>
-            </button>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-            <a href="/signup" class="btn  btn-success">Rejestracja</a>
-        </form>
-  </div>
+  <form ng-submit="submitLoginForm()" class="navbar-form navbar-right">
+
+    <div class="form-group">
+      <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <input ng-model="loginForm.password" type="password" placeholder="Hasło" name="password" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">
+      <span ng-show="!loginForm.loading">Logowanie</span>
+      <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
+      <span ng-show="loginForm.loading">Logowanie...</span>
+    </button>
+
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+
+    <a href="/signup" class="btn  btn-success">Rejestracja</a>
+
+  </form>
+</div>
