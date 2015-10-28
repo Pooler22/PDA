@@ -37,6 +37,11 @@
   <link rel="stylesheet" href="/styles/dependencies/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/importer.css">
   <!--STYLES END-->
+
+  <script type="text/javascript">
+  window.SAILS_LOCALS = { _csrf: "<%= _csrf %>" };
+  </script>
+
 </head>
 
 <body>
@@ -48,8 +53,9 @@
 <!--NAV END-->
 
 
-
-<%- body %>
+<div class="container">
+  <%- body %>
+</div>
 
 
 <!--
