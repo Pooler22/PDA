@@ -26,20 +26,16 @@ var jsFilesToInject = [
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',
 
-
-  //Load jquery
-  'js/dependencies/jquery.js',
-  'js/dependencies/jquery.validate.js',
-  //Load bootstrap.js
-  'js/dependencies/bootstrap.js',
-
   // Dependencies like jQuery, or Angular are brought in here
+  'js/dependencies/jquery.js',
+  'js/dependencies/angular.1.3.js',
   'js/dependencies/**/*.js',
-
-
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
+  'js/public/signup/SignupModule.js',
+  'js/private/dashboard/DashboardModule.js',
+  'js/public/homepage/HomepageModule.js',
   'js/**/*.js'
 ];
 

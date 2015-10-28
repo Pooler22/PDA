@@ -1,0 +1,19 @@
+<div class="container" ng-controller="TodoCtrl">
+  <div id="todo-form" >
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control input-lg text-center" placeholder="Login" ng-model="formData.value">
+      </hr>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="addTodo()">Zarejestruj się</button>
+      </div>
+    </form>
+  </div>
+    <div id="todo-list">
+      <div class="checkbox" ng-repeat="todo in todos">
+        <label>
+          <input type="checkbox" ng-click="removeTodo(todo)">
+          {{ todo.value }}
+        </label>
+      </div>
+    </div>
+</div>
