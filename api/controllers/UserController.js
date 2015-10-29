@@ -85,7 +85,7 @@ module.exports = {
           // the sign-up form --> signup.ejs
             User.create({
               name: req.param('name'),
-              title: req.param('title'),
+              nick: req.param('nick'),
               email: req.param('email'),
               encryptedPassword: encryptedPassword,
               lastLoggedIn: new Date(),
