@@ -1,6 +1,7 @@
 <div ng-controller="HomepageController" ng-cloak>
   <form ng-submit="submitLoginForm()" class="navbar-form navbar-right">
-    <% if (typeof(me) === "undefined") { %>
+
+    <% if (!session.authenticated) { %>
     <div class="login form-group">
       <div class="form-group">
         <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
@@ -16,11 +17,23 @@
       <input type="hidden" name="_csrf" value="<%= _csrf %>" />
       <a href="/signup" class="btn  btn-success">Rejestracja</a>
     </div>
-    <% } else { %>
-    <div class="logout form-group">
-      Witaj <%- me.name %>
-      <a href="/logout" class="btn btn-success">Wyloguj się</a>
-    </div>
     <% } %>
-  </form>
+
+    <% if (session.authenticated) { %>
+      <div class="logout form-group">
+        <a href="/user/show/<%= session.User.id %>" class="btn btn-success"> <%= session.User.name %> </a>
+      </div>
+    <% } %>
+    <% if (session.authenticated && session.User.admin) { %>
+      <a href="/user" class="btn btn-success">>User Administration</a>
+      <a href="#" class="btn btn-success">>Placeholder2</a>
+    <% } %>
+
+    <% if (session.authenticated) { %>
+      <div class="logout form-group">
+        <a href="/session/destroy" class="btn btn-warning">Wyloguj się</a>
+      </div>
+    <% } %>
+
+    </form>
 </div>

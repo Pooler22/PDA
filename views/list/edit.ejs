@@ -1,0 +1,16 @@
+<!--<form action="/board/editAjax/<%= board.id %>" method="post" id="rename-board">-->
+    <div class="form-group">
+        <div class="input-group" style="width: 100%;">
+          <form action="/list/update/<%= list.id %>/" method="POST" class="form-update-list">
+            <div class="modal-body clearfix">
+                <input type="hidden" class="board-id form-control" name="owner" value="<%= board.id %>">
+                <input type="text" style="width: 100%;" class="form-control" name="name" id="new-name" placeholder="">
+                <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn green" data-url="" >Rename</button>
+            </div>
+            </form>
+        </div>
+    </div>
+<!--</form>-->

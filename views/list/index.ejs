@@ -1,0 +1,9 @@
+<% _.each(lists, function (list) { %>
+    <div class="list col-md-3">
+        <a href="/board/show/<%= list.id %>">
+            <span>Nazwa: <%= list.name %></span>
+            <span>ID: <%= list.id %></span>
+            <span>Owner: <%= list.owner %></span>
+        </a>
+    </div>
+<% }) %>
