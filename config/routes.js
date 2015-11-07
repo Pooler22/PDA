@@ -36,14 +36,10 @@ module.exports.routes = {
   // Server-rendered HTML
   ////////////////////////////////////////////////////////////
 
-  'GET /about': {view: 'about'},
-  'GET /login': {view: 'login'},
-  'GET /signup': {view: 'signup'},
-  'GET /': 'PageController.showHomePage',
 
-  ////////////////////////////////////////////////////////////
-  // JSON API
-  ////////////////////////////////////////////////////////////
+  'GET /signup': {view: 'signup'},
+  'GET /about': 'PageController.showAboutPage',
+  'GET /': 'PageController.showHomePage',
 
   // User + authentication
   'POST /signup': 'UserController.signup',

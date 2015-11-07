@@ -24,6 +24,13 @@ module.exports = {
     encryptedPassword: {
       type: 'string',
       required: true
-    }
+    },
+    courses: [
+      {
+        name: 'string',
+        resolved: 'integer'
+      }
+    ]
+
   }
 };

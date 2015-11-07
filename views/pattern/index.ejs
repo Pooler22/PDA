@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="HomepageController" ng-cloak>
   <div class="controller">
     <h2>Wzorce</h2>
 
@@ -7,7 +7,8 @@
       <tr data-id="<%= pattern.id%>" data-model="pattern">
         <td><p><%= pattern.name %></p></td>
         <td><p><%= pattern.shortdescription %></p></td>
-        <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Rozpocznij</a></td>
+
+          <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Rozpocznij</a></td>
       </tr>
       <% }) %>
     </table>

@@ -1,4 +1,4 @@
-angular.module('SignupModule').controller('SignupController', ['$scope', '$http', 'toastr', function($scope, $http, toastr){
+angular.module('HomepageModule').controller('SignupController', ['$scope', '$http', 'toastr', function($scope, $http, toastr){
 
 	// disable loading
 	$scope.signupForm = {

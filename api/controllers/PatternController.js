@@ -29,6 +29,14 @@ module.exports = {
     Pattern.findOne(req.params['id'], function foundPattern (err, pattern){
       if (err) return next(err);
       if (!Pattern) return next();
+
+			if (req.session.me) {
+				User.findOne(req.session.me, function (err, user){
+					user.courses = {name: 'string', resolved: 0};
+					console.log("info pattern: ", user);
+				});
+	      console.log("info pattern: ", req.session.me);
+	    }
       res.view({
         pattern: pattern
       });

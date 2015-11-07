@@ -1,1 +1,1 @@
-angular.module('SignupModule', ['toastr', 'compareTo']);
+angular.module('HomepageModule', ['toastr', 'compareTo']);

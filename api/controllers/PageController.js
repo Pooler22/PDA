@@ -7,7 +7,7 @@
 
 module.exports = {
 	showHomePage: function (req, res) {
-
+		console.log("info: ", req.url);
 		// public view
     if (!req.session.me) {
       return res.view('homepage');
@@ -25,17 +25,33 @@ module.exports = {
         return res.view('homepage');
       }
 
+
 			// correct login
-			return res.view('dashboard', {
+			return res.view('dashboard' , {
         me: {
           id: user.id,
           name: user.name,
           email: user.email,
-          nick: user.nick,
-          isAdmin: !!user.admin,
+          nick: user.nick
         }
       });
 
     });
-  }
+  },
+	showAboutPage: function (req, res) {
+		if (!req.session.me) {
+      return res.view('about');
+    }
+		User.findOne(req.session.me, function (err, user){
+			return res.view('about' , {
+				me: {
+					id: user.id,
+					name: user.name,
+					email: user.email,
+					nick: user.nick,
+					courses: user.courses.name
+				}
+			});
+		});
+	}
 };
