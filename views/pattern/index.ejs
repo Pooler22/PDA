@@ -1,31 +1,51 @@
 <div class="container" ng-controller="HomepageController" ng-cloak>
   <div class="controller">
     <h2>Wzorce</h2>
+    <table class="table">
 
-    <% if (session.authenticated && session.User.admin) { %>
-      <table class="table">
+      <% if (session.authenticated && session.User.admin) { %>
         <% _.each(patterns, function (pattern) { %>
-        <tr data-id="<%= pattern.id%>" data-model="pattern">
-          <td><p><%= pattern.name %></p></td>
-          <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Pokaż</a></td>
-          <td><a href="/pattern/edit/<%= pattern.id %>" class="btn btn-warning">Edytuj</a></td>
-          <td><a href="/pattern/destroy/<%= pattern.id %>" class="btn btn-danger">Usuń</a></td>
-        </tr>
-        <% }) %>
-      </table>
-    <% } %>
+          <tr>
+            <th>Nazwa</th>
+            <th>Pokaż</th>
+            <th>Edytuj</th>
+            <th>Usuń</th>
+          </tr>
+          <tr data-id="<%= pattern.id%>" data-model="pattern">
+            <td>
+              <p>
+                <%= pattern.name %>
+              </p>
+            </td>
+            <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Pokaż</a></td>
+            <td><a href="/pattern/edit/<%= pattern.id %>" class="btn btn-warning">Edytuj</a></td>
+            <td><a href="/pattern/destroy/<%= pattern.id %>" class="btn btn-danger">Usuń</a></td>
+          </tr>
+          <% }) %>
+            <% } %>
 
-    <% if (!session.User.admin){ %>
-      <table class="table">
-        <% _.each(patterns, function (pattern) { %>
-        <tr data-id="<%= pattern.id%>" data-model="pattern">
-          <td><p><%= pattern.name %></p></td>
-          <td><p><%= pattern.shortdescription %></p></td>
-
-            <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Rozpocznij</a></td>
-        </tr>
-        <% }) %>
-      </table>
-    <% } %>
+              <% if (!session.authenticated || !session.User.admin){ %>
+                <tr>
+                  <th>Nazwa</th>
+                  <th>Opis</th>
+                  <th>Rozpocznij</th>
+                </tr>
+                <% _.each(patterns, function (pattern) { %>
+                  <tr data-id="<%= pattern.id%>" data-model="pattern">
+                    <td>
+                      <p>
+                        <%= pattern.name %>
+                      </p>
+                    </td>
+                    <td>
+                      <p>
+                        <%= pattern.shortdescription %>
+                      </p>
+                    </td>
+                    <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Rozpocznij</a></td>
+                  </tr>
+                  <% }) %>
+                    <% } %>
+    </table>
   </div>
 </div>
