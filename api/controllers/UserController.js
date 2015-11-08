@@ -48,11 +48,11 @@ module.exports = {
       user.save(function(err, user) {
         if (err) return next(err);
 
-      // add the action attribute to the user object for the flash message.
-      user.action = " signed-up and logged-in."
+        // add the action attribute to the user object for the flash message.
+        user.action = " signed-up and logged-in."
 
-      // Let other subscribed sockets know that the user was created.
-      User.publishCreate(user);
+        // Let other subscribed sockets know that the user was created.
+        User.publishCreate(user);
 
         // After successfully creating the user
         // redirect to the show action
@@ -174,21 +174,23 @@ module.exports = {
     });
   },
 
-  login: function (req, res) {
-    User.findOne({ email: req.param('email') }, function foundUser(err, user) {
+  login: function(req, res) {
+    User.findOne({
+      email: req.param('email')
+    }, function foundUser(err, user) {
       if (err) return res.negotiate(err);
       if (!user) return res.notFound();
       require('machinepack-passwords').checkPassword({
         passwordAttempt: req.param('password'),
         encryptedPassword: user.encryptedPassword
       }).exec({
-        error: function (err){
+        error: function(err) {
           return res.negotiate(err);
         },
-        incorrect: function (){
+        incorrect: function() {
           return res.notFound();
         },
-        success: function (){
+        success: function() {
           user.lastLoggedIn = new Date();
           user.save(function(err, user) {
             if (err) return next(err);
@@ -230,8 +232,7 @@ module.exports = {
               if (err) {
                 console.log("err: ", err);
                 console.log("err.invalidAttributes: ", err.invalidAttributes)
-                if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0]
-                  && err.invalidAttributes.email[0].rule === 'unique') {
+                if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0] && err.invalidAttributes.email[0].rule === 'unique') {
                   return res.emailAddressInUse();
                 }
                 return res.negotiate(err);
@@ -247,7 +248,7 @@ module.exports = {
     });
   },
 
-  logout: function (req, res) {
+  logout: function(req, res) {
     User.findOne(req.session.me, function foundUser(err, user) {
       if (err) return res.negotiate(err);
       if (!user) {

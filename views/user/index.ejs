@@ -6,9 +6,10 @@
 			<th>Name</th>
 			<th>Title</th>
 			<th>Email</th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th>Is admin</th>
+			<th>Show</th>
+			<th>Edit</th>
+			<th>Delete</th>
 		</tr>
 
 		<% _.each(users, function(user) { %>
@@ -17,6 +18,7 @@
 			<td><%= user.name %></td>
 			<td><%= user.title %></td>
 			<td><%= user.email %></td>
+			<td><%= user.admin %></td>
 			<td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary">Show</a></td>
 			<td><a href="/user/edit/<%= user.id %>" class="btn btn-sm btn-warning">Edit</a></td>
 			<td><a href="/user/destroy/<%= user.id %>" class="btn btn-sm btn-danger">Delete</a></td>

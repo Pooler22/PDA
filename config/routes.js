@@ -37,11 +37,11 @@ module.exports.routes = {
   ////////////////////////////////////////////////////////////
 
 
-  'GET /signup': {view: 'signup'},
-  'GET /about': 'PageController.showAboutPage',
   'GET /': 'PageController.showHomePage',
-
+  'GET /about': 'PageController.showAboutPage',
+  
   // User + authentication
+  'GET /signup': {view: 'user/new'},
   'POST /signup': 'UserController.signup',
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout'

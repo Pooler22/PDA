@@ -1,8 +1,0 @@
-<div class="list add-list">
-     <form action="/list/create" method="POST" class="form-create-list">  <!-- id="add-list" -->
-        <input type="text" class=" form-control" placeholder="Add a list..." name="name" >
-        <input type="hidden" class="board-id form-control" name="owner" value="<%= board.id %>">
-        <input type="hidden" name="_csrf" value="<%= _csrf %>">
-        <button type="submit" class="btn green">Add a list</button>
-    </form>
-</div>

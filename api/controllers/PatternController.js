@@ -26,7 +26,7 @@ module.exports = {
   },
 
   show: function(req, res, next){
-    Pattern.findOne(req.params['id'], function foundPattern (err, pattern){
+    Pattern.findOne(req.params.id, function foundPattern (err, pattern){
       if (err) return next(err);
       if (!Pattern) return next();
 
@@ -53,7 +53,7 @@ module.exports = {
   },
 
   edit: function(req,res,next){
-    Pattern.findOne(req.params['id'], function foundPattern(err, pattern){
+    Pattern.findOne(req.params.id, function foundPattern(err, pattern){
       if (err) return next(err);
       if (!pattern) return next('Brak takiego wzorca.');
       res.view({
@@ -63,7 +63,7 @@ module.exports = {
   },
 
   update: function(req, res, next){
-    Pattern.update(req.params['id'], req.params.all(), function updatePattern(err){
+    Pattern.update(req.params.id, req.params.all(), function updatePattern(err){
       if(err){
         return res.redirect('/pattern/edit/' + req.param('id'));
       }
@@ -78,7 +78,7 @@ module.exports = {
       Pattern.destroy(req.param('id'), function PatternDestroyed(err){
         if (err) return next(err);
       });
-      res.redirect('/pattern/')
+      res.redirect('/pattern/');
     });
   }
 

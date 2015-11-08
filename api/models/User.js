@@ -26,7 +26,7 @@ module.exports = {
       required: true
     },
     courses: [{
-      name: 'string',
+      id: 'integer',
       resolved: 'integer'
     }],
 
@@ -39,16 +39,17 @@ module.exports = {
       type: 'boolean',
       defaultsTo: false
     },
-
-    toJSON: function() {
-      var obj = this.toObject();
-      delete obj.password;
-      delete obj.confirmation;
-      delete obj.encryptedPassword;
-      delete obj._csrf;
-      return obj;
-    }
   },
+
+  toJSON: function() {
+    var obj = this.toObject();
+    delete obj.password;
+    delete obj.confirmation;
+    delete obj.encryptedPassword;
+    delete obj._csrf;
+    return obj;
+  },
+
   beforeValidation: function(values, next) {
     if (typeof values.admin !== 'undefined') {
       if (values.admin === 'unchecked') {
@@ -61,8 +62,6 @@ module.exports = {
   },
 
   beforeCreate: function(values, next) {
-
-    // This checks to make sure the password and password confirmation match before creating record
     if (!values.password || values.password != values.confirmation) {
       return next({
         err: ["Password doesn't match password confirmation."]
@@ -75,6 +74,5 @@ module.exports = {
       // values.online= true;
       next();
     });
-
   }
 };
