@@ -47,10 +47,10 @@ module.exports = {
   },
 
   index: function(req, res, next) {
-    Pattern.find(function foundPatterns(err, pattern) {
+    Pattern.find(function foundPatterns(err, patterns) {
       if (err) return next(err);
       res.view({
-        patterns: pattern
+        patterns: patterns
       });
     });
   },
@@ -70,7 +70,7 @@ module.exports = {
       if (err) {
         return res.redirect('/pattern/edit/' + req.param('id'));
       }
-      res.redirect('/pattern/show/' + req.param('id'));
+      res.redirect('/pattern/edit /' + req.param('id'));
     });
   },
 

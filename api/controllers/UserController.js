@@ -20,7 +20,7 @@ module.exports = {
       email: req.param('email'),
       password: req.param('password'),
       confirmation: req.param('confirmation')
-    }
+    };
 
     // Create a User with the params sent from
     // the sign-up form --> new.ejs
@@ -33,7 +33,7 @@ module.exports = {
         console.log(err);
         req.session.flash = {
           err: err
-        }
+        };
 
         // If error redirect back to sign-up page
         return res.redirect('/user/new');
@@ -49,7 +49,7 @@ module.exports = {
         if (err) return next(err);
 
         // add the action attribute to the user object for the flash message.
-        user.action = " signed-up and logged-in."
+        user.action = " signed-up and logged-in.";
 
         // Let other subscribed sockets know that the user was created.
         User.publishCreate(user);
@@ -102,20 +102,20 @@ module.exports = {
 
   // process the info from edit view
   update: function(req, res, next) {
-
+    var userObj;
     if (req.session.User.admin) {
-      var userObj = {
+      userObj = {
         name: req.param('name'),
         nick: req.param('nick'),
         email: req.param('email'),
         admin: req.param('admin')
-      }
+      };
     } else {
-      var userObj = {
+      userObj = {
         name: req.param('name'),
-        title: req.param('title'),
+        nick: req.param('nick'),
         email: req.param('email')
-      }
+      };
     }
 
     User.update(req.param('id'), userObj, function userUpdated(err) {
@@ -231,7 +231,7 @@ module.exports = {
             }, function userCreated(err, newUser) {
               if (err) {
                 console.log("err: ", err);
-                console.log("err.invalidAttributes: ", err.invalidAttributes)
+                console.log("err.invalidAttributes: ", err.invalidAttributes);
                 if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0] && err.invalidAttributes.email[0].rule === 'unique') {
                   return res.emailAddressInUse();
                 }

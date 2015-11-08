@@ -4,13 +4,13 @@
     <table class="table">
 
       <% if (session.authenticated && session.User.admin) { %>
+        <tr>
+          <th>Nazwa</th>
+          <th>Pokaż</th>
+          <th>Edytuj</th>
+          <th>Usuń</th>
+        </tr>
         <% _.each(patterns, function (pattern) { %>
-          <tr>
-            <th>Nazwa</th>
-            <th>Pokaż</th>
-            <th>Edytuj</th>
-            <th>Usuń</th>
-          </tr>
           <tr data-id="<%= pattern.id%>" data-model="pattern">
             <td>
               <p>
