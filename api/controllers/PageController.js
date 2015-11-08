@@ -20,16 +20,17 @@ module.exports = {
         return res.view('static/homepage');
       }
 
-      return res.view('dashboard', {
+      return res.view('static/dashboard', {
         me: {
           id: user.id,
           name: user.name,
-          email: user.email,
-          nick: user.nick
+          nick: user.nick,
+          email: user.email
         }
       });
     });
   },
+
   showAboutPage: function(req, res) {
     return res.view('static/about');
   }

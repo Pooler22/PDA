@@ -3,14 +3,14 @@ angular.module('HomepageModule').controller('SignupController', ['$scope', '$htt
 	// disable loading
 	$scope.signupForm = {
 		loading: false
-	}
+	};
 
 	$scope.submitSignupForm = function(){
 		$scope.signupForm.loading = true;
 
 		$http.post('/signup', {
 			name: $scope.signupForm.name,
-			title: $scope.signupForm.title,
+			nick: $scope.signupForm.nick,
 			email: $scope.signupForm.email,
 			password: $scope.signupForm.password
 		})
@@ -30,8 +30,8 @@ angular.module('HomepageModule').controller('SignupController', ['$scope', '$htt
 		})
 		.finally(function eitherWay(){
 			$scope.signupForm.loading = false;
-		})
-	}
+		});
+	};
 
 	$scope.submitLoginForm = function (){
     $scope.loginForm.loading = true;
