@@ -6,13 +6,13 @@
  */
 
 module.exports = {
-	new: function(req,res){
+  new: function(req, res) {
     res.view();
   },
 
-	create: function(req, res, next){
+  create: function(req, res, next) {
     //create Pattern with the params send from form -> new.ejs
-    Pattern.create(req.params.all(), function PatternCreated (err, pattern){
+    Pattern.create(req.params.all(), function PatternCreated(err, pattern) {
       if (err) {
         req.session.flash = {
           err: err
@@ -21,29 +21,32 @@ module.exports = {
         return res.redirect('/pattern/new/');
       }
       //if successful then redirect to Pattern page
-      return res.redirect('/pattern/');
+      return res.redirect('/pattern/edit/'+ pattern.id);
     });
   },
 
-  show: function(req, res, next){
-    Pattern.findOne(req.params.id, function foundPattern (err, pattern){
+  show: function(req, res, next) {
+    Pattern.findOne(req.params.id, function foundPattern(err, pattern) {
       if (err) return next(err);
       if (!Pattern) return next();
-
-			if (req.session.me) {
-				User.findOne(req.session.me, function (err, user){
-					user.courses = {name: 'string', resolved: 0};
-					console.log("info pattern: ", user);
-				});
-	      console.log("info pattern: ", req.session.me);
-	    }
+      sails.log.error("info pattern: 1");
+      if (req.session.me) {
+        User.findOne(req.session.me, function(err, user) {
+          user.courses = {
+            name: 'string',
+            resolved: 0
+          };
+          sails.log.error("info pattern: ", user);
+        });
+        sails.log.error("info pattern: ", req.session.me);
+      }
       res.view({
         pattern: pattern
       });
     });
   },
 
-  index: function(req,res, next) {
+  index: function(req, res, next) {
     Pattern.find(function foundPatterns(err, pattern) {
       if (err) return next(err);
       res.view({
@@ -52,8 +55,8 @@ module.exports = {
     });
   },
 
-  edit: function(req,res,next){
-    Pattern.findOne(req.params.id, function foundPattern(err, pattern){
+  edit: function(req, res, next) {
+    Pattern.findOne(req.params.id, function foundPattern(err, pattern) {
       if (err) return next(err);
       if (!pattern) return next('Brak takiego wzorca.');
       res.view({
@@ -62,20 +65,20 @@ module.exports = {
     });
   },
 
-  update: function(req, res, next){
-    Pattern.update(req.params.id, req.params.all(), function updatePattern(err){
-      if(err){
+  update: function(req, res, next) {
+    Pattern.update(req.params.id, req.params.all(), function updatePattern(err) {
+      if (err) {
         return res.redirect('/pattern/edit/' + req.param('id'));
       }
       res.redirect('/pattern/show/' + req.param('id'));
     });
   },
 
-  destroy: function(req, res, next){
-    Pattern.findOne(req.param('id'), function foundPattern(err, pattern){
+  destroy: function(req, res, next) {
+    Pattern.findOne(req.param('id'), function foundPattern(err, pattern) {
       if (err) return next(err);
       if (!pattern) return next('Brak takiego wzorca.');
-      Pattern.destroy(req.param('id'), function PatternDestroyed(err){
+      Pattern.destroy(req.param('id'), function PatternDestroyed(err) {
         if (err) return next(err);
       });
       res.redirect('/pattern/');

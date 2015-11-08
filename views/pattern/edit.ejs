@@ -1,1 +1,23 @@
-edit patterns
+<h3>Dodaj wzorzec</h3>
+<hr>
+<form action="/pattern/create" method="POST" class="form-create-pattern">
+  <div class="form-group">
+    <dl class="dl-horizontal">
+      <dt>Nazwa wzorca:</dt>
+      <dd>
+        <input type="text" class="form-control" placeholder="Nazwa wzorca" name="name" value="<%= pattern.name %>">
+      </dd>
+      <dt>Krótki opis:</dt>
+      <dd>
+        <textarea type="text" class="form-control" placeholder="Krótki opis" name="shortdescription"><%= pattern.shortdescription %></textarea>
+      </dd>
+
+      <input type="hidden" name="_csrf" value="<%= _csrf %>">
+      <dd>
+        <button type="submit" class="btn btn-succes">Dodaj stronę</button>
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <button type="submit" class="btn btn-danger">Odrzuć</button>
+      </dd>
+    </dl>
+  </div>
+</form>

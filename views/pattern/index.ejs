@@ -24,7 +24,8 @@
           <% }) %>
             <% } %>
 
-              <% if (!session.authenticated || !session.User.admin){ %>
+
+              <% if (session.authenticated && !session.User.admin){ %>
                 <tr>
                   <th>Nazwa</th>
                   <th>Opis</th>
@@ -46,6 +47,30 @@
                   </tr>
                   <% }) %>
                     <% } %>
+
+
+                      <% if (!session.authenticated){ %>
+                        <tr>
+                          <th>Nazwa</th>
+                          <th>Opis</th>
+                          <th>Rozpocznij</th>
+                        </tr>
+                        <% _.each(patterns, function (pattern) { %>
+                          <tr data-id="<%= pattern.id%>" data-model="pattern">
+                            <td>
+                              <p>
+                                <%= pattern.name %>
+                              </p>
+                            </td>
+                            <td>
+                              <p>
+                                <%= pattern.shortdescription %>
+                              </p>
+                            </td>
+                            <td><a href="/signup" class="btn btn-primary">Zarejestruj się</a></td>
+                          </tr>
+                          <% }) %>
+                            <% } %>
     </table>
   </div>
 </div>

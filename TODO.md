@@ -12,3 +12,5 @@ user cant index/add/edit/delete pattern
 user cant index/add/edit/delete user
 
 start course add this to user stat
+
+connect to database
