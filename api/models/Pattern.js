@@ -1,9 +1,9 @@
 /**
-* Pattern.js
-*
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
-*/
+ * Pattern.js
+ *
+ * @description :: Pattern design model
+ * @docs        :: http://sailsjs.org/#!documentation/models
+ */
 
 module.exports = {
   schema: true,
@@ -12,7 +12,7 @@ module.exports = {
       type: 'string',
       required: true
     },
-    shortdescription:{
+    shortdescription: {
       type: 'string',
       required: true
     },
@@ -20,9 +20,9 @@ module.exports = {
       name: {
         type: 'string'
       },
-    contents: {
-      type: 'string'
-    }
-   }]
+      contents: {
+        type: 'string'
+      }
+    }]
   }
 };

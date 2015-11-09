@@ -34,7 +34,7 @@ module.exports = {
   edit: function(req, res, next) {
     User.findOne(req.param('id'), function foundUser(err, user) {
       if (err) return next(err);
-      if (!user) return next('User doesn\'t exist.');
+      if (!user) return next(err);
       res.view({
         user: user
       });
@@ -42,21 +42,18 @@ module.exports = {
   },
 
   update: function(req, res, next) {
-    var userObj;
+    var userObj = {
+      name: req.param('name'),
+      nick: req.param('nick'),
+      email: req.param('email')
+    };
     if (req.session.User.admin) {
       userObj = {
-        name: req.param('name'),
-        nick: req.param('nick'),
-        email: req.param('email'),
         admin: req.param('admin')
       };
-    } else {
-      userObj = {
-        name: req.param('name'),
-        nick: req.param('nick'),
-        email: req.param('email')
-      };
     }
+
+
     User.update(req.param('id'), userObj, function userUpdated(err) {
       if (err) {
         return res.redirect('/user/edit/' + req.param('id'));
@@ -68,7 +65,7 @@ module.exports = {
   destroy: function(req, res, next) {
     User.findOne(req.param('id'), function foundUser(err, user) {
       if (err) return next(err);
-      if (!user) return next('User doesn\'t exist.');
+      if (!user) return next(err);
       User.destroy(req.param('id'), function userDestroyed(err) {
         if (err) return next(err);
         User.publishUpdate(
@@ -81,24 +78,7 @@ module.exports = {
       res.redirect('/user');
     });
   },
-
-  // This action works with app.js socket.get('/user/subscribe') to
-  // subscribe to the User model classroom and instances of the user
-  // model
-  subscribe: function(req, res) {
-    // Find all current users in the user model
-    User.find(function foundUsers(err, users) {
-      if (err) return next(err);
-      // subscribe this socket to the User model classroom
-      User.subscribe(req.socket);
-      // subscribe this socket to the user instance rooms
-      User.subscribe(req.socket, users);
-      // This will avoid a warning from the socket for trying to render
-      // html over the socket.
-      res.send(200);
-    });
-  },
-
+  //TODO: login
   login: function(req, res) {
     sails.log.error("start");
     User.findOne({
@@ -131,7 +111,7 @@ module.exports = {
       });
     });
   },
-
+  //TODO: signup
   signup: function(req, res) {
     var Passwords = require('machinepack-passwords');
     Passwords.encryptPassword({

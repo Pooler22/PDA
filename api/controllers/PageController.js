@@ -7,11 +7,11 @@
 
 module.exports = {
   showHomePage: function(req, res) {
-    if (!req.session.me) {
+    if (!req.session.authenticated) {
       return res.view('static/homepage');
     }
 
-    User.findOne(req.session.me, function(err, user) {
+    User.findOne(req.session.authenticated, function(err, user) {
       if (err) {
         return res.negotiate(err);
       }
@@ -20,12 +20,9 @@ module.exports = {
         return res.view('static/homepage');
       }
 
-      return res.view('static/dashboard', {
+      return res.view('user/dashboard', {
         me: {
-          id: user.id,
-          name: user.name,
-          nick: user.nick,
-          email: user.email
+          name: user.name
         }
       });
     });

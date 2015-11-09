@@ -11,17 +11,14 @@ module.exports = {
   },
 
   create: function(req, res, next) {
-    //create Pattern with the params send from form -> new.ejs
     Pattern.create(req.params.all(), function PatternCreated(err, pattern) {
       if (err) {
         req.session.flash = {
           err: err
         };
-        //if error then redirect to add-Pattern form page
         return res.redirect('/pattern/new/');
       }
-      //if successful then redirect to Pattern page
-      return res.redirect('/pattern/edit/'+ pattern.id);
+      return res.redirect('/pattern/edit/' + pattern.id);
     });
   },
 
@@ -29,16 +26,13 @@ module.exports = {
     Pattern.findOne(req.params.id, function foundPattern(err, pattern) {
       if (err) return next(err);
       if (!Pattern) return next();
-      sails.log.error("info pattern: 1");
       if (req.session.me) {
         User.findOne(req.session.me, function(err, user) {
           user.courses = {
             name: 'string',
             resolved: 0
           };
-          sails.log.error("info pattern: ", user);
         });
-        sails.log.error("info pattern: ", req.session.me);
       }
       res.view({
         pattern: pattern
@@ -58,7 +52,7 @@ module.exports = {
   edit: function(req, res, next) {
     Pattern.findOne(req.params.id, function foundPattern(err, pattern) {
       if (err) return next(err);
-      if (!pattern) return next('Brak takiego wzorca.');
+      if (!pattern) return next(err);
       res.view({
         pattern: pattern
       });
@@ -70,14 +64,14 @@ module.exports = {
       if (err) {
         return res.redirect('/pattern/edit/' + req.param('id'));
       }
-      res.redirect('/pattern/edit /' + req.param('id'));
+      res.redirect('/pattern/edit/' + req.param('id'));
     });
   },
 
   destroy: function(req, res, next) {
     Pattern.findOne(req.param('id'), function foundPattern(err, pattern) {
       if (err) return next(err);
-      if (!pattern) return next('Brak takiego wzorca.');
+      if (!pattern) return next(err);
       Pattern.destroy(req.param('id'), function PatternDestroyed(err) {
         if (err) return next(err);
       });

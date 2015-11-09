@@ -23,13 +23,13 @@ module.exports = {
       var usernamePasswordRequiredError = [{
         name: 'usernamePasswordRequired',
         message: 'You must enter both a username and password.'
-      }]
+      }];
 
       // Remember that err is the object being passed down (a.k.a. flash.err), whose value is another object with
       // the key of usernamePasswordRequiredError
       req.session.flash = {
         err: usernamePasswordRequiredError
-      }
+      };
 
       res.redirect('/session/new');
       return;
@@ -46,10 +46,10 @@ module.exports = {
         var noAccountError = [{
           name: 'noAccount',
           message: 'The email address ' + req.param('email') + ' not found.'
-        }]
+        }];
         req.session.flash = {
           err: noAccountError
-        }
+        };
         res.redirect('/session/new');
         return;
       }
