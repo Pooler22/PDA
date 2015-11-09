@@ -221,14 +221,17 @@ module.exports = {
             return res.negotiate(err);
           },
           success: function(gravatarUrl) {
-            User.create({
+            var userObj = {
               name: req.param('name'),
               nick: req.param('nick'),
               email: req.param('email'),
               encryptedPassword: encryptedPassword,
               lastLoggedIn: new Date(),
               gravatarUrl: gravatarUrl
-            }, function userCreated(err, newUser) {
+            };
+
+            User.create(userObj,
+              function userCreated(err, newUser) {
               if (err) {
                 console.log("err: ", err);
                 console.log("err.invalidAttributes: ", err.invalidAttributes);
@@ -238,6 +241,12 @@ module.exports = {
                 return res.negotiate(err);
               }
               req.session.me = newUser.id;
+              req.session.authenticated = true;
+              req.session.User = newUser;
+              newUser.online = true;
+              if (err) return next(err);
+              newUser.action = " signed-up and logged-in.";
+
               return res.json({
                 id: newUser.id
               });
