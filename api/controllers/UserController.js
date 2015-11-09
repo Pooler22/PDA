@@ -12,58 +12,6 @@ module.exports = {
     res.view();
   },
 
-  create: function(req, res, next) {
-
-    var userObj = {
-      name: req.param('name'),
-      nick: req.param('nick'),
-      email: req.param('email'),
-      password: req.param('password'),
-      confirmation: req.param('confirmation')
-    };
-
-    // Create a User with the params sent from
-    // the sign-up form --> new.ejs
-    User.create(userObj, function userCreated(err, user) {
-
-      // // If there's an error
-      // if (err) return next(err);
-
-      if (err) {
-        console.log(err);
-        req.session.flash = {
-          err: err
-        };
-
-        // If error redirect back to sign-up page
-        return res.redirect('/user/new');
-      }
-
-      // Log user in
-      req.session.authenticated = true;
-      req.session.User = user;
-
-      // Change status to online
-      user.online = true;
-      user.save(function(err, user) {
-        if (err) return next(err);
-
-        // add the action attribute to the user object for the flash message.
-        user.action = " signed-up and logged-in.";
-
-        // Let other subscribed sockets know that the user was created.
-        User.publishCreate(user);
-
-        // After successfully creating the user
-        // redirect to the show action
-        // From ep1-6: //res.json(user);
-
-        res.redirect('/user/show/' + user.id);
-      });
-    });
-  },
-
-  // render the profile view (e.g. /views/show.ejs)
   show: function(req, res, next) {
     User.findOne(req.param('id'), function foundUser(err, user) {
       if (err) return next(err);
@@ -75,32 +23,24 @@ module.exports = {
   },
 
   index: function(req, res, next) {
-
-    // Get an array of all users in the User collection(e.g. table)
     User.find(function foundUsers(err, users) {
       if (err) return next(err);
-      // pass the array down to the /views/index.ejs page
       res.view({
         users: users
       });
     });
   },
 
-  // render the edit view (e.g. /views/edit.ejs)
   edit: function(req, res, next) {
-
-    // Find the user from the id passed in via params
     User.findOne(req.param('id'), function foundUser(err, user) {
       if (err) return next(err);
       if (!user) return next('User doesn\'t exist.');
-
       res.view({
         user: user
       });
     });
   },
 
-  // process the info from edit view
   update: function(req, res, next) {
     var userObj;
     if (req.session.User.admin) {
@@ -117,39 +57,28 @@ module.exports = {
         email: req.param('email')
       };
     }
-
     User.update(req.param('id'), userObj, function userUpdated(err) {
       if (err) {
         return res.redirect('/user/edit/' + req.param('id'));
       }
-
       res.redirect('/user/show/' + req.param('id'));
     });
   },
 
   destroy: function(req, res, next) {
-
     User.findOne(req.param('id'), function foundUser(err, user) {
       if (err) return next(err);
-
       if (!user) return next('User doesn\'t exist.');
-
       User.destroy(req.param('id'), function userDestroyed(err) {
         if (err) return next(err);
-
-        // Inform other sockets (e.g. connected sockets that are subscribed) that this user is now logged in
-        User.publishUpdate(user.id, {
-          name: user.name,
-          action: ' has been destroyed.'
-        });
-
-        // Let other sockets know that the user instance was destroyed.
+        User.publishUpdate(
+          user.id, {
+            name: user.name,
+            action: ' has been destroyed.'
+          });
         User.publishDestroy(user.id);
-
       });
-
       res.redirect('/user');
-
     });
   },
 
@@ -157,17 +86,13 @@ module.exports = {
   // subscribe to the User model classroom and instances of the user
   // model
   subscribe: function(req, res) {
-
     // Find all current users in the user model
     User.find(function foundUsers(err, users) {
       if (err) return next(err);
-
       // subscribe this socket to the User model classroom
       User.subscribe(req.socket);
-
       // subscribe this socket to the user instance rooms
       User.subscribe(req.socket, users);
-
       // This will avoid a warning from the socket for trying to render
       // html over the socket.
       res.send(200);
@@ -175,9 +100,11 @@ module.exports = {
   },
 
   login: function(req, res) {
+    sails.log.error("start");
     User.findOne({
       email: req.param('email')
     }, function foundUser(err, user) {
+      sails.log.error("found");
       if (err) return res.negotiate(err);
       if (!user) return res.notFound();
       require('machinepack-passwords').checkPassword({
@@ -185,12 +112,15 @@ module.exports = {
         encryptedPassword: user.encryptedPassword
       }).exec({
         error: function(err) {
+          sails.log.error("1");
           return res.negotiate(err);
         },
         incorrect: function() {
+          sails.log.error("2");
           return res.notFound();
         },
         success: function() {
+          sails.log.error("3");
           user.lastLoggedIn = new Date();
           user.save(function(err, user) {
             if (err) return next(err);
@@ -203,9 +133,7 @@ module.exports = {
   },
 
   signup: function(req, res) {
-
     var Passwords = require('machinepack-passwords');
-
     Passwords.encryptPassword({
       password: req.param('password'),
       difficulty: 10,
@@ -225,32 +153,31 @@ module.exports = {
               name: req.param('name'),
               nick: req.param('nick'),
               email: req.param('email'),
-              encryptedPassword: encryptedPassword,
-              lastLoggedIn: new Date(),
-              gravatarUrl: gravatarUrl
+              encryptedPassword: req.param('password'),
+              confirmation: req.param('confirmation'),
+              lastLoggedIn: new Date()
             };
-
             User.create(userObj,
               function userCreated(err, newUser) {
-              if (err) {
-                console.log("err: ", err);
-                console.log("err.invalidAttributes: ", err.invalidAttributes);
-                if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0] && err.invalidAttributes.email[0].rule === 'unique') {
-                  return res.emailAddressInUse();
+                if (err) {
+                  console.log("err: ", err);
+                  console.log("err.invalidAttributes: ", err.invalidAttributes);
+                  if (err.invalidAttributes && err.invalidAttributes.email && err.invalidAttributes.email[0] && err.invalidAttributes.email[0].rule === 'unique') {
+                    return res.emailAddressInUse();
+                  }
+                  return res.negotiate(err);
                 }
-                return res.negotiate(err);
-              }
-              req.session.me = newUser.id;
-              req.session.authenticated = true;
-              req.session.User = newUser;
-              newUser.online = true;
-              if (err) return next(err);
-              newUser.action = " signed-up and logged-in.";
-
-              return res.json({
-                id: newUser.id
+                req.session.me = newUser.id;
+                req.session.authenticated = true;
+                req.session.User = newUser;
+                newUser.online = true;
+                if (err) return next(err);
+                newUser.action = " signed-up and logged-in.";
+                User.publishCreate(newUser);
+                return res.json({
+                  id: newUser.id
+                });
               });
-            });
           }
         });
       }
