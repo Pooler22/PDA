@@ -1,33 +1,9 @@
-<h3>Dodaj wzorzec</h3>
-<hr><div ng-controller="SignupController" ng-cloak>
-<form action="/course/update/<%= course.id %>" method="POST" class="form-update-course">
-  <div class="form-group">
-    <dl class="dl-horizontal">
-      <dt>Nazwa wzorca:</dt>
-      <dd>
-        <input type="text" class="form-control" placeholder="Nazwa wzorca" name="name" value="<%= course.name %>">
-      </dd>
-
-      <hr>
-      <dt>Krótki opis:</dt>
-      <dd>
-        <textarea type="text" class="form-control" placeholder="Krótki opis" name="shortdescription"><%= course.shortdescription %></textarea>
-      </dd>
-
-      <input type="hidden" name="_csrf" value="<%= _csrf %>">
-
-      <hr>
-      <% course.page %>
-      <p><%- course.page.name %></p>
-
-
-      <dt></dt>
-      <dd>
-        <button type="submit" class="btn btn-success">Dodaj stronę</button>
-        <button type="submit" class="btn btn-primary">Zapisz</button>
-        <a href="/course" class="btn btn-danger">Wróć</a>
-      </dd>
-    </dl>
-  </div>
-</form>
+<h3>Edytuj kurs</h3>
+<hr>
+<div ng-controller="SignupController" ng-cloak>
+  <dl class="dl-horizontal">
+    <% include editheader.ejs %>
+      <% include ../chapter/index.ejs %>
+        <% include ../chapter/new.ejs %>
+  </dl>
 </div>

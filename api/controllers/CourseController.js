@@ -16,7 +16,7 @@ module.exports = {
         req.session.flash = {
           err: err
         };
-        return res.redirect('/course/new/');
+        return res.redirect('/course/edit/' + course.id);
       }
       return res.redirect('/course/edit/' + course.id);
     });
@@ -24,15 +24,16 @@ module.exports = {
 
   show: function(req, res, next) {
     var chapters = null;
-      Chapters.find().where({owner: req.params.id}).exec(function foundChapter(err, data) {
-          if (err) return next(err);
-          chapters = data;
-      });
+    Chapter.find().where({
+      owner: req.params.id
+    }).exec(function foundChapter(err, data) {
+      if (err) return next(err);
+      chapters = data;
+    });
+
     Course.findOne(req.params.id, function foundCourse(err, course) {
       if (err) return next(err);
       if (!Course) return next();
-      if (req.session.me) {
-      }
       res.view({
         course: course,
         chapters: chapters
@@ -41,7 +42,18 @@ module.exports = {
   },
 
   index: function(req, res, next) {
-    Course.find(function foundCourse(err, courses) {
+    var condition;
+    if (req.path.indexOf('design-pattern') === 1) {
+      condition = 'Pattern design';
+    } else if (req.path.indexOf('best-practice') === 1) {
+      condition = 'Best practice';
+    } else {
+      return next(err);
+    }
+    sails.log.error(req.path);
+    Course.find().where({
+      type: condition
+    }).exec(function foundCourse(err, courses) {
       if (err) return next(err);
       res.view({
         courses: courses
@@ -50,11 +62,20 @@ module.exports = {
   },
 
   edit: function(req, res, next) {
+    var chapters = null;
+    Chapter.find().where({
+      owner: req.params.id
+    }).exec(function foundChapter(err, data) {
+      if (err) return next(err);
+      chapters = data;
+    });
+
     Course.findOne(req.params.id, function foundCourse(err, course) {
       if (err) return next(err);
       if (!course) return next(err);
       res.view({
-        course: course
+        course: course,
+        chapters: chapters
       });
     });
   },

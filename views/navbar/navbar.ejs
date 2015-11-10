@@ -13,12 +13,10 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/about">O projekcie</a></li>
-        <li><a href="/pattern">Wzorce projektowe</a></li>
-        <li><a href="/best-practice">Zasady dobrego programowania</a></li>
+        <%- include navbar-left.ejs %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <%- include login.ejs %>
+        <%- include navbar-right.ejs %>
       </ul>
     </div>
   </div>

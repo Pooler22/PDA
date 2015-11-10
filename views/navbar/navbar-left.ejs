@@ -1,0 +1,32 @@
+<li>
+  <a href="/about">
+    <%= __('About') %>
+  </a>
+</li>
+<li>
+  <a href="/design-pattern">
+    <%= __('Pattern design') %>
+  </a>
+</li>
+<li>
+  <a href="/best-practice">
+    <%= __('Best practice') %>
+  </a>
+</li>
+<% if (session.authenticated && session.User.admin) { %>
+  <li>
+    <a href="/course/new">
+      <%= __('Add course') %>
+    </a>
+  </li>
+  <li>
+    <a href="/user">
+      <%= __('Users') %>
+    </a>
+  </li>
+  <li>
+    <a href="/user/new">
+      <%= __('Add users') %>
+    </a>
+  </li>
+  <% } %>
