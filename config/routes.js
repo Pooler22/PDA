@@ -39,12 +39,15 @@ module.exports.routes = {
 
   'GET /': 'PageController.showHomePage',
   'GET /about': 'PageController.showAboutPage',
-  
+
   // User + authentication
   'GET /signup': {view: 'user/new'},
   'POST /signup': 'UserController.signup',
   'PUT /login': 'UserController.login',
-  'GET /logout': 'UserController.logout'
+  'GET /logout': 'UserController.logout',
+
+  'GET /design-pattern': 'CourseController.index',
+  'GET /best-practice': 'CourseController.index'
 
   /***************************************************************************
   *                                                                          *

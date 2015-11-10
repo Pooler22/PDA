@@ -13,16 +13,10 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/about">O projekcie</a></li>
-        <li><a href="/course">Kursy</a></li>
-        <% if (session.authenticated && session.User.admin) { %>
-        <li><a href="/course/new">Dodaj kurs</a></li>
-        <li><a href="/user">Użytkownicy</a></li>
-        <li><a href="/user/new">Dodaj użytkownika</a></li>
-        <% } %>
+        <%- include navbar-left.ejs %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <%- include login.ejs %>
+        <%- include navbar-right.ejs %>
       </ul>
     </div>
   </div>

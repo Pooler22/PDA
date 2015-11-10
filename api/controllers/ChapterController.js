@@ -20,7 +20,7 @@
                  };
              }
  						return res.redirect('/course/edit/' + req.param('owner'));
-             //return res.json({ result: ret })
+            //return res.json({ result: ret })
          });
      },
 

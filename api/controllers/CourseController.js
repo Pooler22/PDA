@@ -42,7 +42,18 @@ module.exports = {
   },
 
   index: function(req, res, next) {
-    Course.find(function foundCourse(err, courses) {
+    var condition;
+    if (req.path.indexOf('design-pattern') === 1) {
+      condition = 'Pattern design';
+    } else if (req.path.indexOf('best-practice') === 1) {
+      condition = 'Best practice';
+    } else {
+      return next(err);
+    }
+    sails.log.error(req.path);
+    Course.find().where({
+      type: condition
+    }).exec(function foundCourse(err, courses) {
       if (err) return next(err);
       res.view({
         courses: courses

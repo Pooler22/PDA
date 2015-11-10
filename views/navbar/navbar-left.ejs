@@ -1,0 +1,9 @@
+<li>
+  <a href="/about">O projekcie</a></li>
+<li><a href="/design-pattern">Wzorce projektowe</a></li>
+<li><a href="/best-practice">Dobre praktyki</a></li>
+<% if (session.authenticated && session.User.admin) { %>
+  <li><a href="/course/new">Dodaj kurs</a></li>
+  <li><a href="/user">Użytkownicy</a></li>
+  <li><a href="/user/new">Dodaj użytkownika</a></li>
+  <% } %>

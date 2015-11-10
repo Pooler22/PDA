@@ -1,19 +1,13 @@
 <form action="/session/create" method="POST" class="form-signin">
-
 	<h2 class="form-signin-heading">Zaloguj się...</h2>
 	<% if(flash && flash.err) { %>
-
 		<% Object.keys(flash.err).forEach(function(error) { %>
-
 			<%- JSON.stringify(flash.err[error]) %>
-
 				<% }) %>
-
 					<% } %>
-
 						<div class="form">
 							<input type="text" class="form-control" placeholder="Email" name="email">
-							<input type="password" class="form-control" placeholder="Hasłlo" name="password">
+							<input type="password" class="form-control" placeholder="Hasło" name="password">
 							<input type="submit" class="btn btn-primary btn-block" value="Zaloguj się" />
 							<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 						</div>
