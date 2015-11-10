@@ -1,0 +1,76 @@
+<div class="container" ng-controller="HomepageController" ng-cloak>
+  <div class="controller">
+    <h2>Wzorce</h2>
+    <table class="table">
+
+      <% if (session.authenticated && session.User.admin) { %>
+        <tr>
+          <th>Nazwa</th>
+          <th>Pokaż</th>
+          <th>Edytuj</th>
+          <th>Usuń</th>
+        </tr>
+        <% _.each(courses, function (course) { %>
+          <tr data-id="<%= course.id%>" data-model="course">
+            <td>
+              <p>
+                <%= course.name %>
+              </p>
+            </td>
+            <td><a href="/course/show/<%= course.id %>" class="btn btn-primary">Pokaż</a></td>
+            <td><a href="/course/edit/<%= course.id %>" class="btn btn-warning">Edytuj</a></td>
+            <td><a href="/course/destroy/<%= course.id %>" class="btn btn-danger">Usuń</a></td>
+          </tr>
+          <% }) %>
+            <% } %>
+
+
+              <% if (session.authenticated && !session.User.admin){ %>
+                <tr>
+                  <th>Nazwa</th>
+                  <th>Opis</th>
+                  <th>Rozpocznij</th>
+                </tr>
+                <% _.each(courses, function (course) { %>
+                  <tr data-id="<%= course.id%>" data-model="course">
+                    <td>
+                      <p>
+                        <%= course.name %>
+                      </p>
+                    </td>
+                    <td>
+                      <p>
+                        <%= course.shortdescription %>
+                      </p>
+                    </td>
+                    <td><a href="/course/show/<%= course.id %>" class="btn btn-primary">Rozpocznij</a></td>
+                  </tr>
+                  <% }) %>
+                    <% } %>
+
+
+                      <% if (!session.authenticated){ %>
+                        <tr>
+                          <th>Nazwa</th>
+                          <th>Opis</th>
+                          <th>Rozpocznij</th>
+                        </tr>
+                        <% _.each(courses, function (course) { %>
+                          <tr data-id="<%= course.id%>" data-model="course">
+                            <td>
+                              <p>
+                                <%= course.name %>
+                              </p>
+                            </td>
+                            <td>
+                              <p>
+                                <%= course.shortdescription %>
+                              </p>
+                            </td>
+                            <td><a href="/signup" class="btn btn-primary">Zarejestruj się</a></td>
+                          </tr>
+                          <% }) %>
+                            <% } %>
+    </table>
+  </div>
+</div>

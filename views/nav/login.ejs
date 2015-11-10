@@ -1,26 +1,38 @@
 <div ng-controller="HomepageController" ng-cloak>
-  <form ng-submit="submitLoginForm()" class="navbar-form navbar-right">
-    <% if (typeof(me) === "undefined") { %>
-    <div class="login form-group">
-      <div class="form-group">
-        <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
-        <input ng-model="loginForm.password" type="password" placeholder="Hasło" name="password" class="form-control">
-      </div>
+  <div class="navbar-form navbar-right">
 
-      <button type="submit" class="btn btn-success">
-        <span ng-show="!loginForm.loading">Logowanie</span>
-        <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
-        <span ng-show="loginForm.loading">Logowanie...</span>
-      </button>
+    <% if (!session.authenticated) { %>
+      <form ng-submit="submitLoginForm()">
+        <div class="login form-group">
+          <div class="form-group">
+            <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
+            <input ng-model="loginForm.password" type="password" placeholder="Hasło" name="password" class="form-control">
+          </div>
 
-      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-      <a href="/signup" class="btn  btn-success">Rejestracja</a>
-    </div>
-    <% } else { %>
-    <div class="logout form-group">
-      Witaj <%- me.name %>
-      <a href="/logout" class="btn btn-success">Wyloguj się</a>
-    </div>
-    <% } %>
-  </form>
+          <button type="submit" class="btn btn-success">
+            <span ng-show="!loginForm.loading">Logowanie</span>
+            <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
+            <span ng-show="loginForm.loading">Logowanie...</span>
+          </button>
+
+          <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+          <a href="/signup" class="btn  btn-success">Rejestracja</a>
+        </div>
+      </form>
+      <% } %>
+
+
+      <% if (session.authenticated && session.User.admin) { %>
+        <a href="/user" class="btn btn-warning">Users</a>
+        <a href="/user/new" class="btn btn-warning">Add user</a>
+        <a href="/pattern" class="btn btn-warning">Patterns</a>
+        <a href="/pattern/new" class="btn btn-warning">Add patern</a>
+      <% } %>
+      <% if (session.authenticated) { %>
+        <div class="logout form-group">
+          <a href="/user/show/<%= session.User.id %>" class="btn btn-success">Twój profil</a>
+          <a href="/session/destroy" class="btn btn-danger">Wyloguj się</a>
+        </div>
+      <% } %>
+  </div>
 </div>

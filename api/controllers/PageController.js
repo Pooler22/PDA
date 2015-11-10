@@ -6,52 +6,29 @@
  */
 
 module.exports = {
-	showHomePage: function (req, res) {
-		console.log("info: ", req.url);
-		// public view
-    if (!req.session.me) {
-      return res.view('homepage');
+  showHomePage: function(req, res) {
+    if (!req.session.authenticated) {
+      return res.view('static/homepage');
     }
 
-		// logged view
-    User.findOne(req.session.me, function (err, user){
-			//Error situation
-			if (err) {
+    User.findOne(req.session.authenticated, function(err, user) {
+      if (err) {
         return res.negotiate(err);
       }
-			//Not found user
-			if (!user) {
-        sails.log.verbose('Sesja przypisana do nieistniejącego użytkownika, odśwież stronę.');
-        return res.view('homepage');
+      if (!user) {
+        sails.log.verbose('Not found user.');
+        return res.view('static/homepage');
       }
 
-
-			// correct login
-			return res.view('dashboard' , {
+      return res.view('user/dashboard', {
         me: {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          nick: user.nick
+          name: user.name
         }
       });
-
     });
   },
-	showAboutPage: function (req, res) {
-		if (!req.session.me) {
-      return res.view('about');
-    }
-		User.findOne(req.session.me, function (err, user){
-			return res.view('about' , {
-				me: {
-					id: user.id,
-					name: user.name,
-					email: user.email,
-					nick: user.nick,
-					courses: user.courses.name
-				}
-			});
-		});
-	}
+
+  showAboutPage: function(req, res) {
+    return res.view('static/about');
+  }
 };

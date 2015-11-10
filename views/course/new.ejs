@@ -1,0 +1,41 @@
+<h3>Dodaj kurs</h3>
+<hr>
+
+<form action="/course/create" method="POST" class="form-create-course">
+  <div class="form-group">
+    <dl class="dl-horizontal">
+
+      <dt>Nazwa kurs:</dt>
+      <dd>
+        <input type="text" class="form-control" placeholder="Nazwa kursu" name="name">
+      </dd>
+
+      <dt>Typ kursu:</dt>
+      <dd>
+        <select class="form-control" name="type">
+          <option>Pattern design</option>
+          <option>Best practice</option>
+        </select>
+      </dd>
+
+      <dt>Krótki opis:</dt>
+      <dd>
+        <textarea class="form-control" placeholder="Krótki opis" name="shortdescription"></textarea>
+      </dd>
+
+      <input type="hidden" name="_csrf" value="<%= _csrf %>">
+
+      <hr>
+      <dt>
+        Operacje
+      </dt>
+      <dd>
+        <button type="submit" class="btn btn-success">Dodaj stronę</button>
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <a href="/course" class="btn btn-danger">Odrzuć</a>
+      </dd>
+
+    </dl>
+  </div>
+</form>
+<hr>

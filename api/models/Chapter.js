@@ -1,5 +1,5 @@
 /**
-* Pattern.js
+* Pages.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
@@ -12,26 +12,12 @@ module.exports = {
       type: 'string',
       required: true
     },
-    application: {
+    content: {
       type: 'string'
     },
-    shortdescription: {
-      type: 'string'
-    },
-    fulldescription: {
-     type: 'string'
-    },
-    exercises: {
-     type: 'string'
-    },
-    repeatation: {
-     type: 'string'
-    },
-    project: {
-     type: 'string'
-    },
-    summary: {
-     type: 'string'
+    owner: {
+      model: 'course',
+      required: true
     }
   }
 };

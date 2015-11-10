@@ -1,0 +1,9 @@
+<div class="list add-pages">
+     <form action="/pages/create" method="POST" class="form-create-pages">  <!-- id="add-list" -->
+        <input type="text" class=" form-control" placeholder="Add a page title" name="name" >
+        <input type="text" class=" form-control" placeholder="Add a page content" name="content" >
+        <input type="hidden" class="pattern-id form-control" name="owner" value="<%= pattern.id %>">
+        <input type="hidden" name="_csrf" value="<%= _csrf %>">
+        <button type="submit" class="btn green">Add a page</button>
+    </form>
+</div>
