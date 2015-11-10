@@ -16,23 +16,24 @@ module.exports = {
         req.session.flash = {
           err: err
         };
-        return res.redirect('/course/new/');
+        return res.redirect('/course/edit/' + course.id);
       }
       return res.redirect('/course/edit/' + course.id);
     });
   },
 
   show: function(req, res, next) {
+    var chapters = null;
+    Chapter.find().where({
+      owner: req.params.id
+    }).exec(function foundChapter(err, data) {
+      if (err) return next(err);
+      chapters = data;
+    });
+
     Course.findOne(req.params.id, function foundCourse(err, course) {
       if (err) return next(err);
       if (!Course) return next();
-
-      var chapters = null;
-      Chapter.find().where({owner: req.params.id}).exec(function foundChapter(err, data) {
-          if (err) return next(err);
-          chapters = data;
-      });
-
       res.view({
         course: course,
         chapters: chapters
@@ -51,9 +52,11 @@ module.exports = {
 
   edit: function(req, res, next) {
     var chapters = null;
-    Chapter.find().where({owner: req.params.id}).exec(function foundChapter(err, data) {
-        if (err) return next(err);
-        chapters = data;
+    Chapter.find().where({
+      owner: req.params.id
+    }).exec(function foundChapter(err, data) {
+      if (err) return next(err);
+      chapters = data;
     });
 
     Course.findOne(req.params.id, function foundCourse(err, course) {

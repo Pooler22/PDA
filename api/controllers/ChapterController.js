@@ -19,7 +19,7 @@
                      err: err
                  };
              }
- 						return res.redirect('/course/show/' + req.param('owner'));
+ 						return res.redirect('/course/edit/' + req.param('owner'));
              //return res.json({ result: ret })
          });
      },
@@ -46,9 +46,9 @@
  		update: function(req, res, next){
  	    Chapter.update(req.params.id, req.params.all(), function updateBoard(err){
  	      if(err){
- 	        return res.redirect('/course/show/' + req.param('owner'));
+ 	        return res.redirect('/course/edit/' + req.param('owner'));
  	      }
- 	      res.redirect('/course/show/' + req.param('owner'));
+ 	      res.redirect('/course/edit/' + req.param('owner'));
  	    });
  	  },
 
