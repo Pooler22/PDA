@@ -1,10 +1,18 @@
-<% _.each(pages, function (page) { %>
-    <div class="list col-md-3">
-        <a href="/pattern/show/<%= page.id %>">
-            <span>Nazwa: <%= page.name %></span>
-            <span>Content: <%= page.content %></span>
-            <span>ID: <%= page.id %></span>
-            <span>Owner: <%= page.owner %></span>
-        </a>
-    </div>
-<% }) %>
+<% _.each(chapters, function(chapter) { %>
+  <form action="/pages/update/<%= chapter.id %>/" method="POST" class="form-update-pages">
+    <dt>Tytuł rozdziału</dt>
+    <dd>
+      <input type="text" class=" form-control" placeholder="Dodaj tytuł rozdziału" name="name" value="<%= chapter.content %>">
+    </dd>
+    <hr>
+    <dt>Treść rozdziału</dt>
+    <dd>
+      <input type="text" class=" form-control" placeholder="Treść rozdziału" name="content" value="<%= chapter.content %>">
+      <input type="hidden" class="form-control" name="owner" value="<%= course.id %>">
+      <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+      <hr>
+      <button type="submit" class="btn btn-success">Uaktualnij rozdzial</button>
+    </dd>
+  </form>
+  <hr>
+  <% }) %>

@@ -12,6 +12,9 @@ module.exports = {
       type: 'string',
       required: true
     },
+    order: {
+      type: 'integer'
+    },
     content: {
       type: 'string'
     },

@@ -21,13 +21,6 @@
       </form>
       <% } %>
 
-
-      <% if (session.authenticated && session.User.admin) { %>
-        <a href="/user" class="btn btn-warning">Users</a>
-        <a href="/user/new" class="btn btn-warning">Add user</a>
-        <a href="/pattern" class="btn btn-warning">Patterns</a>
-        <a href="/pattern/new" class="btn btn-warning">Add patern</a>
-      <% } %>
       <% if (session.authenticated) { %>
         <div class="logout form-group">
           <a href="/user/show/<%= session.User.id %>" class="btn btn-success">Twój profil</a>
