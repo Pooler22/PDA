@@ -1,4 +1,4 @@
-angular.module('PatternModule').controller('PatternController', ['$scope', '$http', 'toastr', function($scope, $http, toastr){
+angular.module('CourseModule').controller('CourseController', ['$scope', '$http', 'toastr', function($scope, $http, toastr){
 
 	// disable loading
 	$scope.signupForm = {

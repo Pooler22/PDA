@@ -12,17 +12,19 @@ module.exports = {
       type: 'string',
       required: true
     },
+    
+    //type: course pattern dfesign or course bestpractice
+    type: {
+      type: 'string',
+      required: true
+    },
     shortdescription: {
       type: 'string',
       required: true
     },
-    page: [{
-      name: {
-        type: 'string'
-      },
-      contents: {
-        type: 'string'
-      }
-    }]
+    chapters: {
+      collection: 'chapter',
+      via: 'owner'
+    }
   }
 };

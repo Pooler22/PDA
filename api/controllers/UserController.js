@@ -8,7 +8,7 @@
 module.exports = {
 
   // This loads the sign-up page --> new.ejs
-  'new': function(req, res) {
+  new: function(req, res) {
     res.view();
   },
 
@@ -80,11 +80,11 @@ module.exports = {
   },
   //TODO: login
   login: function(req, res) {
-    sails.log.error("start");
+    sails.log.error('start');
     User.findOne({
       email: req.param('email')
     }, function foundUser(err, user) {
-      sails.log.error("found");
+      sails.log.error('found');
       if (err) return res.negotiate(err);
       if (!user) return res.notFound();
       require('machinepack-passwords').checkPassword({
@@ -92,19 +92,24 @@ module.exports = {
         encryptedPassword: user.encryptedPassword
       }).exec({
         error: function(err) {
-          sails.log.error("1");
+          sails.log.error('1');
           return res.negotiate(err);
         },
         incorrect: function() {
-          sails.log.error("2");
+          sails.log.error('2');
           return res.notFound();
         },
         success: function() {
-          sails.log.error("3");
+          sails.log.error('3');
           user.lastLoggedIn = new Date();
           user.save(function(err, user) {
             if (err) return next(err);
             req.session.me = user.id;
+            req.session.authenticated = true;
+            req.session.User = user;
+            user.online = true;
+            user.action = " signed-up and logged-in.";
+            User.publishCreate(user);
             return res.ok();
           });
         }

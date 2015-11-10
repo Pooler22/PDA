@@ -6,6 +6,7 @@
   "keywords": [],
   "dependencies": {
     "angular": "1.4.7",
+    "angular-bootstrap": "0.12.2",
     "angular-mocks": "1.4.7",
     "angular-moment": "0.10.3",
     "angular-route": "1.4.7",

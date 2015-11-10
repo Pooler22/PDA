@@ -10,16 +10,16 @@
           <th>Edytuj</th>
           <th>Usuń</th>
         </tr>
-        <% _.each(patterns, function (pattern) { %>
-          <tr data-id="<%= pattern.id%>" data-model="pattern">
+        <% _.each(courses, function (course) { %>
+          <tr data-id="<%= course.id%>" data-model="course">
             <td>
               <p>
-                <%= pattern.name %>
+                <%= course.name %>
               </p>
             </td>
-            <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Pokaż</a></td>
-            <td><a href="/pattern/edit/<%= pattern.id %>" class="btn btn-warning">Edytuj</a></td>
-            <td><a href="/pattern/destroy/<%= pattern.id %>" class="btn btn-danger">Usuń</a></td>
+            <td><a href="/course/show/<%= course.id %>" class="btn btn-primary">Pokaż</a></td>
+            <td><a href="/course/edit/<%= course.id %>" class="btn btn-warning">Edytuj</a></td>
+            <td><a href="/course/destroy/<%= course.id %>" class="btn btn-danger">Usuń</a></td>
           </tr>
           <% }) %>
             <% } %>
@@ -31,19 +31,19 @@
                   <th>Opis</th>
                   <th>Rozpocznij</th>
                 </tr>
-                <% _.each(patterns, function (pattern) { %>
-                  <tr data-id="<%= pattern.id%>" data-model="pattern">
+                <% _.each(courses, function (course) { %>
+                  <tr data-id="<%= course.id%>" data-model="course">
                     <td>
                       <p>
-                        <%= pattern.name %>
+                        <%= course.name %>
                       </p>
                     </td>
                     <td>
                       <p>
-                        <%= pattern.shortdescription %>
+                        <%= course.shortdescription %>
                       </p>
                     </td>
-                    <td><a href="/pattern/show/<%= pattern.id %>" class="btn btn-primary">Rozpocznij</a></td>
+                    <td><a href="/course/show/<%= course.id %>" class="btn btn-primary">Rozpocznij</a></td>
                   </tr>
                   <% }) %>
                     <% } %>
@@ -55,16 +55,16 @@
                           <th>Opis</th>
                           <th>Rozpocznij</th>
                         </tr>
-                        <% _.each(patterns, function (pattern) { %>
-                          <tr data-id="<%= pattern.id%>" data-model="pattern">
+                        <% _.each(courses, function (course) { %>
+                          <tr data-id="<%= course.id%>" data-model="course">
                             <td>
                               <p>
-                                <%= pattern.name %>
+                                <%= course.name %>
                               </p>
                             </td>
                             <td>
                               <p>
-                                <%= pattern.shortdescription %>
+                                <%= course.shortdescription %>
                               </p>
                             </td>
                             <td><a href="/signup" class="btn btn-primary">Zarejestruj się</a></td>

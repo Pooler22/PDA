@@ -1,0 +1,10 @@
+<% _.each(pages, function (page) { %>
+    <div class="list col-md-3">
+        <a href="/pattern/show/<%= page.id %>">
+            <span>Nazwa: <%= page.name %></span>
+            <span>Content: <%= page.content %></span>
+            <span>ID: <%= page.id %></span>
+            <span>Owner: <%= page.owner %></span>
+        </a>
+    </div>
+<% }) %>
