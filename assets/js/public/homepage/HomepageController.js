@@ -1,4 +1,4 @@
-angular.module('HomepageModule').controller('HomepageController',
+angular.module('PDAModule').controller('HomepageController',
 	['$scope', '$http', 'toastr', function($scope, $http, toastr){
 		$scope.loginForm = {
 			loading: false

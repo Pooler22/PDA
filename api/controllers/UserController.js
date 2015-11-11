@@ -99,7 +99,8 @@ module.exports = {
             user.online = true;
             user.action = " signed-up and logged-in.";
             User.publishCreate(user);
-            return res.ok();
+            //return res.ok();
+            return res.json();
           });
         }
       });

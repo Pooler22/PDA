@@ -1,8 +1,8 @@
 {
-	"About": "O projekcie",
-  "Pattern design": "Wzorce projektowe",
-  "Best practice": "Dobre praktyki",
-  "Add course": "Dodaj kurs",
-  "Users": "Użytkownicy",
-  "Add users": "Dodaj użytkownika"
+	"about": "O projekcie",
+  "pattern-design": "Wzorce projektowe",
+  "best-practice": "Dobre praktyki",
+  "addcourse": "Dodaj kurs",
+  "users": "Użytkownicy",
+  "add-users": "Dodaj użytkownika"
 }

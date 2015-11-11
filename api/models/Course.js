@@ -23,6 +23,9 @@ module.exports = {
     chapters: {
       collection: 'chapter',
       via: 'owner'
+    },
+    numberofchapters: {
+      type: 'integer'
     }
   }
 };

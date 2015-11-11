@@ -11,12 +11,8 @@ module.exports = {
   },
 
   create: function(req, res, next) {
-    Chapter.create(req.params.all(), function chapterCreated(err, chapters) {
-      if (err) {
-        req.session.flash = {
-          err: err
-        };
-      }
+    Chapter.create(req.params.all(), function chapterCreated(err) {
+      if (err) return next(err);
       return res.redirect('/course/edit/' + req.param('owner'));
     });
   },

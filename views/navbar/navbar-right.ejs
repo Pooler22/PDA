@@ -1,31 +1,28 @@
-<div ng-controller="HomepageController" ng-cloak>
-  <div class="navbar-form navbar-right">
-
-    <% if (!session.authenticated) { %>
-      <form ng-submit="submitLoginForm()">
-        <div class="login form-group">
-          <div class="form-group">
-            <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
-            <input ng-model="loginForm.password" type="password" placeholder="Hasło" name="password" class="form-control">
-          </div>
-
-          <button type="submit" class="btn btn-success">
-            <span ng-show="!loginForm.loading">Logowanie</span>
-            <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
-            <span ng-show="loginForm.loading">Logowanie...</span>
-          </button>
-
-          <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-          <a href="/signup" class="btn  btn-success">Rejestracja</a>
+<div ng-controller="NavbarController" ng-cloak>
+  <% if (!session.authenticated) { %>
+    <form ng-submit="submitLoginForm()">
+      <div class="login form-group">
+        <div class="form-group">
+          <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
+          <input ng-model="loginForm.password" type="password" placeholder="Hasło" name="password" class="form-control">
         </div>
-      </form>
-      <% } %>
+
+        <button type="submit" class="btn btn-success">
+          <span ng-show="!loginForm.loading">Logowanie</span>
+          <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
+          <span ng-show="loginForm.loading">Logowanie...</span>
+        </button>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+        <a href="/signup" class="btn btn-success">Rejestracja</a>
+      </div>
+    </form>
+    <% } %>
 
       <% if (session.authenticated) { %>
         <div class="logout form-group">
           <a href="/user/show/<%= session.User.id %>" class="btn btn-success">Twój profil</a>
           <a href="/session/destroy" class="btn btn-danger">Wyloguj się</a>
         </div>
-      <% } %>
-  </div>
+        <% } %>
+
 </div>

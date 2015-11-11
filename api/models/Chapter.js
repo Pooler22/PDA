@@ -1,9 +1,9 @@
 /**
-* Pages.js
-*
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
-*/
+ * Pages.js
+ *
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @docs        :: http://sailsjs.org/#!documentation/models
+ */
 
 module.exports = {
   schema: true,
@@ -13,10 +13,12 @@ module.exports = {
       required: true
     },
     order: {
-      type: 'integer'
+      type: 'integer',
+      required: true
     },
     content: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     owner: {
       model: 'course',
@@ -25,6 +27,9 @@ module.exports = {
     exercises: {
       collection: 'exercise',
       via: 'owner'
+    },
+    numberofexercises: {
+      type: 'integer'
     }
   }
 };

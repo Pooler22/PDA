@@ -49,8 +49,8 @@ module.exports = {
     delete obj.encryptedPassword;
     return obj;
   },
-
   beforeValidation: function(values, next) {
+
     if (typeof values.admin !== 'undefined') {
       if (values.admin === 'unchecked') {
         values.admin = false;
