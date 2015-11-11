@@ -49,6 +49,16 @@ module.exports = function(grunt) {
 				dest: './assets/fonts/dependencies'
 			},{
 				expand: true,
+				cwd: './node_modules/angular-toastr/dist/',
+				src: ['angular-toastr.min.css'],
+				dest: './assets/styles/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/font-awesome/css/',
+				src: ['**/*'],
+				dest: './assets/styles/dependencies/'
+			},{
+				expand: true,
 				cwd: './assets',
 				src: ['**/*.!(coffee|less)'],
 				dest: '.tmp/public'
