@@ -1,6 +1,19 @@
 <% _.each(exercises, function(exercise) { %>
-  <%= exercise.name %>
-    <br>
-    <%= exercise.content %>
-      <hr>
-      <% }) %>
+  <% if(chapter.id == exercise.owner){%>
+    Nazwa:
+    <%= exercise.name %>
+      <br>
+      Treść:
+      <%= exercise.content %>
+        <br>
+        Kolejność:
+        <%= exercise.order %>
+          <br>
+          Zawartość konsoli:
+          <%= exercise.codeconsole %>
+            <br>
+            Test:
+            <%= exercise.test %>
+              <hr>
+              <% } %>
+                <% }) %>

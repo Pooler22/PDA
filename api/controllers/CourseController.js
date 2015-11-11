@@ -23,30 +23,27 @@ module.exports = {
   },
 
   show: function(req, res, next) {
-    sails.log.error('1');
-    var chapters = null;
-    var exercises = null;
-    Chapter.find().where({
-      owner: req.params.id
-    }).exec(function foundChapter(err, data) {
-      if (err) return next(err);
-      chapters = data;
-
-      Exercise.find().where({
-        owner: data.params('id')
-      }).exec(function foundChapter(err, data1) {
-        if (err) return next(err);
-        exercises = data1;
-      });
-    });
-
     Course.findOne(req.params.id, function foundCourse(err, course) {
       if (err) return next(err);
-      if (!Course) return next();
-      res.view({
-        course: course,
-        chapters: chapters,
-        exercises: exercises
+      if (!course) return next(err);
+      Chapter.find().where({
+        owner: req.params.id
+      }).exec(function foundChapter(err, chapters) {
+        if (err) return next(err);
+        var ids = [];
+        for (var i = 0, len = chapters.length; i < len; i++) {
+          ids[i] = chapters[i].id;
+        }
+        Exercise.find().where({
+          owner: ids
+        }).exec(function foundChapter(err, exercises) {
+          if (err) return next(err);
+          res.view({
+            course: course,
+            chapters: chapters,
+            exercises: exercises
+          });
+        });
       });
     });
   },
@@ -80,8 +77,8 @@ module.exports = {
         owner: req.params.id
       }).exec(function foundChapter(err, chapters) {
         if (err) return next(err);
-        var ids =[];
-        for(var i = 0, len = chapters.length; i < len; i++){
+        var ids = [];
+        for (var i = 0, len = chapters.length; i < len; i++) {
           ids[i] = chapters[i].id;
         }
         Exercise.find().where({
@@ -94,8 +91,6 @@ module.exports = {
             exercises: exercises
           });
         });
-
-
       });
     });
   },
