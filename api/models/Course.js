@@ -12,8 +12,6 @@ module.exports = {
       type: 'string',
       required: true
     },
-    
-    //type: course pattern dfesign or course bestpractice
     type: {
       type: 'string',
       required: true

@@ -1,14 +1,28 @@
-<form action="/exercise/create" method="POST" class="form-create-pages">
+<form action="/exercise/create" method="POST" class="form-create-exercise">
   <dt>Tytuł ćwiczenia</dt>
   <dd>
-    <input type="text" class=" form-control" placeholder="Dodaj tytuł rozdziału" name="name">
+    <input type="text" class=" form-control" placeholder="" name="name">
+  </dd>
+  <dt>Kolejność ćwiczenia</dt>
+  <dd>
+    <input type="text" class=" form-control" placeholder="" name="order">
+  </dd>
+  <dt>Treść konsoli ćwiczenia</dt>
+  <dd>
+    <input type="text" class=" form-control" placeholder="" name="codeconsole">
+  </dd>
+  <dt>Treść testów ćwiczenia</dt>
+  <dd>
+    <input type="text" class=" form-control" placeholder="" name="test">
   </dd>
   <dt>Treść ćwiczenia</dt>
   <dd>
-    <input type="text" class=" form-control" placeholder="Treść rozdziału" name="content">
+    <input type="text" class=" form-control" placeholder="" name="content">
     <br>
-    <button type="submit" class="btn green">Dodaj ćwiczenia</button>
+    <button type="submit" class="btn btn-success">Dodaj ćwiczenia</button>
   </dd>
+
+  <input type="hidden" class="exercise-id form-control" name="course" value="<%= course.id %>">
   <input type="hidden" class="exercise-id form-control" name="owner" value="<%= chapter.id %>">
   <input type="hidden" name="_csrf" value="<%= _csrf %>">
 </form>

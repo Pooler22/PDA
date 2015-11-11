@@ -1,4 +1,5 @@
 <% _.each(exercises, function(exercise) { %>
+  <% if(exercise.owner == chapter.id){ %>
   <form action="/exercise/update/<%= exercise.id %>/" method="POST" class="form-update-exercise">
     <dt>Tytuł ćwiczenia</dt>
     <dd>
@@ -6,7 +7,15 @@
     </dd>
     <dt>Kolejność ćwiczenia</dt>
     <dd>
-      <input type="text" class=" form-control" placeholder="Dodaj kolejsność" name="order" value="<%= exercise.order %>">
+      <input type="text" class=" form-control" placeholder="" name="order" value="<%= exercise.order %>">
+    </dd>
+    <dt>Treść konsoli ćwiczenia</dt>
+    <dd>
+      <input type="text" class=" form-control" placeholder="" name="codeconsole" value="<%= exercise.codeconsole %>">
+    </dd>
+    <dt>Treść testów ćwiczenia</dt>
+    <dd>
+      <input type="text" class=" form-control" placeholder="" name="test" value="<%= exercise.test %>">
     </dd>
     <dt>Treść ćwiczenia</dt>
     <dd>
@@ -15,7 +24,9 @@
       <input type='hidden' name='_csrf' value='<%= _csrf %>'>
       <br>
       <button type="submit" class="btn btn-success">Uaktualnij ćwiczenie</button>
+      <a href="/exercise/destroy/<%= exercise.id %>" type="submit" class="btn btn-danger">Usuń ćwiczenie</a>
     </dd>
   </form>
   <hr>
+  <% } %>
   <% }) %>

@@ -23,6 +23,7 @@ module.exports = {
   },
 
   show: function(req, res, next) {
+    sails.log.error('1');
     var chapters = null;
     var exercises = null;
     Chapter.find().where({
@@ -32,12 +33,11 @@ module.exports = {
       chapters = data;
 
       Exercise.find().where({
-        owner: data.id
+        owner: data.params('id')
       }).exec(function foundChapter(err, data1) {
         if (err) return next(err);
         exercises = data1;
       });
-
     });
 
     Course.findOne(req.params.id, function foundCourse(err, course) {
@@ -52,6 +52,7 @@ module.exports = {
   },
 
   index: function(req, res, next) {
+    sails.log.error('2');
     var condition;
     if (req.path.indexOf('design-pattern') === 1) {
       condition = 'Pattern design';
@@ -72,30 +73,29 @@ module.exports = {
   },
 
   edit: function(req, res, next) {
-    var chapters = null;
-    var exercises = null;
-    Chapter.find().where({
-      owner: req.params.id
-    }).exec(function foundChapter(err, data) {
-      if (err) return next(err);
-      chapters = data;
-
-      Exercise.find().where({
-        owner: data.id
-      }).exec(function foundChapter(err, data1) {
-        if (err) return next(err);
-        exercises = data1;
-      });
-
-    });
-
     Course.findOne(req.params.id, function foundCourse(err, course) {
       if (err) return next(err);
       if (!course) return next(err);
-      res.view({
-        course: course,
-        chapters: chapters,
-        exercises: exercises
+      Chapter.find().where({
+        owner: req.params.id
+      }).exec(function foundChapter(err, chapters) {
+        if (err) return next(err);
+        var ids =[];
+        for(var i = 0, len = chapters.length; i < len; i++){
+          ids[i] = chapters[i].id;
+        }
+        Exercise.find().where({
+          owner: ids
+        }).exec(function foundChapter(err, exercises) {
+          if (err) return next(err);
+          res.view({
+            course: course,
+            chapters: chapters,
+            exercises: exercises
+          });
+        });
+
+
       });
     });
   },
@@ -116,8 +116,7 @@ module.exports = {
       Course.destroy(req.param('id'), function CourseDestroyed(err) {
         if (err) return next(err);
       });
-      res.redirect('/course/');
+      res.redirect('/');
     });
   }
-
 };

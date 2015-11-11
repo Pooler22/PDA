@@ -50,28 +50,17 @@ module.exports = {
   },
 
   destroy: function(req, res, next) {
-    var ret = false;
-
-    try {
-      Chapter.findOne(req.param('id'), function foundChapter(err, chapter) {
+    Chapter.findOne(req.param('id'), function foundChapter(err, chapter) {
+      if (err) return next(err);
+      if (!chapter) return res.json({
+        result: false
+      });
+      Chapter.destroy(req.param('id'), function chapterDestroyed(err) {
         if (err) return next(err);
-        if (!chapter) return res.json({
-          result: ret
-        });
-        console.log(chapter);
-        Chapter.destroy(req.param('id'), function chapterDestroyed(err) {
-          ret = true;
-        });
         return res.json({
           result: true
         });
       });
-
-    } catch (e) {
-      console.log(e);
-      return res.json({
-        result: ret
-      });
-    }
+    });
   }
 };

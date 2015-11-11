@@ -15,10 +15,13 @@
       <input type='hidden' name='_csrf' value='<%= _csrf %>'>
       <br>
       <button type="submit" class="btn btn-success">Uaktualnij rozdzial</button>
+      <a href="/chapter/destroy/<%= chapter.id %>" class="btn btn-danger">Usuń rozdzial</a>
     </dd>
   </form>
   <hr>
-    <% include ../exercise/index.ejs %>
-      <% include ../exercise/new.ejs %>
-  <hr>
-  <% }) %>
+  <dd>
+  <% include ../exercise/index.ejs %>
+    <% include ../exercise/new.ejs %>
+</dd>
+      <hr>
+      <% }) %>

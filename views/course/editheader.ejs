@@ -17,7 +17,8 @@
       <input type="hidden" name="_csrf" value="<%= _csrf %>">
       <br>
       <button type="submit" class="btn btn-primary">Zapisz</button>
-      <a href="/course" class="btn btn-danger">Anuluj</a>
+      <a href="/course" class="btn btn-warning">Anuluj</a>
+      <a href="/course/destroy/<%= course.id %>" class="btn btn-danger">Usuń</a>
     </dd>
   </div>
 </form>

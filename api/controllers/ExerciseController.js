@@ -11,15 +11,13 @@ module.exports = {
   },
 
   create: function(req, res, next) {
-    var ret = true;
     Exercise.create(req.params.all(), function exerciseCreated(err, exercises) {
       if (err) {
-        ret = false;
         req.session.flash = {
           err: err
         };
       }
-      return res.redirect('/chapter/edit/' + req.param('owner'));
+      return res.redirect('/course/edit/' + req.param('course'));
       //return res.json({ result: ret })
     });
   },
@@ -34,7 +32,7 @@ module.exports = {
   },
 
   edit: function(req, res, next) {
-    Exercise.findOne(req.params.id, function foundBoard(err, exercises) {
+    Exercise.findOne(req.params.id, function foundExercise(err, exercises) {
       if (err) return next(err);
       if (!exercises) return next('Brak takiej strony.');
       res.view({
@@ -46,27 +44,28 @@ module.exports = {
   update: function(req, res, next) {
     Exercise.update(req.params.id, req.params.all(), function updateBoard(err) {
       if (err) {
-        return res.redirect('/chapter/edit/' + req.param('owner'));
+        return res.json({
+          result: true
+        });
       }
-      res.redirect('/chapter/edit/' + req.param('owner'));
+      return res.json({
+        result: true
+      });
     });
   },
 
   destroy: function(req, res, next) {
-    var ret = false;
-
     try {
       Exercise.findOne(req.param('id'), function foundExercise(err, exercise) {
         if (err) return next(err);
         if (!exercise) return res.json({
-          result: ret
+          result: false
         });
-        console.log(exercise);
         Exercise.destroy(req.param('id'), function exerciseDestroyed(err) {
-          ret = true;
-        });
-        return res.json({
-          result: true
+          if (err) return next(err);
+          return res.json({
+            result: true
+          });
         });
       });
 
