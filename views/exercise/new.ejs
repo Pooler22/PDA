@@ -1,14 +1,14 @@
 <form action="/exercise/create" method="POST" class="form-create-pages">
-  <dt>Tytuł rozdziału</dt>
+  <dt>Tytuł ćwiczenia</dt>
   <dd>
     <input type="text" class=" form-control" placeholder="Dodaj tytuł rozdziału" name="name">
   </dd>
-  <dt>Treść rozdziału</dt>
+  <dt>Treść ćwiczenia</dt>
   <dd>
     <input type="text" class=" form-control" placeholder="Treść rozdziału" name="content">
     <br>
-    <button type="submit" class="btn green">Dodaj rozdział</button>
+    <button type="submit" class="btn green">Dodaj ćwiczenia</button>
   </dd>
-  <input type="hidden" class="exercise-id form-control" name="owner" value="<%= exercise.id %>">
+  <input type="hidden" class="exercise-id form-control" name="owner" value="<%= chapter.id %>">
   <input type="hidden" name="_csrf" value="<%= _csrf %>">
 </form>

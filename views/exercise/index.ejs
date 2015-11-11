@@ -1,20 +1,20 @@
 <% _.each(exercises, function(exercise) { %>
   <form action="/exercise/update/<%= exercise.id %>/" method="POST" class="form-update-exercise">
-    <dt>Tytuł rozdziału</dt>
+    <dt>Tytuł ćwiczenia</dt>
     <dd>
       <input type="text" class=" form-control" placeholder="Dodaj tytuł rozdziału" name="name" value="<%= exercise.name %>">
     </dd>
-    <dt>Kolejność rozdziału</dt>
+    <dt>Kolejność ćwiczenia</dt>
     <dd>
       <input type="text" class=" form-control" placeholder="Dodaj kolejsność" name="order" value="<%= exercise.order %>">
     </dd>
-    <dt>Treść rozdziału</dt>
+    <dt>Treść ćwiczenia</dt>
     <dd>
       <input type="text" class=" form-control" placeholder="Dodaj treść rozdziału" name="content" value="<%= exercise.content %>">
       <input type="hidden" class="form-control" name="owner" value="<%= course.id %>">
       <input type='hidden' name='_csrf' value='<%= _csrf %>'>
       <br>
-      <button type="submit" class="btn btn-success">Uaktualnij rozdzial</button>
+      <button type="submit" class="btn btn-success">Uaktualnij ćwiczenie</button>
     </dd>
   </form>
   <hr>

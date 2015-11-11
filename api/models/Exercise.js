@@ -8,7 +8,26 @@
 module.exports = {
 
   attributes: {
-
+    name: {
+      type: 'string',
+      required: true
+    },
+    owner: {
+      model: 'chapter',
+      required: true
+    },
+    order: {
+      type: 'integer',
+      required: true
+    },
+    content: {
+      type: 'string'
+    },
+    codeconsole: {
+      type: 'string'
+    },
+    test: {
+      type: 'string'
+    },
   }
 };
-

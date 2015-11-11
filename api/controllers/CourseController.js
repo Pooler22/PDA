@@ -24,11 +24,20 @@ module.exports = {
 
   show: function(req, res, next) {
     var chapters = null;
+    var exercises = null;
     Chapter.find().where({
       owner: req.params.id
     }).exec(function foundChapter(err, data) {
       if (err) return next(err);
       chapters = data;
+
+      Exercise.find().where({
+        owner: data.id
+      }).exec(function foundChapter(err, data1) {
+        if (err) return next(err);
+        exercises = data1;
+      });
+
     });
 
     Course.findOne(req.params.id, function foundCourse(err, course) {
@@ -36,7 +45,8 @@ module.exports = {
       if (!Course) return next();
       res.view({
         course: course,
-        chapters: chapters
+        chapters: chapters,
+        exercises: exercises
       });
     });
   },
@@ -63,11 +73,20 @@ module.exports = {
 
   edit: function(req, res, next) {
     var chapters = null;
+    var exercises = null;
     Chapter.find().where({
       owner: req.params.id
     }).exec(function foundChapter(err, data) {
       if (err) return next(err);
       chapters = data;
+
+      Exercise.find().where({
+        owner: data.id
+      }).exec(function foundChapter(err, data1) {
+        if (err) return next(err);
+        exercises = data1;
+      });
+
     });
 
     Course.findOne(req.params.id, function foundCourse(err, course) {
@@ -75,7 +94,8 @@ module.exports = {
       if (!course) return next(err);
       res.view({
         course: course,
-        chapters: chapters
+        chapters: chapters,
+        exercises: exercises
       });
     });
   },
