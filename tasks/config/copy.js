@@ -21,42 +21,67 @@ module.exports = function(grunt) {
         expand: true,
         cwd: './node_modules/jquery/dist/',
         src: ['jquery.js'],
-        dest: './assets/js/dependencies/'
+        dest: './assets/dependencies/js/'
       },{
 				expand: true,
 				cwd: './node_modules/jquery-validation/dist/',
 				src: ['jquery.validate.js'],
-				dest: './assets/js/dependencies/'
+				dest: './assets/dependencies/js/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-mocks/',
+				src: ['angular-mocks.js'],
+				dest: './assets/dependencies/js/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular/',
+				src: ['angular.min.js'],
+				dest: './assets/dependencies/js/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-moment/',
+				src: ['angular-moment.min.js'],
+				dest: './assets/dependencies/js/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-route/',
+				src: ['angular-route.min.js'],
+				dest: './assets/dependencies/js/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-toastr/dist/',
+				src: ['angular-toastr.min.js'],
+				dest: './assets/dependencies/js/'
 			},{
 				expand: true,
 				cwd: './node_modules/bootstrap/dist/js/',
 				src: ['bootstrap.js'],
-				dest: './assets/js/dependencies/'
+				dest: './assets/dependencies/js/'
 			},{
 				expand: true,
 				cwd: './node_modules/bootstrap/dist/css',
 				src: ['**/*'],
-				dest: './assets/styles/dependencies/'
+				dest: './assets/dependencies/styles/'
 			}, {
 				expand: true,
 				cwd: './node_modules/font-awesome/fonts/',
 				src: ['**/*'],
-				dest: './assets/fonts/dependencies'
+				dest: './assets/dependencies/fonts/'
 			},{
 				expand: true,
 				cwd: './node_modules/bootstrap/dist/fonts',
 				src: ['**/*'],
-				dest: './assets/fonts/dependencies'
+				dest: './assets/dependencies/fonts/'
 			},{
 				expand: true,
 				cwd: './node_modules/angular-toastr/dist/',
 				src: ['angular-toastr.min.css'],
-				dest: './assets/styles/dependencies/'
+				dest: './assets/dependencies/styles/'
 			},{
 				expand: true,
 				cwd: './node_modules/font-awesome/css/',
 				src: ['**/*'],
-				dest: './assets/styles/dependencies/'
+				dest: './assets/dependencies/styles/'
 			},{
 				expand: true,
 				cwd: './assets',
