@@ -59,6 +59,16 @@ module.exports = function(grunt) {
 				dest: './assets/dependencies/js/'
 			},{
 				expand: true,
+				cwd: './node_modules/angular-bootstrap/',
+				src: ['ui-bootstrap-tpls.min.js'],
+				dest: './assets/dependencies/js/'
+			},{
+				expand: true,
+				cwd: './node_modules/moment/min/',
+				src: ['moment.min.js'],
+				dest: './assets/dependencies/js/'
+			},{
+				expand: true,
 				cwd: './node_modules/bootstrap/dist/css',
 				src: ['**/*'],
 				dest: './assets/dependencies/styles/'
