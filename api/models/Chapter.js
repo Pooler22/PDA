@@ -21,6 +21,10 @@ module.exports = {
     owner: {
       model: 'course',
       required: true
+    },
+    exercises: {
+      collection: 'exercise',
+      via: 'owner'
     }
   }
 };
