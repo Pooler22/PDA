@@ -2,9 +2,7 @@ angular.module('PDAModule').controller('NavbarController', ['$scope', '$http', '
   $scope.loginForm = {
     loading: false
   };
-  toastr.error('Niepoprawne hasło/login.', 'Błąd', {
-    closeButton: true
-  });
+
   $scope.submitLoginForm = function() {
     $scope.loginForm.loading = true;
     $http.put('/login', {
@@ -14,8 +12,8 @@ angular.module('PDAModule').controller('NavbarController', ['$scope', '$http', '
       .then(function onSuccess() {
         window.location = '/';
       })
-      .catch(function onError(sailsResponse) {
-        if (sailsResponse.status === 400 || sailsResponse.status === 404) {
+      .catch(function onError(res) {
+        if (res.status === 400 || res.status === 404) {
           toastr.error('Niepoprawne hasło/login.', 'Błąd', {
             closeButton: true
           });
