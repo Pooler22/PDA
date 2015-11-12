@@ -2,9 +2,12 @@ angular.module('PDAModule').controller('NavbarController', ['$scope', '$http', '
   $scope.loginForm = {
     loading: false
   };
+  toastr.error('Niepoprawne hasło/login.', 'Błąd', {
+    closeButton: true
+  });
   $scope.submitLoginForm = function() {
     $scope.loginForm.loading = true;
-    $http.put('/session/create', {
+    $http.put('/login', {
         email: $scope.loginForm.email,
         password: $scope.loginForm.password
       })

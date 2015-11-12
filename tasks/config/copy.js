@@ -18,80 +18,50 @@ module.exports = function(grunt) {
 	grunt.config.set('copy', {
 		dev: {
 			files: [{
-        expand: true,
-        cwd: './node_modules/jquery/dist/',
-        src: ['jquery.js'],
-        dest: './assets/dependencies/js/'
-      },{
-				expand: true,
-				cwd: './node_modules/jquery-validation/dist/',
-				src: ['jquery.validate.js'],
-				dest: './assets/dependencies/js/'
-			},{
 				expand: true,
 				cwd: './node_modules/angular-mocks/',
 				src: ['angular-mocks.js'],
-				dest: './assets/dependencies/js/'
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './node_modules/angular/',
-				src: ['angular.min.js'],
-				dest: './assets/dependencies/js/'
+				src: ['angular.js'],
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './node_modules/angular-moment/',
-				src: ['angular-moment.min.js'],
-				dest: './assets/dependencies/js/'
+				src: ['angular-moment.js'],
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './node_modules/angular-route/',
-				src: ['angular-route.min.js'],
-				dest: './assets/dependencies/js/'
+				src: ['angular-route.js'],
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './node_modules/angular-toastr/dist/',
-				src: ['angular-toastr.min.js'],
-				dest: './assets/dependencies/js/'
-			},{
-				expand: true,
-				cwd: './node_modules/bootstrap/dist/js/',
-				src: ['bootstrap.js'],
-				dest: './assets/dependencies/js/'
+				src: ['**.min.js'],
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './node_modules/angular-bootstrap/',
-				src: ['ui-bootstrap-tpls.min.js'],
-				dest: './assets/dependencies/js/'
+				src: ['ui-bootstrap-tpls.js'],
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './node_modules/moment/min/',
 				src: ['moment.min.js'],
-				dest: './assets/dependencies/js/'
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './node_modules/bootstrap/dist/css',
 				src: ['**/*'],
-				dest: './assets/dependencies/styles/'
+				dest: './assets/styles/dependencies/'
 			}, {
 				expand: true,
-				cwd: './node_modules/font-awesome/fonts/',
-				src: ['**/*'],
-				dest: './assets/dependencies/fonts/'
-			},{
-				expand: true,
-				cwd: './node_modules/bootstrap/dist/fonts',
-				src: ['**/*'],
-				dest: './assets/dependencies/fonts/'
-			},{
-				expand: true,
 				cwd: './node_modules/angular-toastr/dist/',
-				src: ['angular-toastr.min.css'],
-				dest: './assets/dependencies/styles/'
-			},{
-				expand: true,
-				cwd: './node_modules/font-awesome/css/',
-				src: ['**/*'],
-				dest: './assets/dependencies/styles/'
+				src: ['angular-toastr.css'],
+				dest: './assets/styles/dependencies/'
 			},{
 				expand: true,
 				cwd: './assets',
