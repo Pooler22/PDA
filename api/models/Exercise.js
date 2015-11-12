@@ -1,5 +1,5 @@
 /**
- * Pages.js
+ * Exercises.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/#!documentation/models
@@ -12,24 +12,22 @@ module.exports = {
       type: 'string',
       required: true
     },
+    owner: {
+      model: 'chapter',
+      required: true
+    },
     order: {
       type: 'integer',
       required: true
     },
     content: {
-      type: 'string',
-      required: true
+      type: 'string'
     },
-    owner: {
-      model: 'course',
-      required: true
+    codeconsole: {
+      type: 'string'
     },
-    exercises: {
-      collection: 'exercise',
-      via: 'owner'
+    test: {
+      type: 'string'
     },
-    numberofexercises: {
-      type: 'integer'
-    }
   }
 };

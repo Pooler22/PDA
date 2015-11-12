@@ -1,6 +1,8 @@
 <% _.each(chapters, function(chapter) { %>
+  Tytuł rozdziału:
   <%= chapter.name %>
-    <br>
+    <br> Treść rozdziału:
     <%= chapter.content %>
-      <hr>
-      <% }) %>
+      <br>
+      <% include ../exercise/show.ejs %>
+        <% }) %>

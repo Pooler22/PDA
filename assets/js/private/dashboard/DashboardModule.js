@@ -1,1 +1,1 @@
-angular.module('HomepageModule', ['toastr']);
+angular.module('PDAModule', ['toastr']);

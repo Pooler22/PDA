@@ -1,8 +1,8 @@
 {
-	"About": "About",
-  "Pattern design": "Pattern design",
-  "Best practice": "Best practice",
-  "Add course": "Add course",
-  "Users": "Users",
-  "Add users": "Add users"
+	"about": "About",
+  "pattern-design": "Pattern design",
+  "best-practice": "Best practice",
+  "add-course": "Add course",
+  "users": "Users",
+  "add-users": "Add users"
 }

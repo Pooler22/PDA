@@ -3,11 +3,15 @@
   <dd>
     <input type="text" class=" form-control" placeholder="Dodaj tytuł rozdziału" name="name">
   </dd>
+  <dt>Kolejność rozdziału</dt>
+  <dd>
+    <input type="text" class=" form-control" placeholder="Dodaj kolejsność" name="order">
+  </dd>
   <dt>Treść rozdziału</dt>
   <dd>
     <input type="text" class=" form-control" placeholder="Treść rozdziału" name="content">
     <br>
-    <button type="submit" class="btn green">Dodaj rozdział</button>
+    <button type="submit" class="btn btn-success">Dodaj rozdział</button>
   </dd>
   <input type="hidden" class="course-id form-control" name="owner" value="<%= course.id %>">
   <input type="hidden" name="_csrf" value="<%= _csrf %>">

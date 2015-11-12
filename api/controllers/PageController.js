@@ -10,16 +10,13 @@ module.exports = {
     if (!req.session.authenticated) {
       return res.view('static/homepage');
     }
-
     User.findOne(req.session.authenticated, function(err, user) {
       if (err) {
         return res.negotiate(err);
       }
       if (!user) {
-        sails.log.verbose('Not found user.');
         return res.view('static/homepage');
       }
-
       return res.view('user/dashboard', {
         me: {
           name: user.name

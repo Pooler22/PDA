@@ -1,4 +1,4 @@
-angular.module('HomepageModule').controller('DashboardController',
+angular.module('PDAModule').controller('DashboardController',
 	['$scope', '$http', 'toastr', function($scope, $http, toastr){
 	
 }]);

@@ -6,8 +6,6 @@
  */
 
 module.exports = {
-
-  // This loads the sign-up page --> new.ejs
   new: function(req, res) {
     res.view();
   },
@@ -42,22 +40,18 @@ module.exports = {
   },
 
   update: function(req, res, next) {
-    var userObj = {
+    var user = {
       name: req.param('name'),
       nick: req.param('nick'),
       email: req.param('email')
     };
     if (req.session.User.admin) {
-      userObj = {
+      user = {
         admin: req.param('admin')
       };
     }
-
-
-    User.update(req.param('id'), userObj, function userUpdated(err) {
-      if (err) {
-        return res.redirect('/user/edit/' + req.param('id'));
-      }
+    User.update(req.param('id'), user, function userUpdated(err) {
+      if (err) return next(err);
       res.redirect('/user/show/' + req.param('id'));
     });
   },
@@ -78,13 +72,11 @@ module.exports = {
       res.redirect('/user');
     });
   },
-  //TODO: login
+
   login: function(req, res) {
-    sails.log.error('start');
     User.findOne({
       email: req.param('email')
     }, function foundUser(err, user) {
-      sails.log.error('found');
       if (err) return res.negotiate(err);
       if (!user) return res.notFound();
       require('machinepack-passwords').checkPassword({
@@ -92,15 +84,12 @@ module.exports = {
         encryptedPassword: user.encryptedPassword
       }).exec({
         error: function(err) {
-          sails.log.error('1');
           return res.negotiate(err);
         },
         incorrect: function() {
-          sails.log.error('2');
           return res.notFound();
         },
         success: function() {
-          sails.log.error('3');
           user.lastLoggedIn = new Date();
           user.save(function(err, user) {
             if (err) return next(err);
@@ -110,13 +99,14 @@ module.exports = {
             user.online = true;
             user.action = " signed-up and logged-in.";
             User.publishCreate(user);
-            return res.ok();
+            //return res.ok();
+            return res.json();
           });
         }
       });
     });
   },
-  //TODO: signup
+
   signup: function(req, res) {
     var Passwords = require('machinepack-passwords');
     Passwords.encryptPassword({
@@ -173,7 +163,6 @@ module.exports = {
     User.findOne(req.session.me, function foundUser(err, user) {
       if (err) return res.negotiate(err);
       if (!user) {
-        sails.log.verbose('Sesja przypisana do użytnowkika, który nieistnieje.');
         return res.backToHomePage();
       }
       req.session.me = null;

@@ -18,19 +18,39 @@ module.exports = function(grunt) {
 	grunt.config.set('copy', {
 		dev: {
 			files: [{
-        expand: true,
-        cwd: './node_modules/jquery/dist/',
-        src: ['jquery.js'],
-        dest: './assets/js/dependencies/'
-      },{
 				expand: true,
-				cwd: './node_modules/jquery-validation/dist/',
-				src: ['jquery.validate.js'],
+				cwd: './node_modules/angular-mocks/',
+				src: ['angular-mocks.js'],
 				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
-				cwd: './node_modules/bootstrap/dist/js/',
-				src: ['bootstrap.js'],
+				cwd: './node_modules/angular/',
+				src: ['angular.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-moment/',
+				src: ['angular-moment.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-route/',
+				src: ['angular-route.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-toastr/dist/',
+				src: ['**.min.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-bootstrap/',
+				src: ['ui-bootstrap-tpls.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/moment/min/',
+				src: ['moment.min.js'],
 				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
@@ -39,14 +59,9 @@ module.exports = function(grunt) {
 				dest: './assets/styles/dependencies/'
 			}, {
 				expand: true,
-				cwd: './node_modules/font-awesome/fonts/',
-				src: ['**/*'],
-				dest: './assets/fonts/dependencies'
-			},{
-				expand: true,
-				cwd: './node_modules/bootstrap/dist/fonts',
-				src: ['**/*'],
-				dest: './assets/fonts/dependencies'
+				cwd: './node_modules/angular-toastr/dist/',
+				src: ['angular-toastr.css'],
+				dest: './assets/styles/dependencies/'
 			},{
 				expand: true,
 				cwd: './assets',
