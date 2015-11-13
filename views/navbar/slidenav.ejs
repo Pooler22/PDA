@@ -1,0 +1,18 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+  <md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">Menu</h1>
+  </md-toolbar>
+  <md-content layout-padding ng-controller="LeftCtrl">
+    <md-list>
+      <md-list-item>
+        <md-button href="/about"><%= __('about') %></md-button>
+      </md-list-item>
+      <md-list-item>
+        <md-button href="/design-pattern"><%= __('pattern-design') %></md-button>
+      </md-list-item>
+      <md-list-item>
+        <md-button href="/best-practice"><%= __('best-practice') %></md-button>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>

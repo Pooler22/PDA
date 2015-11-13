@@ -1,33 +1,44 @@
-<div class="page-header">
-  <h2>Pattern Design Academy</h2>
-  <h4>Witaj w serwisie do anuki wzorców porojektowych oraz zassad dobrego programowania.</h4>
+<div layout="column" layout-margin>
+  <md-card>
+    <md-card-content>
+      <h1>Pattern Design Academy</h1>
+      <h2>Witaj w serwisie do nauki wzorców porojektowych oraz zasad dobrego programowania.</h2>
+    </md-card-content>
+  </md-card>
 </div>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <h4>O projekcie</h4>
-        <p>Dowiesz się tutaj o podstawach zasadach działania serwisu.</p>
-        <p class="text-right"><a href="/about" class="btn btn-primary" role="button">Więcej...</a></p>
-      </div>
+<div layout="column" layout-margin>
+
+  <div layout="column" layout-margin>
+    <div layout="row">
+
+      <md-card>
+        <md-card-content>
+          <h2>O projekcie</h2>
+          <p>Dowiesz się tutaj o podstawach zasadach działania serwisu.</p>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button href="/about">Więcej...</md-button>
+          </md-card-actions>
+        </md-card-content>
+      </md-card>
+
+      <md-card>
+        <md-card-content>
+          <h2>Wzorce projektowe</h2>
+          <p>Wybierz z dostępnych wzorców i zacznij naukę właśnie teraz.</p>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button href="/pattern">Więcej...</md-button>
+          </md-card-actions>
+        </md-card-content>
+      </md-card>
+
+      <md-card>
+        <md-card-content>
+          <h2>Zasady dobrego programowania</h2>
+          <p>Uczń swój kod lelszym ucząc się zasad dobrego programowania.</p>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button href="/best-practice">Więcej...</md-button>
+          </md-card-actions>
+        </md-card-content>
+      </md-card>
+
     </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <h4>Wzorce projektowe</h4>
-        <p>Wybierz z dostępnych wzorców i zacznij naukę właśnie teraz.</p>
-        <p class="text-right"><a href="/pattern" class="btn btn-primary" role="button">Więcej...</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <h4>Zasady dobrego programowania</h4>
-        <p>Uczń swój kod lelszym ucząc się zasad dobrego programowania.</p>
-        <p class="text-right"><a href="/best-practice" class="btn btn-primary" role="button">Więcej...</a></p>
-      </div>
-    </div>
-  </div>
-</div>

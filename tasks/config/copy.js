@@ -44,19 +44,9 @@ module.exports = function(grunt) {
 				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
-				cwd: './node_modules/angular-bootstrap/',
-				src: ['ui-bootstrap-tpls.js'],
-				dest: './assets/js/dependencies/'
-			},{
-				expand: true,
 				cwd: './node_modules/moment/min/',
 				src: ['moment.min.js'],
 				dest: './assets/js/dependencies/'
-			},{
-				expand: true,
-				cwd: './node_modules/bootstrap/dist/css',
-				src: ['**/*'],
-				dest: './assets/styles/dependencies/'
 			}, {
 				expand: true,
 				cwd: './node_modules/angular-toastr/dist/',
