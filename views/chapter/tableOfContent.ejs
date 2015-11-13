@@ -1,0 +1,21 @@
+Spis treści:
+<ul>
+  <% _.each(chapters, function(chapter) { %>
+    <li>
+      <a>
+        <%= chapter.name %>
+      </a>
+    </li>
+    <% _.each(exercises, function(exercise) { %>
+      <ul>
+        <% if(exercise.owner == chapter.id){ %>
+          <li>
+            <a>
+              <%= exercise.name %>
+            </a>
+          </li>
+          <% } %>
+      </ul>
+      <% }) %>
+        <% }) %>
+</ul>

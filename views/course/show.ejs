@@ -1,10 +1,11 @@
-Spis treści:
-<ul>
-  <% _.each(chapters, function(chapter) { %>
-    <li><a><%= chapter.name %></a></li>
-    <% }) %>
-</ul>
-<%- include ../chapter/show.ejs %>
-<hr>
+<div class="row">
+  <div class="col-sm-6 col-md-2">
+    <%- include ../chapter/tableOfContent.ejs %>
+  </div>
+  <div class="col-sm-6 col-md-10">
+    <%- include ../chapter/show.ejs %>
+  </div>
+  <hr>
   <a class="btn btn-default">wstecz</a>
   <a class="btn btn-default">dalej</a>
+</div>

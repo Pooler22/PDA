@@ -1,8 +1,12 @@
-<% _.each(chapters, function(chapter) { %>
-  Tytuł rozdziału:
-  <%= chapter.name %>
-    <br> Treść rozdziału:
-    <%= chapter.content %>
-      <br>
-      <% include ../exercise/show.ejs %>
-        <% }) %>
+<ul>
+  <% _.each(chapters, function(chapter) { %>
+    <li>
+      Tytuł rozdziału:
+      <%= chapter.name %>
+        <br> Treść rozdziału:
+        <%= chapter.content %>
+          <br>
+    </li>
+    <% include ../exercise/show.ejs %>
+      <% }) %>
+</ul>
