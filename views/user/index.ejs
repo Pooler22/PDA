@@ -1,29 +1,46 @@
-<div class="container">
-	<h3>Użytkownicy</h3>
-	<table class='table'>
-		<tr>
-			<th>ID</th>
-			<th>Imię</th>
-			<th>Nick</th>
-			<th>Email</th>
-			<th>Jest adminem</th>
-			<th>Pokaż</th>
-			<th>Edytuj</th>
-			<th>Usuń</th>
-		</tr>
+<md-data-table-toolbar>
+	<h2 class="md-title">Użytkownicy</h2>
+</md-data-table-toolbar>
 
-		<% _.each(users, function(user) { %>
-		<tr data-id="<%= user.id %>" data-model="user">
-			<td><%= user.id %></td>
-			<td><%= user.name %></td>
-			<td><%= user.nick %></td>
-			<td><%= user.email %></td>
-			<td><%= user.admin %></td>
-			<td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary">Pokaż</a></td>
-			<td><a href="/user/edit/<%= user.id %>" class="btn btn-sm btn-warning">Edytuj</a></td>
-			<td><a href="/user/destroy/<%= user.id %>" class="btn btn-sm btn-danger">Usuń</a></td>
-		</tr>
-
-		<% }) %>
+<md-data-table-container>
+	<table md-data-table>
+		<thead md-order="order">
+			<tr>
+				<th>ID</th>
+				<th>Imię</th>
+				<th>Nick</th>
+				<th>Email</th>
+				<th>Jest adminem</th>
+				<th>Pokaż</th>
+				<th>Edytuj</th>
+				<th>Usuń</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% _.each(users, function(user) { %>
+				<tr md-auto-select>
+					<td>
+						<%= user.id %>
+					</td>
+					<td>
+						<%= user.name %>
+					</td>
+					<td>
+						<%= user.nick %>
+					</td>
+					<td>
+						<%= user.email %>
+					</td>
+					<td>
+						<%= user.admin %>
+					</td>
+					<td><a class="md-button" href="/user/show/<%= user.id %>">Pokaż</a></td>
+					<td><a class="md-button " href="/user/edit/<%= user.id %>">Edytuj</a></td>
+					<td><a class="md-button md-warn" href="/user/destroy/<%= user.id %>">Usuń</a></td>
+				</tr>
+				<% }) %>
+		</tbody>
 	</table>
-</div>
+</md-data-table-container>
+
+<md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{desserts.total}}" md-trigger="onPaginationChange"></md-data-table-pagination>
