@@ -1,2 +1,103 @@
-<% include toolbar.ejs %>
-  <% include slidenav.ejs %>
+<md-toolbar hide-sm hide-md class="md-toolbar-tools">
+  <a class="md-button" href="/">
+    Pattern Design Academy
+  </a>
+  <a class="md-button" href="/about">
+    O projekcie
+  </a>
+  <a class="md-button" href="/design-pattern">
+    Wzorce projektowe
+  </a>
+  <a class="md-button" href="/best-practice">
+    Dobre praktyki
+  </a>
+
+  <span flex></span>
+
+  <md-button>
+    Zaloguj się
+  </md-button>
+  <md-button>
+    Zarejestruj się
+  </md-button>
+</md-toolbar>
+
+<md-toolbar hide-gt-md class="md-toolbar-tools">
+  <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Menu">
+    <md-icon md-svg-icon="images/menu.svg"></md-icon>
+  </md-button>
+  <h2>
+    <span>
+      Pattern Design Academy
+    </span>
+  </h2>
+</md-toolbar>
+
+
+<md-sidenav hide-gt-md class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+  <md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">
+      Pattern Design Academy
+    </h1>
+  </md-toolbar>
+  <md-content layout-padding ng-controller="LeftCtrl">
+    <md-list>
+
+      <md-list-item>
+        <md-button class="md-primary md-raised" ng-click="/about" lex-sm="100" flex-md="100" flex-gt-md="auto">
+          <%= __('about') %>
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-button class="md-primary md-raised" ng-click="/design-pattern">
+          <%= __('pattern-design') %>
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-button class="md-primary md-raised" ng-click="/best-practice">
+          <%= __('best-practice') %>
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-button class="md-primary md-raised" ng-click="signIn($event)">
+          Zaloguj się
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-button class="md-primary md-raised" ng-click="signUp($event)">
+          Zarejestruj się
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <% if (!session.authenticated) { %>
+
+
+          <md-form ng-submit="submitLoginForm()">
+            <md-input-container>
+              <label>Email</label>
+              <input ng-model="loginForm.email" type="email" name="email">
+            </md-input-container>
+            <md-input-container>
+              <label>Haslo</label>
+              <input ng-model="loginForm.password" type="password" name="password">
+            </md-input-container>
+            <md-button ng-click="sumit">
+              <span ng-show="!loginForm.loading">Zaloguj się</span>
+              <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
+              <span ng-show="loginForm.loading">Logowanie...</span>
+            </md-button>
+            <md-input type="hidden" name="_csrf" value="<%= _csrf %>" />
+            <md-button href="/signup">Zarejestruj się</md-button>
+          </md-form>
+          <% } %>
+
+      </md-list-item>
+
+    </md-list>
+  </md-content>
+</md-sidenav>

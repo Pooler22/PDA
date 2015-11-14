@@ -1,23 +1,26 @@
-<form action="/session/create" method="POST" class="form-signin">
-	<% if(flash && flash.err) { %>
-		<% Object.keys(flash.err).forEach(function(error) { %>
-			<%- JSON.stringify(flash.err[error]) %>
-				<% }) %>
-					<% } %>
-						<h2>Zaloguj się</h2>
-						<md-input-container class="md-block">
-							<label>Email</label>
-
-							<input type="text" class="form-control" placeholder="Email" required name="email">
-						</md-input-container>
-						<md-input-container class="md-block">
-							<label>Hasło</label>
-							<input type="password" class="form-control" placeholder="Hasło" name="password">
-						</md-input-container>
-						<md-input-container class="md-block">
-							<input type="hidden" name="_csrf" value="<%= _csrf %>" />
-							<md-button type="submit">
-								Zaloguj się
-							</md-button>
-						</md-input-container>
-</form>
+<md-card>
+	<md-card-content>
+		<form action="/session/create" method="POST" class="form-signin">
+			<% if(flash && flash.err) { %>
+				<% Object.keys(flash.err).forEach(function(error) { %>
+					<%- JSON.stringify(flash.err[error]) %>
+						<% }) %>
+							<% } %>
+								<h2>Zaloguj się</h2>
+								<md-input-container class="md-block">
+									<label>Email</label>
+									<input type="text" class="form-control" placeholder="Email" required name="email">
+								</md-input-container>
+								<md-input-container class="md-block">
+									<label>Hasło</label>
+									<input type="password" class="form-control" placeholder="Hasło" name="password">
+								</md-input-container>
+								<md-input-container class="md-block">
+									<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+									<a class="md-button md-raised" type="submit">
+										Zaloguj się
+									</a>
+								</md-input-container>
+		</form>
+	</md-card-content>
+</md-card>
