@@ -1,4 +1,4 @@
-md-sidenav layout="column" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+<md-sidenav layout="column" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
 
   <% if (session.authenticated && session.User.admin) { %>
     <md-button href="/course/new">
@@ -12,32 +12,12 @@ md-sidenav layout="column" md-component-id="left" md-is-locked-open="$mdMedia('g
     </md-button>
     <% } %>
 
-      <% if (!session.authenticated) { %>
 
-        <md-form ng-submit="submitLoginForm()">
-          <md-input-container>
-            <label>Email</label>
-            <input ng-model="loginForm.email" type="email" placeholder="Email" name="email">
-          </md-input-container>
-          <md-input-container>
-            <label>Haslo</label>
-            <input ng-model="loginForm.password" type="password" placeholder="Hasło" name="password">
-          </md-input-container>
-          <md-button type="submit">
-            <span ng-show="!loginForm.loading">Zaloguj się</span>
-            <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
-            <span ng-show="loginForm.loading">Logowanie...</span>
-          </md-button>
-          <md-input type="hidden" name="_csrf" value="<%= _csrf %>" />
-          <md-button href="/signup">Zarejestruj się</md-button>
 
-        </md-form>
+      <% if (session.authenticated) { %>
+        <md-button class="logout form-group">
+          <a href="/user/show/<%= session.User.id %>">Twój profil</a>
+          <a href="/session/destroy">Wyloguj się</a>
+        </md-button>
         <% } %>
-
-          <% if (session.authenticated) { %>
-            <md-button class="logout form-group">
-              <a href="/user/show/<%= session.User.id %>">Twój profil</a>
-              <a href="/session/destroy">Wyloguj się</a>
-            </md-button>
-            <% } %>
 </md-sidenav>

@@ -32,8 +32,12 @@
       <% include navbar/toolbar.ejs %>
         <div layout="row">
           <% include navbar/slidenav.ejs %>
-            <md-content>
-              <%- body %>
+            <md-content layout-margin flex>
+              <md-card>
+                <md-card-content>
+                  <%- body %>
+                </md-card-content>
+              </md-card>
             </md-content>
         </div>
     </div>

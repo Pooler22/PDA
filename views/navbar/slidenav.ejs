@@ -1,18 +1,69 @@
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
   <md-toolbar class="md-theme-indigo">
-    <h1 class="md-toolbar-tools">Menu</h1>
+    <a href="/">
+      <h1 class="md-toolbar-tools">
+        Pattern Design Academy
+      </h1>
+    </a>
   </md-toolbar>
   <md-content layout-padding ng-controller="LeftCtrl">
     <md-list>
+
       <md-list-item>
-        <md-button href="/about"><%= __('about') %></md-button>
+        <md-button class="md-primary md-raised" href="/about" lex-sm="100" flex-md="100" flex-gt-md="auto">
+          <%= __('about') %>
+        </md-button>
       </md-list-item>
+
       <md-list-item>
-        <md-button href="/design-pattern"><%= __('pattern-design') %></md-button>
+        <md-button class="md-primary md-raised" href="/design-pattern" flex-sm="100" flex-md="100" flex-gt-md="auto">
+          <%= __('pattern-design') %>
+        </md-button>
       </md-list-item>
+
       <md-list-item>
-        <md-button href="/best-practice"><%= __('best-practice') %></md-button>
+        <md-button class="md-primary md-raised" href="/best-practice" flex-sm="100" flex-md="100" flex-gt-md="auto">
+          <%= __('best-practice') %>
+        </md-button>
       </md-list-item>
+
+      <md-list-item>
+        <md-button class="md-primary md-raised" ng-click="signIn($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
+          Zaloguj się
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-button class="md-primary md-raised" ng-click="signUp($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
+          Zarejestruj się
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <% if (!session.authenticated) { %>
+
+
+          <md-form ng-submit="submitLoginForm()">
+            <md-input-container>
+              <label>Email</label>
+              <input ng-model="loginForm.email" type="email" name="email">
+            </md-input-container>
+            <md-input-container>
+              <label>Haslo</label>
+              <input ng-model="loginForm.password" type="password" name="password">
+            </md-input-container>
+            <md-button ng-click="sumit">
+              <span ng-show="!loginForm.loading">Zaloguj się</span>
+              <span ng-show="loginForm.loading" class="overlord-loading-spinner fa fa-spinner"></span>
+              <span ng-show="loginForm.loading">Logowanie...</span>
+            </md-button>
+            <md-input type="hidden" name="_csrf" value="<%= _csrf %>" />
+            <md-button href="/signup">Zarejestruj się</md-button>
+          </md-form>
+          <% } %>
+
+      </md-list-item>
+
     </md-list>
   </md-content>
 </md-sidenav>

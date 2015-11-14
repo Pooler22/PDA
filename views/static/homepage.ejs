@@ -1,44 +1,35 @@
-<div layout="column" layout-margin>
-  <md-card>
-    <md-card-content>
+<md-grid-list md-cols-sm="1" md-cols-md="1" md-cols-lg="4" md-cols-gt-lg="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+
+  <md-grid-tile class="gray" md-rowspan="1" md-colspan-gt-lg="6" md-colspan-lg="4" md-cols-mg="4" md-colspan-md="1" md-colspan-sm="1">
+    <div layout="column" layout-align="center center">
       <h1>Pattern Design Academy</h1>
       <h2>Witaj w serwisie do nauki wzorców porojektowych oraz zasad dobrego programowania.</h2>
-    </md-card-content>
-  </md-card>
-</div>
-<div layout="column" layout-margin>
-
-  <div layout="column" layout-margin>
-    <div layout="row">
-
-      <md-card>
-        <md-card-content>
-          <h2>O projekcie</h2>
-          <p>Dowiesz się tutaj o podstawach zasadach działania serwisu.</p>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button href="/about">Więcej...</md-button>
-          </md-card-actions>
-        </md-card-content>
-      </md-card>
-
-      <md-card>
-        <md-card-content>
-          <h2>Wzorce projektowe</h2>
-          <p>Wybierz z dostępnych wzorców i zacznij naukę właśnie teraz.</p>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button href="/pattern">Więcej...</md-button>
-          </md-card-actions>
-        </md-card-content>
-      </md-card>
-
-      <md-card>
-        <md-card-content>
-          <h2>Zasady dobrego programowania</h2>
-          <p>Uczń swój kod lelszym ucząc się zasad dobrego programowania.</p>
-          <md-card-actions layout="row" layout-align="end center">
-            <md-button href="/best-practice">Więcej...</md-button>
-          </md-card-actions>
-        </md-card-content>
-      </md-card>
-
     </div>
+  </md-grid-tile>
+
+  <md-grid-tile class="gray" md-rowspan="1" md-colspan="2" md-colspan-md="1" md-colspan-sm="1">
+    <div layout="column" layout-align="center center">
+      <h2>O projekcie</h2>
+      <p>Dowiesz się tutaj o podstawach zasadach działania serwisu.</p>
+      <md-button href="/about">Więcej...</md-button>
+    </div>
+  </md-grid-tile>
+
+  <md-grid-tile class="gray" md-rowspan="1" md-colspan="2" md-colspan-md="1" md-colspan-sm="1">
+    <div layout="column" layout-align="center center">
+      <h2>Wzorce projektowe</h2>
+      <p>Wybierz z dostępnych wzorców i zacznij naukę właśnie teraz.</p>
+      <md-button href="/pattern">Więcej...</md-button>
+    </div>
+
+  </md-grid-tile>
+
+  <md-grid-tile class="gray" md-rowspan="1" md-colspan="2" md-colspan-md="1" md-colspan-sm="1">
+    <div layout="column" layout-align="center center">
+      <h2>Zasady dobrego programowania</h2>
+      <p>Uczń swój kod lelszym ucząc się zasad dobrego programowania.</p>
+      <md-button href="/best-practice">Więcej...</md-button>
+    </div>
+  </md-grid-tile>
+
+</md-grid-list>
