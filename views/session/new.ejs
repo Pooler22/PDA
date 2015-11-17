@@ -24,3 +24,24 @@
 		</form>
 	</md-card-content>
 </md-card>
+
+
+<% if (!session.authenticated) { %>
+	<md-list-item>
+		<md-form ng-submit="submitLoginForm()">
+			<md-input-container>
+				<label>Email</label>
+				<input ng-model="loginForm.email" type="email" name="email">
+			</md-input-container>
+			<md-input-container>
+				<label>Haslo</label>
+				<input ng-model="loginForm.password" type="password" name="password">
+			</md-input-container>
+			<md-input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			<md-button ng-click="clearValue()" ng-disabled="!loginForm" style="margin-right: 20px;">Clear</md-button>
+			<md-button ng-click="submitLoginForm()">Zaloguj się</md-button>
+			<md-button href="/signup">Zarejestruj się</md-button>
+		</md-form>
+
+	</md-list-item>
+	<% } %>

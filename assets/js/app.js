@@ -1,4 +1,38 @@
 angular.module('PDAModule', ['ngMaterial', 'ngSails']).controller('AppCtrl', ['$scope', '$sails', '$http', '$filter', '$interval', '$mdSidenav', '$mdDialog', function($scope, $sails, $http, $filter, $interval, $mdSidenav, $mdDialog) {
+  $scope.clearValue = function() {
+    $scope.myModel = undefined;
+  };
+  $scope.save = function() {
+    alert('Form was valid!');
+  };
+  $scope.submitLoginForm = function() {
+    console.log("what?");
+
+    $scope.loginForm.loading = true;
+    $http.put('/login', {
+        email: $scope.loginForm.email,
+        password: $scope.loginForm.password
+      })
+      .then(function onSuccess() {
+        window.location = '/';
+        console.log("wow");
+      })
+      .catch(function onError(res) {
+        if (res.status === 400 || res.status === 404) {
+          toastr.error('Niepoprawne hasło/login.', 'Błąd', {
+            closeButton: true
+          });
+          return;
+        }
+        toastr.error('Wystąpił błąd, spróbuj ponownie.', 'Błąd', {
+          closeButton: true
+        });
+        return;
+      })
+      .finally(function eitherWay() {
+        $scope.loginForm.loading = false;
+      });
+  };
 
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
@@ -130,7 +164,7 @@ angular.module('PDAModule').filter('getIndex', function() {
   };
 });
 
-angular.module('PDAModule').controller('nutritionController', ['$nutrition', '$scope', function ($nutrition, $scope) {
+angular.module('PDAModule').controller('nutritionController', ['$nutrition', '$scope', function($nutrition, $scope) {
   'use strict';
 
   $scope.selected = [];
@@ -148,16 +182,16 @@ angular.module('PDAModule').controller('nutritionController', ['$nutrition', '$s
 
   // in the future we may see a few built in alternate headers but in the mean time
   // you can implement your own search header and do something like
-  $scope.search = function (predicate) {
+  $scope.search = function(predicate) {
     $scope.filter = predicate;
     $scope.deferred = $nutrition.desserts.get($scope.query, success).$promise;
   };
 
-  $scope.onOrderChange = function (order) {
+  $scope.onOrderChange = function(order) {
     return $nutrition.desserts.get($scope.query, success).$promise;
   };
 
-  $scope.onPaginationChange = function (page, limit) {
+  $scope.onPaginationChange = function(page, limit) {
     return $nutrition.desserts.get($scope.query, success).$promise;
   };
 
