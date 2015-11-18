@@ -14,15 +14,20 @@
   </a>
 
     <span flex></span>
-    <md-button ng-click="logOut()">
-      Wyloguj się
-    </md-button>
-    <md-button ng-click="logIn($event)">
-      Zaloguj się
-    </md-button>
-    <md-button ng-click="signUp($event)">
-      Zarejestruj się
-    </md-button>
+    <% if (session.authenticated) { %>
+      <a href="/user/show/<%= session.User.id %>" class="md-button">Twój profil</a>
+      <md-button ng-click="logOut()">
+        Wyloguj się
+      </md-button>
+      <% } %>
+        <% if (!session.authenticated) { %>
+          <md-button ng-click="logIn($event)">
+            Zaloguj się
+          </md-button>
+          <md-button ng-click="signUp($event)">
+            Zarejestruj się
+          </md-button>
+          <% } %>
   </md-toolbar>
 
   <md-toolbar hide-gt-md class="md-toolbar-tools">
