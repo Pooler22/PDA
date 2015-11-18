@@ -14,15 +14,15 @@
             <th>Usuń</th>
           </tr>
           <% _.each(courses, function (course) { %>
-            <tr data-id="<%= course.id%>" data-model="course">
-              <td>
+            <tr data-id="<%= course.id %>" data-model="course">
+              <td md-auto-select>
                 <p>
                   <%= course.name %>
                 </p>
               </td>
-              <td><a href="/course/show/<%= course.id %>" class="btn btn-primary">Pokaż</a></td>
-              <td><a href="/course/edit/<%= course.id %>" class="btn btn-warning">Edytuj</a></td>
-              <td><a href="/course/destroy/<%= course.id %>" class="btn btn-danger">Usuń</a></td>
+              <td><a href="/course/show/<%= course.id %>" class="md-button">Pokaż</a></td>
+              <td><a href="/course/edit/<%= course.id %>" class="md-button">Edytuj</a></td>
+              <td><a href="/course/destroy/<%= course.id %>" class="md-button">Usuń</a></td>
             </tr>
             <% }) %>
               <% } %>
@@ -34,7 +34,7 @@
                     <th>Rozpocznij</th>
                   </tr>
                   <% _.each(courses, function (course) { %>
-                    <tr data-id="<%= course.id%>" data-model="course">
+                    <tr data-id="<%= course.id %>" data-model="course">
                       <td>
                         <p>
                           <%= course.name %>
@@ -45,7 +45,7 @@
                           <%= course.shortdescription %>
                         </p>
                       </td>
-                      <td><a href="/course/show/<%= course.id %>" class="btn btn-primary">Rozpocznij</a></td>
+                      <td><a href="/course/show/<%= course.id %>" class="md-button">Rozpocznij</a></td>
                     </tr>
                     <% }) %>
                       <% } %>
@@ -57,8 +57,8 @@
                             <th>Rozpocznij</th>
                           </tr>
                           <% _.each(courses, function (course) { %>
-                            <tr data-id="<%= course.id%>" data-model="course">
-                              <td>
+                            <tr data-id="<%= course.id %>" data-model="course">
+                              <td md-auto-select>
                                 <p>
                                   <%= course.name %>
                                 </p>

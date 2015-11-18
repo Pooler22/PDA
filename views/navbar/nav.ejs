@@ -63,7 +63,7 @@
       <md-list>
 
         <md-list-item>
-          <md-button class="md-primary md-raised" lex-sm="100" flex-md="100" flex-gt-md="auto">
+          <md-button class="md-primary md-raised">
             <%= __('about') %>
           </md-button>
         </md-list-item>
@@ -80,17 +80,46 @@
           </md-button>
         </md-list-item>
 
-        <md-list-item>
-          <md-button ng-click="logIn($event)" class="md-primary md-raised">
-            Zaloguj się
-          </md-button>
-        </md-list-item>
+        <% if (session.authenticated && session.User.admin) { %>
+          <md-list-item>
+            <a href="/course/new" class="md-button md-primary md-raised">
+              <%= __('add-course') %>
+            </a>
+          </md-list-item>
+          <md-list-item>
+            <a href="/user" class="md-button md-primary md-raised">
+              <%= __('users') %>
+            </a>
+          </md-list-item>
+          <md-list-item>
+            <a href="/user/new" class="md-button md-primary md-raised">
+              <%= __('add-users') %>
+            </a>
+          </md-list-item>
 
-        <md-list-item>
-          <md-button ng-click="signUp($event)" class="md-primary md-raised">
-            Zarejestruj się
-          </md-button>
-        </md-list-item>
+          <% } %>
+            <% if (session.authenticated) { %>
+              <md-list-item>
+                <a href="/user/show/<%= session.User.id %>" class="md-button md-primary md-raised">Twój profil</a>
+              </md-list-item>
+              <md-list-item>
+                <md-button ng-click="logOut()" class="md-button md-primary md-raised">
+                  Wyloguj się
+                </md-button>
+              </md-list-item>
+              <% } %>
+                <% if (!session.authenticated) { %>
+                  <md-list-item>
+                    <md-button ng-click="logIn($event)" class="md-button md-primary md-raised">
+                      Zaloguj się
+                    </md-button>
+                  </md-list-item>
+                  <md-list-item>
+                    <md-button ng-click="signUp($event)" class="md-button md-primary md-raised">
+                      Zarejestruj się
+                    </md-button>
+                  </md-list-item>
+                  <% } %>
 
       </md-list>
     </md-content>
