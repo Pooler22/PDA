@@ -7,6 +7,10 @@ angular.module('PDAModule', ['ngMaterial', 'ngSails'])
         $http({
           method: 'GET',
           url: '/session/destroy'
+        }).finally(function eitherWay() {
+          window.location = '/';
+          // $scope.loginForm.loading = false;
+          console.log("logout2");
         });
       };
 

@@ -14,20 +14,31 @@
   </a>
 
     <span flex></span>
-    <% if (session.authenticated) { %>
-      <a href="/user/show/<%= session.User.id %>" class="md-button">Twój profil</a>
-      <md-button ng-click="logOut()">
-        Wyloguj się
-      </md-button>
+    <% if (session.authenticated && session.User.admin) { %>
+      <a href="/course/new" class="md-button">
+        <%= __('add-course') %>
+      </a>
+      <a href="/user" class="md-button">
+        <%= __('users') %>
+      </a>
+      <a href="/user/new" class="md-button">
+        <%= __('add-users') %>
+      </a>
       <% } %>
-        <% if (!session.authenticated) { %>
-          <md-button ng-click="logIn($event)">
-            Zaloguj się
-          </md-button>
-          <md-button ng-click="signUp($event)">
-            Zarejestruj się
+        <% if (session.authenticated) { %>
+          <a href="/user/show/<%= session.User.id %>" class="md-button">Twój profil</a>
+          <md-button ng-click="logOut()">
+            Wyloguj się
           </md-button>
           <% } %>
+            <% if (!session.authenticated) { %>
+              <md-button ng-click="logIn($event)">
+                Zaloguj się
+              </md-button>
+              <md-button ng-click="signUp($event)">
+                Zarejestruj się
+              </md-button>
+              <% } %>
   </md-toolbar>
 
   <md-toolbar hide-gt-md class="md-toolbar-tools">
