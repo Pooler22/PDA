@@ -1,6 +1,6 @@
 angular.module('PDAModule', ['ngMaterial', 'ngSails'])
-  .controller('NavbarController', ['$scope', '$http', '$mdDialog', '$timeout', '$mdSidenav', '$log',
-    function($scope, $http, $mdDialog, $timeout, $mdSidenav, $log) {
+  .controller('NavbarController', ['$scope', '$http', '$mdDialog', '$timeout', '$mdSidenav', '$log', '$mdToast',
+    function($scope, $http, $mdDialog, $timeout, $mdSidenav, $log, $mdToast) {
 
       $scope.logOut = function() {
         console.log('logout');
@@ -8,9 +8,15 @@ angular.module('PDAModule', ['ngMaterial', 'ngSails'])
           method: 'GET',
           url: '/session/destroy'
         }).finally(function eitherWay() {
+          var toast = $mdToast.simple()
+            .content('Zostałeś wylogowany')
+            .action('OK')
+            .position('top right')
+            .highlightAction(false);
+          $mdToast.show(toast);
           window.location = '/';
           // $scope.loginForm.loading = false;
-          console.log("logout2");
+          //console.log("logout2");
         });
       };
 
@@ -41,17 +47,35 @@ angular.module('PDAModule', ['ngMaterial', 'ngSails'])
                 password: $scope.signupForm.password
               })
               .then(function onSuccess(sailsResponse) {
-                console.log(1);
-                // window.location = '/';
+                var toast = $mdToast.simple()
+                  .content('Zostałeś zarejestrowany')
+                  .action('OK')
+                  .position('top right')
+                  .highlightAction(false);
+                $mdToast.show(toast);
+                //console.log(1);
+                window.location = '/';
               })
               .catch(function onError(sailsResponse) {
 
                 if (sailsResponse.status === 409) {
+                  var toast = $mdToast.simple()
+                    .content('Ten email jest już zarejestrowny.')
+                    .action('OK')
+                    .position('top right')
+                    .highlightAction(false);
+                  $mdToast.show(toast);
                   console.log(2);
                   // toastr.error('Ten email jest już zarejestrowny.', 'Błąd');
                   return;
                 }
                 console.log(3);
+                var toast1 = $mdToast.simple()
+                  .content('Wystąpił błąd, spróbuj ponownie.')
+                  .action('OK')
+                  .position('top right')
+                  .highlightAction(false);
+                $mdToast.show(toast1);
                 // toastr.error('Wystąpił błąd, spróbuj ponownie.', 'Błąd');
                 return;
 
@@ -79,11 +103,6 @@ angular.module('PDAModule', ['ngMaterial', 'ngSails'])
             $mdDialog.hide();
           };
 
-          $scope.myFunct = function(keyEvent) {
-            if (keyEvent.which === 13)
-              alert('I am an alert');
-          };
-
           $scope.submitLoginForm = function() {
             //$scope.loginForm.loading = true;
             $http.put('/login', {
@@ -92,24 +111,32 @@ angular.module('PDAModule', ['ngMaterial', 'ngSails'])
               })
               .then(function onSuccess() {
                 window.location = '/';
-                console.log("12");
+                var toast1 = $mdToast.simple()
+                  .content('Zostałeś zalogowany.')
+                  .action('OK')
+                  .position('top right')
+                  .highlightAction(false);
+                $mdToast.show(toast1);
               })
               .catch(function onError(res) {
                 if (res.status === 400 || res.status === 404) {
-                  // toastr.error('Niepoprawne hasło/login.', 'Błąd', {
-                  //   closeButton: true
-                  // });
-                  console.log("22");
+                  var toast1 = $mdToast.simple()
+                    .content('Niepoprawne hasło/login.')
+                    .action('OK')
+                    .position('top right')
+                    .highlightAction(false);
+                  $mdToast.show(toast1);
                   return;
                 }
-                // toastr.error('Wystąpił błąd, spróbuj ponownie.', 'Błąd', {
-                //   closeButton: true
-                // });
-                console.log("32");
+                var toast = $mdToast.simple()
+                  .content('Wystąpił błąd.')
+                  .action('OK')
+                  .position('top right')
+                  .highlightAction(false);
+                $mdToast.show(toast);
                 return;
               })
               .finally(function eitherWay() {
-                // $scope.loginForm.loading = false;
                 console.log("42");
               });
           };
