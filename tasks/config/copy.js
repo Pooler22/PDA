@@ -62,6 +62,31 @@ module.exports = function(grunt) {
 				cwd: './node_modules/angular-material-data-table/dist/',
 				src: ['md-data-table.min.js'],
 				dest: './assets/js/dependencies/'
+			}, {
+				expand: true,
+				cwd: './node_modules/angular-material',
+				src: ['angular-material.min.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-aria',
+				src: ['angular-aria.min.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-sails/dist',
+				src: ['angular-sails.min.js'],
+				dest: './assets/js/dependencies/'
+			}, {
+				expand: true,
+				cwd: './node_modules/angular-material',
+				src: ['angular-material.css'],
+				dest: './assets/styles/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-animate',
+				src: ['angular-animate.min.js'],
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './assets',
