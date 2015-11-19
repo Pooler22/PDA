@@ -1,0 +1,127 @@
+<div ng-controller="NavbarController" ng-cloak>
+  <md-toolbar hide-sm hide-md class="md-toolbar-tools">
+    <a class="md-button" href="/">
+    Pattern Design Academy
+  </a>
+    <a class="md-button" href="/about">
+    O projekcie
+  </a>
+    <a class="md-button" href="/design-pattern">
+    Wzorce projektowe
+  </a>
+    <a class="md-button" href="/best-practice">
+    Dobre praktyki
+  </a>
+
+    <span flex></span>
+    <% if (session.authenticated && session.User.admin) { %>
+      <a href="/course/new" class="md-button">
+        <%= __('add-course') %>
+      </a>
+      <a href="/user" class="md-button">
+        <%= __('users') %>
+      </a>
+      <a href="/user/new" class="md-button">
+        <%= __('add-users') %>
+      </a>
+      <% } %>
+        <% if (session.authenticated) { %>
+          <a href="/user/show/<%= session.User.id %>" class="md-button">Twój profil</a>
+          <md-button ng-click="logOut()">
+            Wyloguj się
+          </md-button>
+          <% } %>
+            <% if (!session.authenticated) { %>
+              <md-button ng-click="logIn($event)">
+                Zaloguj się
+              </md-button>
+              <md-button ng-click="signUp($event)">
+                Zarejestruj się
+              </md-button>
+              <% } %>
+  </md-toolbar>
+
+  <md-toolbar hide-gt-md class="md-toolbar-tools">
+    <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Menu">
+      <md-icon md-svg-icon="images/menu.svg"></md-icon>
+    </md-button>
+    <h2>
+      <span>
+        Pattern Design Academy
+      </span>
+    </h2>
+  </md-toolbar>
+
+
+  <md-sidenav hide-gt-md class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">
+        Pattern Design Academy
+      </h1>
+    </md-toolbar>
+    <md-content layout-padding>
+      <md-list>
+
+        <md-list-item>
+          <md-button class="md-primary md-raised">
+            <%= __('about') %>
+          </md-button>
+        </md-list-item>
+
+        <md-list-item>
+          <md-button class="md-primary md-raised">
+            <%= __('pattern-design') %>
+          </md-button>
+        </md-list-item>
+
+        <md-list-item>
+          <md-button class="md-primary md-raised">
+            <%= __('best-practice') %>
+          </md-button>
+        </md-list-item>
+
+        <% if (session.authenticated && session.User.admin) { %>
+          <md-list-item>
+            <a href="/course/new" class="md-button md-primary md-raised">
+              <%= __('add-course') %>
+            </a>
+          </md-list-item>
+          <md-list-item>
+            <a href="/user" class="md-button md-primary md-raised">
+              <%= __('users') %>
+            </a>
+          </md-list-item>
+          <md-list-item>
+            <a href="/user/new" class="md-button md-primary md-raised">
+              <%= __('add-users') %>
+            </a>
+          </md-list-item>
+
+          <% } %>
+            <% if (session.authenticated) { %>
+              <md-list-item>
+                <a href="/user/show/<%= session.User.id %>" class="md-button md-primary md-raised">Twój profil</a>
+              </md-list-item>
+              <md-list-item>
+                <md-button ng-click="logOut()" class="md-button md-primary md-raised">
+                  Wyloguj się
+                </md-button>
+              </md-list-item>
+              <% } %>
+                <% if (!session.authenticated) { %>
+                  <md-list-item>
+                    <md-button ng-click="logIn($event)" class="md-button md-primary md-raised">
+                      Zaloguj się
+                    </md-button>
+                  </md-list-item>
+                  <md-list-item>
+                    <md-button ng-click="signUp($event)" class="md-button md-primary md-raised">
+                      Zarejestruj się
+                    </md-button>
+                  </md-list-item>
+                  <% } %>
+
+      </md-list>
+    </md-content>
+  </md-sidenav>
+</div>

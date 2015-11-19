@@ -100,7 +100,7 @@ module.exports = {
             user.action = " signed-up and logged-in.";
             User.publishCreate(user);
             //return res.ok();
-            return res.json();
+            res.json({result: true});
           });
         }
       });

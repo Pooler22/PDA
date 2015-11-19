@@ -44,24 +44,49 @@ module.exports = function(grunt) {
 				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
-				cwd: './node_modules/angular-bootstrap/',
-				src: ['ui-bootstrap-tpls.js'],
-				dest: './assets/js/dependencies/'
-			},{
-				expand: true,
 				cwd: './node_modules/moment/min/',
 				src: ['moment.min.js'],
 				dest: './assets/js/dependencies/'
-			},{
-				expand: true,
-				cwd: './node_modules/bootstrap/dist/css',
-				src: ['**/*'],
-				dest: './assets/styles/dependencies/'
 			}, {
 				expand: true,
 				cwd: './node_modules/angular-toastr/dist/',
 				src: ['angular-toastr.css'],
 				dest: './assets/styles/dependencies/'
+			}, {
+				expand: true,
+				cwd: './node_modules/angular-material-data-table/dist/',
+				src: ['md-data-table.min.css'],
+				dest: './assets/styles/dependencies/'
+			}, {
+				expand: true,
+				cwd: './node_modules/angular-material-data-table/dist/',
+				src: ['md-data-table.min.js'],
+				dest: './assets/js/dependencies/'
+			}, {
+				expand: true,
+				cwd: './node_modules/angular-material',
+				src: ['angular-material.min.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-aria',
+				src: ['angular-aria.min.js'],
+				dest: './assets/js/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-sails/dist',
+				src: ['angular-sails.min.js'],
+				dest: './assets/js/dependencies/'
+			}, {
+				expand: true,
+				cwd: './node_modules/angular-material',
+				src: ['angular-material.css'],
+				dest: './assets/styles/dependencies/'
+			},{
+				expand: true,
+				cwd: './node_modules/angular-animate',
+				src: ['angular-animate.min.js'],
+				dest: './assets/js/dependencies/'
 			},{
 				expand: true,
 				cwd: './assets',
