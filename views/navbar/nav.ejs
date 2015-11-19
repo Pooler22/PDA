@@ -1,48 +1,48 @@
-<div ng-controller="NavbarController" ng-cloak>
-  <md-toolbar hide-sm hide-md class="md-toolbar-tools">
+<div ng-cloak ng-controller="NavbarController">
+  <md-toolbar class="md-toolbar-tools" hide-md hide-sm>
     <a class="md-button" href="/">
-    Pattern Design Academy
-  </a>
+      Pattern Design Academy
+    </a>
     <a class="md-button" href="/about">
-    O projekcie
-  </a>
+      O projekcie
+    </a>
     <a class="md-button" href="/design-pattern">
-    Wzorce projektowe
-  </a>
+      Wzorce projektowe
+    </a>
     <a class="md-button" href="/best-practice">
-    Dobre praktyki
-  </a>
+      Dobre praktyki
+    </a>
 
     <span flex></span>
     <% if (session.authenticated && session.User.admin) { %>
-      <a href="/course/new" class="md-button">
+      <a class="md-button" href="/course/new">
         <%= __('add-course') %>
       </a>
-      <a href="/user" class="md-button">
+      <a class="md-button" href="/user">
         <%= __('users') %>
       </a>
-      <a href="/user/new" class="md-button">
+      <a class="md-button" href="/user/new">
         <%= __('add-users') %>
       </a>
-      <% } %>
-        <% if (session.authenticated) { %>
-          <a href="/user/show/<%= session.User.id %>" class="md-button">Twój profil</a>
-          <md-button ng-click="logOut()">
-            Wyloguj się
-          </md-button>
-          <% } %>
-            <% if (!session.authenticated) { %>
-              <md-button ng-click="logIn($event)">
-                Zaloguj się
-              </md-button>
-              <md-button ng-click="signUp($event)">
-                Zarejestruj się
-              </md-button>
-              <% } %>
+    <% } %>
+    <% if (session.authenticated) { %>
+      <a class="md-button" href="/user/show/<%= session.User.id %>">Twój profil</a>
+      <md-button ng-click="logOut()">
+        Wyloguj się
+      </md-button>
+    <% } %>
+    <% if (!session.authenticated) { %>
+      <md-button ng-click="logIn($event)">
+        Zaloguj się
+      </md-button>
+      <md-button ng-click="signUp($event)">
+        Zarejestruj się
+      </md-button>
+    <% } %>
   </md-toolbar>
 
-  <md-toolbar hide-gt-md class="md-toolbar-tools">
-    <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Menu">
+  <md-toolbar class="md-toolbar-tools" hide-gt-md>
+    <md-button aria-label="Menu" class="md-icon-button" ng-click="toggleLeft()">
       <md-icon md-svg-icon="images/menu.svg"></md-icon>
     </md-button>
     <h2>
@@ -52,8 +52,7 @@
     </h2>
   </md-toolbar>
 
-
-  <md-sidenav hide-gt-md class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" hide-gt-md md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
     <md-toolbar class="md-theme-indigo">
       <h1 class="md-toolbar-tools">
         Pattern Design Academy
@@ -82,44 +81,44 @@
 
         <% if (session.authenticated && session.User.admin) { %>
           <md-list-item>
-            <a href="/course/new" class="md-button md-primary md-raised">
+            <a class="md-button md-primary md-raised" href="/course/new">
               <%= __('add-course') %>
             </a>
           </md-list-item>
           <md-list-item>
-            <a href="/user" class="md-button md-primary md-raised">
+            <a class="md-button md-primary md-raised" href="/user">
               <%= __('users') %>
             </a>
           </md-list-item>
           <md-list-item>
-            <a href="/user/new" class="md-button md-primary md-raised">
+            <a class="md-button md-primary md-raised" href="/user/new">
               <%= __('add-users') %>
             </a>
           </md-list-item>
 
-          <% } %>
-            <% if (session.authenticated) { %>
-              <md-list-item>
-                <a href="/user/show/<%= session.User.id %>" class="md-button md-primary md-raised">Twój profil</a>
-              </md-list-item>
-              <md-list-item>
-                <md-button ng-click="logOut()" class="md-button md-primary md-raised">
-                  Wyloguj się
-                </md-button>
-              </md-list-item>
-              <% } %>
-                <% if (!session.authenticated) { %>
-                  <md-list-item>
-                    <md-button ng-click="logIn($event)" class="md-button md-primary md-raised">
-                      Zaloguj się
-                    </md-button>
-                  </md-list-item>
-                  <md-list-item>
-                    <md-button ng-click="signUp($event)" class="md-button md-primary md-raised">
-                      Zarejestruj się
-                    </md-button>
-                  </md-list-item>
-                  <% } %>
+        <% } %>
+        <% if (session.authenticated) { %>
+          <md-list-item>
+            <a class="md-button md-primary md-raised" href="/user/show/<%= session.User.id %>">Twój profil</a>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="md-button md-primary md-raised" ng-click="logOut()">
+              Wyloguj się
+            </md-button>
+          </md-list-item>
+        <% } %>
+        <% if (!session.authenticated) { %>
+          <md-list-item>
+            <md-button class="md-button md-primary md-raised" ng-click="logIn($event)">
+              Zaloguj się
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <md-button class="md-button md-primary md-raised" ng-click="signUp($event)">
+              Zarejestruj się
+            </md-button>
+          </md-list-item>
+        <% } %>
 
       </md-list>
     </md-content>

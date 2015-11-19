@@ -1,4 +1,4 @@
-<div class="container" ng-controller="HomepageController" ng-cloak>
+<div class="container" ng-cloak ng-controller="HomepageController">
   <md-data-table-toolbar>
     <h2 class="md-title">Kursy</h2>
   </md-data-table-toolbar>
@@ -20,58 +20,68 @@
                   <%= course.name %>
                 </p>
               </td>
-              <td><a href="/course/show/<%= course.id %>" class="md-button">Pokaż</a></td>
-              <td><a href="/course/edit/<%= course.id %>" class="md-button">Edytuj</a></td>
-              <td><a href="/course/destroy/<%= course.id %>" class="md-button">Usuń</a></td>
+              <td>
+                <a class="md-button" href="/course/show/<%= course.id %>">Pokaż</a>
+              </td>
+              <td>
+                <a class="md-button" href="/course/edit/<%= course.id %>">Edytuj</a>
+              </td>
+              <td>
+                <a class="md-button" href="/course/destroy/<%= course.id %>">Usuń</a>
+              </td>
             </tr>
-            <% }) %>
-              <% } %>
+          <% }) %>
+        <% } %>
 
-                <% if (session.authenticated && !session.User.admin){ %>
-                  <tr>
-                    <th>Nazwa</th>
-                    <th>Opis</th>
-                    <th>Rozpocznij</th>
-                  </tr>
-                  <% _.each(courses, function (course) { %>
-                    <tr data-id="<%= course.id %>" data-model="course">
-                      <td>
-                        <p>
-                          <%= course.name %>
-                        </p>
-                      </td>
-                      <td>
-                        <p>
-                          <%= course.shortdescription %>
-                        </p>
-                      </td>
-                      <td><a href="/course/show/<%= course.id %>" class="md-button">Rozpocznij</a></td>
-                    </tr>
-                    <% }) %>
-                      <% } %>
+        <% if (session.authenticated && !session.User.admin){ %>
+          <tr>
+            <th>Nazwa</th>
+            <th>Opis</th>
+            <th>Rozpocznij</th>
+          </tr>
+          <% _.each(courses, function (course) { %>
+            <tr data-id="<%= course.id %>" data-model="course">
+              <td>
+                <p>
+                  <%= course.name %>
+                </p>
+              </td>
+              <td>
+                <p>
+                  <%= course.shortdescription %>
+                </p>
+              </td>
+              <td>
+                <a class="md-button" href="/course/show/<%= course.id %>">Rozpocznij</a>
+              </td>
+            </tr>
+          <% }) %>
+        <% } %>
 
-                        <% if (!session.authenticated){ %>
-                          <tr>
-                            <th>Nazwa</th>
-                            <th>Opis</th>
-                            <th>Rozpocznij</th>
-                          </tr>
-                          <% _.each(courses, function (course) { %>
-                            <tr data-id="<%= course.id %>" data-model="course">
-                              <td md-auto-select>
-                                <p>
-                                  <%= course.name %>
-                                </p>
-                              </td>
-                              <td>
-                                <p>
-                                  <%= course.shortdescription %>
-                                </p>
-                              </td>
-                              <td><a href="/signup" class="md-button">Zarejestruj się</a></td>
-                            </tr>
-                            <% }) %>
-                              <% } %>
+        <% if (!session.authenticated){ %>
+          <tr>
+            <th>Nazwa</th>
+            <th>Opis</th>
+            <th>Rozpocznij</th>
+          </tr>
+          <% _.each(courses, function (course) { %>
+            <tr data-id="<%= course.id %>" data-model="course">
+              <td md-auto-select>
+                <p>
+                  <%= course.name %>
+                </p>
+              </td>
+              <td>
+                <p>
+                  <%= course.shortdescription %>
+                </p>
+              </td>
+              <td>
+                <a class="md-button" href="/signup">Zarejestruj się</a>
+              </td>
+            </tr>
+          <% }) %>
+        <% } %>
       </tbody>
     </table>
   </md-data-table-container>

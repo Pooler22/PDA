@@ -1,21 +1,21 @@
 <% _.each(exercises, function(exercise) { %>
-  <form action="/exercise/update/<%= exercise.id %>/" method="POST" class="form-update-exercise">
+  <form action="/exercise/update/<%= exercise.id %>/" class="form-update-exercise" method="POST">
     <dt>Tytuł rozdziału</dt>
     <dd>
-      <input type="text" class=" form-control" placeholder="Dodaj tytuł rozdziału" name="name" value="<%= exercise.name %>">
+      <input class=" form-control" name="name" placeholder="Dodaj tytuł rozdziału" type="text" value="<%= exercise.name %>">
     </dd>
     <dt>Kolejność rozdziału</dt>
     <dd>
-      <input type="text" class=" form-control" placeholder="Dodaj kolejsność" name="order" value="<%= exercise.order %>">
+      <input class=" form-control" name="order" placeholder="Dodaj kolejsność" type="text" value="<%= exercise.order %>">
     </dd>
     <dt>Treść rozdziału</dt>
     <dd>
-      <input type="text" class=" form-control" placeholder="Dodaj treść rozdziału" name="content" value="<%= exercise.content %>">
-      <input type="hidden" class="form-control" name="owner" value="<%= exercise.id %>">
-      <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+      <input class=" form-control" name="content" placeholder="Dodaj treść rozdziału" type="text" value="<%= exercise.content %>">
+      <input class="form-control" name="owner" type="hidden" value="<%= exercise.id %>">
+      <input name='_csrf' type='hidden' value='<%= _csrf %>'>
       <br>
-      <button type="submit" class="btn btn-success">Uaktualnij rozdzial</button>
+      <button class="btn btn-success" type="submit">Uaktualnij rozdzial</button>
     </dd>
   </form>
   <hr>
-  <% }) %>
+<% }) %>

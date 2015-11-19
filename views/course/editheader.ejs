@@ -1,8 +1,8 @@
-<form action="/course/update/<%= course.id %>" method="POST" class="form-update-course">
+<form action="/course/update/<%= course.id %>" class="form-update-course" method="POST">
   <div class="form-group">
     <dt>Nazwa kursu:</dt>
     <dd>
-      <input type="text" class="form-control" placeholder="Dodaj nwazę wzorca" name="name" value="<%= course.name %>">
+      <input class="form-control" name="name" placeholder="Dodaj nwazę wzorca" type="text" value="<%= course.name %>">
     </dd>
     <dt>Typ kursu:</dt>
     <dd>
@@ -13,12 +13,12 @@
     </dd>
     <dt>Krótki opis:</dt>
     <dd>
-      <textarea type="text" class="form-control" placeholder="Dodaj krótki opis" name="shortdescription"><%- course.shortdescription %></textarea>
-      <input type="hidden" name="_csrf" value="<%= _csrf %>">
+      <textarea class="form-control" name="shortdescription" placeholder="Dodaj krótki opis" type="text"><%- course.shortdescription %></textarea>
+      <input name="_csrf" type="hidden" value="<%= _csrf %>">
       <br>
-      <button type="submit" class="btn btn-primary">Zapisz</button>
-      <a href="/course" class="btn btn-warning">Anuluj</a>
-      <a href="/course/destroy/<%= course.id %>" class="btn btn-danger">Usuń</a>
+      <button class="btn btn-primary" type="submit">Zapisz</button>
+      <a class="btn btn-warning" href="/course">Anuluj</a>
+      <a class="btn btn-danger" href="/course/destroy/<%= course.id %>">Usuń</a>
     </dd>
   </div>
 </form>

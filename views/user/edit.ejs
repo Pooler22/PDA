@@ -1,25 +1,25 @@
 <md-content flex layout-padding>
-	<h2>Edycja profilu</h2>
-	<md-form action="/user/update/<%= user.id %>" method="POST" class="form-signin">
-		<md-input-container>
-			<label>Imię</label>
-			<input value="<%= user.name %>" name="name" type="text" class="form-control" />
-		</md-input-container>
-		<md-input-container>
-			<label>Nick</label>
-			<input value="<%= user.nick %>" name="nick" type="text" class="form-control" />
-		</md-input-container>
-		<md-input-container>
-			<label>Email</label>
-			<input value="<%= user.email %>" name="email" type="text" class="form-control" />
-		</md-input-container>
-		<% if (session.authenticated && session.User.admin) { %>
-			<md-input-container>
-				<label>Jest administratorem</label>
-				<input value="<%= user.admin %>" name="admin" type="text" class="form-control" />
-			</md-input-container>
-			<% } %>
-				<input type="submit" value="Zapisz" class="md-button" />
-				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
-				</form>
+  <h2>Edycja profilu</h2>
+  <md-form action="/user/update/<%= user.id %>" class="form-signin" method="POST">
+    <md-input-container>
+      <label>Imię</label>
+      <input class="form-control" name="name" type="text" value="<%= user.name %>"/>
+    </md-input-container>
+    <md-input-container>
+      <label>Nick</label>
+      <input class="form-control" name="nick" type="text" value="<%= user.nick %>"/>
+    </md-input-container>
+    <md-input-container>
+      <label>Email</label>
+      <input class="form-control" name="email" type="text" value="<%= user.email %>"/>
+    </md-input-container>
+    <% if (session.authenticated && session.User.admin) { %>
+      <md-input-container>
+        <label>Jest administratorem</label>
+        <input class="form-control" name="admin" type="text" value="<%= user.admin %>"/>
+      </md-input-container>
+    <% } %>
+    <input class="md-button" type="submit" value="Zapisz"/>
+    <input name="_csrf" type="hidden" value="<%= _csrf %>"/>
+  </form>
 </md-content>

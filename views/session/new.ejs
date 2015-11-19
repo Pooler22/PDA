@@ -1,47 +1,46 @@
 <md-card>
-	<md-card-content>
-		<form action="/session/create" method="POST" class="form-signin">
-			<% if(flash && flash.err) { %>
-				<% Object.keys(flash.err).forEach(function(error) { %>
-					<%- JSON.stringify(flash.err[error]) %>
-						<% }) %>
-							<% } %>
-								<h2>Zaloguj się</h2>
-								<md-input-container class="md-block">
-									<label>Email</label>
-									<input type="text" class="form-control" placeholder="Email" required name="email">
-								</md-input-container>
-								<md-input-container class="md-block">
-									<label>Hasło</label>
-									<input type="password" class="form-control" placeholder="Hasło" name="password">
-								</md-input-container>
-								<md-input-container class="md-block">
-									<input type="hidden" name="_csrf" value="<%= _csrf %>" />
-									<a class="md-button md-raised" type="submit">
-										Zaloguj się
-									</a>
-								</md-input-container>
-		</form>
-	</md-card-content>
+  <md-card-content>
+    <form action="/session/create" class="form-signin" method="POST">
+      <% if(flash && flash.err) { %>
+        <% Object.keys(flash.err).forEach(function(error) { %>
+          <%- JSON.stringify(flash.err[error]) %>
+        <% }) %>
+      <% } %>
+      <h2>Zaloguj się</h2>
+      <md-input-container class="md-block">
+        <label>Email</label>
+        <input class="form-control" name="email" placeholder="Email" required type="text">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Hasło</label>
+        <input class="form-control" name="password" placeholder="Hasło" type="password">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <input name="_csrf" type="hidden" value="<%= _csrf %>"/>
+        <a class="md-button md-raised" type="submit">
+          Zaloguj się
+        </a>
+      </md-input-container>
+    </form>
+  </md-card-content>
 </md-card>
 
-
 <% if (!session.authenticated) { %>
-	<md-list-item>
-		<md-form ng-submit="submitLoginForm()">
-			<md-input-container>
-				<label>Email</label>
-				<input ng-model="loginForm.email" type="email" name="email">
-			</md-input-container>
-			<md-input-container>
-				<label>Haslo</label>
-				<input ng-model="loginForm.password" type="password" name="password">
-			</md-input-container>
-			<md-input type="hidden" name="_csrf" value="<%= _csrf %>" />
-			<md-button ng-click="clearValue()" ng-disabled="!loginForm" style="margin-right: 20px;">Clear</md-button>
-			<md-button ng-click="submitLoginForm()">Zaloguj się</md-button>
-			<md-button href="/signup">Zarejestruj się</md-button>
-		</md-form>
+  <md-list-item>
+    <md-form ng-submit="submitLoginForm()">
+      <md-input-container>
+        <label>Email</label>
+        <input name="email" ng-model="loginForm.email" type="email">
+      </md-input-container>
+      <md-input-container>
+        <label>Haslo</label>
+        <input name="password" ng-model="loginForm.password" type="password">
+      </md-input-container>
+      <md-input name="_csrf" type="hidden" value="<%= _csrf %>"/>
+      <md-button ng-click="clearValue()" ng-disabled="!loginForm" style="margin-right: 20px;">Clear</md-button>
+      <md-button ng-click="submitLoginForm()">Zaloguj się</md-button>
+      <md-button href="/signup">Zarejestruj się</md-button>
+    </md-form>
 
-	</md-list-item>
-	<% } %>
+  </md-list-item>
+<% } %>

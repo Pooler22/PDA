@@ -1,63 +1,36 @@
 <md-content flex layout-padding>
-  <div ng-controller="SignupController" ng-cloak>
-    <h2>Utwórz konto</h2>
-    <md-form ng-submit="submitSignupForm()" id="sign-up-form" class="form-signin" name="signup">
+  <h2>Utwórz konto</h2>
+  <md-form ng-submit="submitSignupForm()" id="sign-up-form" class="form-signin" name="signup">
 
-      <md-input-container>
-        <label>Imię</label>
-        <input type="text" class="form-control" placeholder="Imię..." name="name" ng-model="signupForm.name" ng-maxlength="50" required>
-        <span class="help-block has-error" ng-if="signup.name.$dirty">
-          <span ng-show="signup.name.$error.required">To pole jest wymagane.</span>
-          <span ng-show="signup.name.$error.maxlength">Nie więcej niż 50 znaków.</span>
-        </span>
-      </md-input-container>
+    <md-input-container>
+      <label>Imię</label>
+      <input type="text" name="name" ng-model="signupForm.name" ng-maxlength="50" required>
+    </md-input-container>
 
-      <md-input-container>
-        <label>Nick</label>
-        <input type="text" class="form-control" placeholder="Nick..." name="nick" ng-model="signupForm.nick " ng-maxlength="50" required>
-        <span class="help-block has-error" ng-if="signup.nick .$dirty">
-          <span ng-show="signup.nick .$error.required">To pole jest wymagane..</span>
-          <span ng-show="signup.nick .$error.maxlength">Nie więcej niż 50 znaków.</span>
-        </span>
-      </md-input-container>
+    <md-input-container>
+      <label>Nick</label>
+      <input type="text" name="nick" ng-model="signupForm.nick " ng-maxlength="50" required>
+    </md-input-container>
 
-      <md-input-container>
-        <label>Adress email</label>
-        <input type="email" class="form-control" placeholder="Email..." name="email" ng-model="signupForm.email" required>
-        <span class="help-block has-error" ng-if="signup.email.$dirty">
-          <span ng-show="signup.email.$error.required">To pole jest wymagane.</span>
-          <span ng-show="signup.email.$error.email">Nieprawidłowy adres.</span>
-        </span>
-      </md-input-container>
+    <md-input-container>
+      <label>Adress email</label>
+      <input type="email" name="email" ng-model="signupForm.email" required>
+    </md-input-container>
 
-      <md-input-container>
-        <label>Hasło</label>
-        <input type="password" class="form-control" placeholder="Hasło..." name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword">
-        <span class="help-block has-error" ng-if="signup.password.$dirty">
-          <span ng-show="signup.password.$error.required">To pole jest wymagane.</span>
-          <span ng-show="signup.password.$error.minlength">Hasło musi mieć nie mniej niż 6 znakwów.</span>
-        </span>
-      </md-input-container>
+    <md-input-container>
+      <label>Hasło</label>
+      <input type="password" name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword">
+    </md-input-container>
 
-      <md-input-container>
-        <label>Powtórz hasło</label>
-        <input type="password" placeholder="Hasło..." name="confirmation" ng-model="signupForm.confirmPassword" required>
-        <span class="help-block has-error" ng-if="signup.confirmation.$dirty">
-          <span ng-show="signup.password.$error.compareTo">Hasła muszą być jednakowe.</span>
-          <span ng-show="signup.confirmation.$error.required">To pole jest wymagane.</span>
-        </span>
-      </md-input-container>
+    <md-input-container>
+      <label>Powtórz hasło</label>
+      <input type="password" name="confirmation" ng-model="signupForm.confirmPassword" required>
+    </md-input-container>
 
-
-      <a class="md-button" type="submit" ng-disabled="signup.$invalid">
+    <a class="md-button" type="submit" ng-disabled="signup.$invalid">
         Utwórz konto
-        <span ng-show="!signupForm.loading">Utwórz konto</span>
-        <span class="overlord-loading-spinner fa fa-spinner" ng-show="signupForm.loading"></span>
-        <span ng-show="signupForm.loading">Przygotowanie konta...</span>
-      </a>
+    </a>
 
-      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-
-    </md-form>
-  </div>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+  </md-form>
 </md-content>

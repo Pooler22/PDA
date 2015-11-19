@@ -1,28 +1,28 @@
-<form action="/exercise/create" method="POST" class="form-create-exercise">
+<form action="/exercise/create" class="form-create-exercise" method="POST">
   <dt>Tytuł ćwiczenia</dt>
   <dd>
-    <input type="text" class=" form-control" placeholder="" name="name">
+    <input class=" form-control" name="name" placeholder="" type="text">
   </dd>
   <dt>Kolejność ćwiczenia</dt>
   <dd>
-    <input type="text" class=" form-control" placeholder="" name="order">
+    <input class=" form-control" name="order" placeholder="" type="text">
   </dd>
   <dt>Treść konsoli ćwiczenia</dt>
   <dd>
-    <input type="text" class=" form-control" placeholder="" name="codeconsole">
+    <input class=" form-control" name="codeconsole" placeholder="" type="text">
   </dd>
   <dt>Treść testów ćwiczenia</dt>
   <dd>
-    <input type="text" class=" form-control" placeholder="" name="test">
+    <input class=" form-control" name="test" placeholder="" type="text">
   </dd>
   <dt>Treść ćwiczenia</dt>
   <dd>
-    <input type="text" class=" form-control" placeholder="" name="content">
+    <input class=" form-control" name="content" placeholder="" type="text">
     <br>
-    <button type="submit" class="btn btn-success">Dodaj ćwiczenia</button>
+    <button class="btn btn-success" type="submit">Dodaj ćwiczenia</button>
   </dd>
 
-  <input type="hidden" class="exercise-id form-control" name="course" value="<%= course.id %>">
-  <input type="hidden" class="exercise-id form-control" name="owner" value="<%= chapter.id %>">
-  <input type="hidden" name="_csrf" value="<%= _csrf %>">
+  <input class="exercise-id form-control" name="course" type="hidden" value="<%= course.id %>">
+  <input class="exercise-id form-control" name="owner" type="hidden" value="<%= chapter.id %>">
+  <input name="_csrf" type="hidden" value="<%= _csrf %>">
 </form>

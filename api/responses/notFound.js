@@ -63,7 +63,7 @@ module.exports = function notFound(data, options) {
   // but fall back to sending JSON(P) if any errors occur.
   else return res.view('404', {
     data: data
-  }, function(err, html) {
+  }, function (err, html) {
 
     // If a view error occured, fall back to JSON(P).
     if (err) {
