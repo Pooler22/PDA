@@ -1,41 +1,38 @@
-<h3>Dodaj kurs</h3>
-<hr>
+<md-content flex layout-padding>
+  <label>Dodaj kurs</label>
+  <md-form ng-submit="submitLoginForm()">
+    <md-dialog-content>
 
-<form action="/course/create" class="form-create-course" method="POST">
-  <div class="form-group">
-    <dl class="dl-horizontal">
+      <md-input-container>
+        <label>Nazwa kursu</label>
+        <input name="name" ng-model="addCourseForm.name" type="text">
+      </md-input-container>
 
-      <dt>Nazwa kurs:</dt>
-      <dd>
-        <input class="form-control" name="name" placeholder="Nazwa kursu" type="text">
-      </dd>
+      <md-input-container>
+        <label>Typ kursu</label>
+        <md-select ng-model="addCourseForm.type">
+          <md-option>
+            Pattern design
+          </md-option>
+          <md-option>
+            Best practice
+          </md-option>
+        </md-select>
+      </md-input-container>
 
-      <dt>Typ kursu:</dt>
-      <dd>
-        <select class="form-control" name="type">
-          <option>Pattern design</option>
-          <option>Best practice</option>
-        </select>
-      </dd>
+      <md-input-container>
+        <label>Krótki opis</label>
+        <input name="shortdescription" ng-model="addCourseForm.shortdescription" type="text">
+      </md-input-container>
 
-      <dt>Krótki opis:</dt>
-      <dd>
-        <textarea class="form-control" name="shortdescription" placeholder="Krótki opis"></textarea>
-      </dd>
-
-      <input name="_csrf" type="hidden" value="<%= _csrf %>">
-
-      <hr>
-      <dt>
-        Operacje
-      </dt>
-      <dd>
-        <button class="btn btn-success" type="submit">Dodaj stronę</button>
-        <button class="btn btn-primary" type="submit">Zapisz</button>
-        <a class="btn btn-danger" href="/course">Odrzuć</a>
-      </dd>
-
-    </dl>
-  </div>
-</form>
-<hr>
+    </md-dialog-content>
+    <div class="md-actions">
+      <md-button ng-click="submitLoginForm()">
+        Zapisz
+      </md-button>
+      <md-button ng-click="submitLoginForm()">
+        Anulujs
+      </md-button>
+    </div>
+  </md-form>
+</md-content>
