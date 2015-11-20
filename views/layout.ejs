@@ -16,19 +16,18 @@
   <!--STYLES END-->
 
   <script type="text/javascript">
-    window.SAILS_LOCALS = {
-      _csrf: "<%= _csrf %>"
-    };
+window.SAILS_LOCALS = {
+  me: <%- typeof me !== 'undefined' ? JSON.stringify(me) : 'null' %>
+};
   </script>
+
 
 </head>
 
-<body ng-app="PDAModule" >
+<body ng-app="PDAModule">
   <!--BODY -->
-
-  <% include navbar/nav.ejs %>
+  <%- include navbar/nav.ejs %>
     <%- body %>
-
       <!--BODY END-->
 
       <!--TEMPLATES-->
@@ -49,7 +48,7 @@
       <script src="/js/dependencies/angular-sails.min.js"></script>
       <script src="/js/dependencies/md-data-table.min.js"></script>
       <script src="/js/dependencies/moment.min.js"></script>
-      <script src="/js/public/navbar/NavbarModule.js"></script>
+      <script src="/js/app.js"></script>
       <script src="/js/compareTo.module.js"></script>
       <script src="/js/private/dashboard/DashboardController.js"></script>
       <script src="/js/private/pattern/PatternController.js"></script>

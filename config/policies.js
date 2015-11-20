@@ -27,6 +27,25 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
+
+
+  // PageController: {
+  //   editProfile: ['isLoggedIn'],
+  //   signin: ['isLoggedOut'],
+  //   signup: ['isLoggedOut'],
+  //   restoreProfile: ['isLoggedOut'],
+  //   administration: ['isLoggedIn', 'isAdmin'],
+  //   passwordRecoveryEmail: ['isLoggedOut'],
+  //   passwordRecoveryEmailSent: ['isLoggedOut'],
+  //   passwordReset: ['isLoggedOut'],
+  //   newTutorial: ['isLoggedIn'],
+  //   editTutorial: ['isLoggedIn'],
+  //   newVideo: ['isLoggedIn'],
+  //   editVideo: ['isLoggedIn']
+  // },
+
+
+
   '*': 'flash'
   /***************************************************************************
   *                                                                          *

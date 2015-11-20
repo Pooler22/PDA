@@ -36,8 +36,6 @@ module.exports.routes = {
   // Server-rendered HTML
   ////////////////////////////////////////////////////////////
 
-  'GET /test': {view: 'test'},
-
   'GET /': 'PageController.showHomePage',
   'GET /about': 'PageController.showAboutPage',
 

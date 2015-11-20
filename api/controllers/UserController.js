@@ -33,7 +33,7 @@ module.exports = {
     User.findOne(req.param('id'), function foundUser(err, user) {
       if (err) return next(err);
       if (!user) return next(err);
-      res.view({
+      res.json({
         user: user
       });
     });
