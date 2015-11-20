@@ -1,6 +1,15 @@
 <md-dialog aria-label="Logowanie">
-  <md-form ng-submit="submitLoginForm()">
-    <md-dialog-content>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Zaloguj się</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-svg-src="/images/delete.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <form ng-submit="submitLoginForm()">
       <md-input-container>
         <label>Email</label>
         <input ng-model="loginForm.email" type="email" name="email">
@@ -9,15 +18,15 @@
         <label>Haslo</label>
         <input ng-model="loginForm.password" type="password" name="password">
       </md-input-container>
-      <md-input type="hidden" name="_csrf" value="<%= _csrf %>" />
-    </md-dialog-content>
-    <div class="md-actions">
-      <md-button ng-click="closeDialog()" class="md-primary">
-        Anuluj
-      </md-button>
-      <md-button ng-click="submitLoginForm()">
-        Zaloguj się
-      </md-button>
-    </div>
-  </md-form>
+      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+  </md-dialog-content>
+  <div class="md-actions">
+    <md-button ng-click="closeDialog()" class="md-primary">
+      Anuluj
+    </md-button>
+    <md-button ng-click="submitLoginForm()">
+      Zaloguj się
+    </md-button>
+  </div>
 </md-dialog>

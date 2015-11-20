@@ -1,9 +1,18 @@
 <md-dialog aria-label="Rejestracja">
-  <md-form ng-submit="submitSignupForm()">
-    <md-dialog-content>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Zarejestruj się</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-svg-src="/images/delete.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <form ng-submit="submitSignupForm()">
       <md-input-container>
         <label>Imię</label>
-        <input type="text" ng-model="signupForm.name" ng-maxlength="50" name="name" required>
+        <input type="text" ng-model="signupForm.name" ng-minlength="6" ng-maxlength="50" name="name" required>
       </md-input-container>
       <md-input-container>
         <label>Nick</label>
@@ -15,21 +24,21 @@
       </md-input-container>
       <md-input-container>
         <label>Haslo</label>
-        <input ng-model="signupForm.password" type="password" name="password" required>
+        <input ng-model="signupForm.password" type="password" name="password" ng-minlength="6" required>
       </md-input-container>
       <md-input-container>
         <label>Powtórz hasło</label>
         <input type="password" ng-model="signupForm.confirmPassword" name="confirmPassword" required>
       </md-input-container>
-      <md-input type="hidden" name="_csrf" value="<%= _csrf %>" />
-    </md-dialog-content>
-    <div class="md-actions">
-      <md-button ng-click="closeDialog()" class="md-primary">
-        Anuluj
-      </md-button>
-      <md-button ng-click="submitSignupForm()">
-        Zarejestruj się
-      </md-button>
-    </div>
-  </md-form>
+      <nput type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+  </md-dialog-content>
+  <div class="md-actions">
+    <md-button ng-click="closeDialog()" class="md-primary">
+      Anuluj
+    </md-button>
+    <md-button ng-click="submitSignupForm()">
+      Zarejestruj się
+    </md-button>
+  </div>
 </md-dialog>
