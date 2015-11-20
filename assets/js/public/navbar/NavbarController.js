@@ -1,4 +1,4 @@
-angular.module('PDAModule', ['ngMaterial', 'ngSails'])
+angular.module('PDAModule')
   .controller('NavbarController', ['$scope', '$http', '$mdDialog', '$timeout', '$mdSidenav', '$log', '$mdToast',
     function ($scope, $http, $mdDialog, $timeout, $mdSidenav, $log, $mdToast) {
 

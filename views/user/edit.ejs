@@ -1,24 +1,25 @@
-<md-content flex layout-padding>
+<md-content flex layout-padding >
   <h2>Edycja profilu</h2>
   <md-form action="/user/update/<%= user.id %>" class="form-signin" method="POST">
     <md-input-container>
       <label>Imię</label>
-      <input class="form-control" name="name" type="text" value="<%= user.name %>"/>
+      <input name="name" type="text" value="<%= user.name %>"/>
     </md-input-container>
     <md-input-container>
       <label>Nick</label>
-      <input class="form-control" name="nick" type="text" value="<%= user.nick %>"/>
+      <input name="nick" type="text" value="<%= user.nick %>"/>
     </md-input-container>
     <md-input-container>
       <label>Email</label>
-      <input class="form-control" name="email" type="text" value="<%= user.email %>"/>
+      <input name="email" type="text" value="<%= user.email %>"/>
     </md-input-container>
     <% if (session.authenticated && session.User.admin) { %>
       <md-input-container>
         <label>Jest administratorem</label>
-        <input class="form-control" name="admin" type="text" value="<%= user.admin %>"/>
+        <input name="admin" type="text" value="<%= user.admin %>"/>
       </md-input-container>
     <% } %>
+
     <input class="md-button" type="submit" value="Zapisz"/>
     <input name="_csrf" type="hidden" value="<%= _csrf %>"/>
   </form>
