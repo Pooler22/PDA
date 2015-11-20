@@ -1,28 +1,37 @@
 <md-dialog aria-label="Logowanie">
-  <md-form ng-submit="updateProfileForm()">
-    <md-content flex layout-padding>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
       <h2>Edycja profilu</h2>
-      <md-form action="/user/update/1 %>" method="POST">
-        <md-input-container>
-          <label>Imię</label>
-          <input name="name" type="text" ng-model="updateProfileForm.name" name="name">
-          </input>
-        </md-input-container>
-        <md-input-container>
-          <label>Nick</label>
-          <input name="nick" type="text" ng-model="updateProfileForm.nick" name="nick" />
-        </md-input-container>
-        <md-input-container>
-          <label>Email</label>
-          <input name="email" type="text" ng-model="updateProfileForm.email" name="email" />
-        </md-input-container>
-    </md-content>
-    </md-form>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-svg-src="/images/delete.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content flex layout-padding>
+    <form ng-submit="updateProfileForm()">
+      <!-- <form action="/user/update/1 %>" method="POST"> -->
+      <md-input-container>
+        <label>Imię</label>
+        <input name="name" type="text" ng-model="updateProfileForm.name" name="name">
+        </input>
+      </md-input-container>
+      <md-input-container>
+        <label>Nick</label>
+        <input name="nick" type="text" ng-model="updateProfileForm.nick" name="nick" />
+      </md-input-container>
+      <md-input-container>
+        <label>Email</label>
+        <input name="email" type="text" ng-model="updateProfileForm.email" name="email" />
+      </md-input-container>
+    </form>
+  </md-content>
+  <div class="md-actions">
+    <md-button ng-click="closeDialog()" class="md-primary">
+      Anuluj
+    </md-button>
     <md-button ng-click="updateProfileForm()">
       Zapisz
     </md-button>
-    <md-button ng-click="updateProfileForm()">
-      Anuluj
-    </md-button>
-
+  </div>
 </md-dialog>

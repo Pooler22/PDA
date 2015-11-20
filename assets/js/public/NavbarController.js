@@ -13,7 +13,7 @@ angular.module('PDAModule')
           parent: parentEl,
           targetEvent: $event,
           url: '/',
-          templateUrl: '../templates/signupForm.html',
+          templateUrl: './templates/signupForm.html',
           controller: DialogController
         });
 
@@ -94,7 +94,7 @@ angular.module('PDAModule')
           parent: parentEl,
           targetEvent: $event,
           url: '/',
-          templateUrl: '../templates/loginForm.html',
+          templateUrl: './templates/loginForm.html',
           controller: DialogController
         });
 

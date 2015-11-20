@@ -33,7 +33,7 @@ angular.module('PDAModule')
           parent: parentEl,
           targetEvent: $event,
           url: '/',
-          templateUrl: '../templates/loginForm.html',
+          templateUrl: './templates/loginForm.html',
           controller: DialogController
         });
 
