@@ -1,17 +1,9 @@
 <div ng-cloak ng-controller="NavbarController">
   <md-toolbar class="md-toolbar-tools" hide-md hide-sm>
-    <a class="md-button" href="/">
-      Pattern Design Academy
-    </a>
-    <a class="md-button" href="/about">
-      O projekcie
-    </a>
-    <a class="md-button" href="/design-pattern">
-      Wzorce projektowe
-    </a>
-    <a class="md-button" href="/best-practice">
-      Dobre praktyki
-    </a>
+    <md-button ng-click="homePage()">Pattern Design Academy</md-button>
+    <md-button ng-click="aboutPage()">O projekcie</md-button>
+    <md-button ng-click="designPatternPage()">Wzorce projektowe</md-button>
+    <md-button ng-click="bestPracticePage()">Dobre praktyki</md-button>
 
     <span flex></span>
     <% if (session.authenticated && session.User.admin) { %>
@@ -60,23 +52,17 @@
     </md-toolbar>
     <md-content layout-padding>
       <md-list>
-
         <md-list-item>
-          <md-button class="md-primary md-raised">
-            <%= __('about') %>
-          </md-button>
+          <md-button class="md-primary md-raised" ng-click="homePage()">Pattern Design Academy</md-button>
         </md-list-item>
-
         <md-list-item>
-          <md-button class="md-primary md-raised">
-            <%= __('pattern-design') %>
-          </md-button>
+          <md-button class="md-primary md-raised" ng-click="aboutPage()">O projekcie</md-button>
         </md-list-item>
-
         <md-list-item>
-          <md-button class="md-primary md-raised">
-            <%= __('best-practice') %>
-          </md-button>
+          <md-button class="md-primary md-raised" ng-click="designPatternPage()">Wzorce projektowe</md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button class="md-primary md-raised" ng-click="bestPracticePage()">Dobre praktyki</md-button>
         </md-list-item>
 
         <% if (session.authenticated && session.User.admin) { %>
