@@ -6,11 +6,11 @@
  */
 
 module.exports = {
-  new: function(req, res) {
+  new: function (req, res) {
     res.view();
   },
 
-  create: function(req, res, next) {
+  create: function (req, res, next) {
     Exercise.create(req.params.all(), function exerciseCreated(err, exercises) {
       if (err) {
         req.session.flash = {
@@ -22,7 +22,7 @@ module.exports = {
     });
   },
 
-  index: function(req, res, next) {
+  index: function (req, res, next) {
     Exercise.find(function foundExercise(err, exercises) {
       if (err) return next(err);
       res.view({
@@ -31,7 +31,7 @@ module.exports = {
     });
   },
 
-  edit: function(req, res, next) {
+  edit: function (req, res, next) {
     Exercise.findOne(req.params.id, function foundExercise(err, exercises) {
       if (err) return next(err);
       if (!exercises) return next('Brak takiej strony.');
@@ -41,7 +41,7 @@ module.exports = {
     });
   },
 
-  update: function(req, res, next) {
+  update: function (req, res, next) {
     Exercise.update(req.params.id, req.params.all(), function updateBoard(err) {
       if (err) {
         return res.json({
@@ -54,7 +54,7 @@ module.exports = {
     });
   },
 
-  destroy: function(req, res, next) {
+  destroy: function (req, res, next) {
     try {
       Exercise.findOne(req.param('id'), function foundExercise(err, exercise) {
         if (err) return next(err);

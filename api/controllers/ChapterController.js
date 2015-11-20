@@ -6,18 +6,18 @@
  */
 
 module.exports = {
-  new: function(req, res) {
+  new: function (req, res) {
     res.view();
   },
 
-  create: function(req, res, next) {
+  create: function (req, res, next) {
     Chapter.create(req.params.all(), function chapterCreated(err) {
       if (err) return next(err);
       return res.redirect('/course/edit/' + req.param('owner'));
     });
   },
 
-  index: function(req, res, next) {
+  index: function (req, res, next) {
     Chapter.find(function foundChapter(err, chapters) {
       if (err) return next(err);
       res.view({
@@ -26,7 +26,7 @@ module.exports = {
     });
   },
 
-  edit: function(req, res, next) {
+  edit: function (req, res, next) {
     Chapter.findOne(req.params.id, function foundBoard(err, chapters) {
       if (err) return next(err);
       if (!chapters) return next('Brak takiej strony.');
@@ -36,7 +36,7 @@ module.exports = {
     });
   },
 
-  update: function(req, res, next) {
+  update: function (req, res, next) {
     Chapter.update(req.params.id, req.params.all(), function updateBoard(err) {
       if (err) {
         return res.redirect('/course/edit/' + req.param('owner'));
@@ -45,7 +45,7 @@ module.exports = {
     });
   },
 
-  destroy: function(req, res, next) {
+  destroy: function (req, res, next) {
     Chapter.findOne(req.param('id'), function foundChapter(err, chapter) {
       if (err) return next(err);
       if (!chapter) return res.json({

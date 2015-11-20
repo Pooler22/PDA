@@ -41,7 +41,7 @@ module.exports = {
     },
   },
 
-  toJSON: function() {
+  toJSON: function () {
     var obj = this.toObject();
     delete obj.password;
     delete obj.confirmation;
@@ -49,7 +49,7 @@ module.exports = {
     delete obj.encryptedPassword;
     return obj;
   },
-  beforeValidation: function(values, next) {
+  beforeValidation: function (values, next) {
 
     if (typeof values.admin !== 'undefined') {
       if (values.admin === 'unchecked') {
@@ -61,18 +61,19 @@ module.exports = {
     next();
   },
 
-  beforeCreate: function(values, next) {
+  beforeCreate: function (values, next) {
     if (!values.encryptedPassword) {
       return next({
         err: ["Password doesn't match password confirmation."]
       });
     }
 
-    require('bcrypt').hash(values.encryptedPassword, 10, function passwordEncrypted(err, encryptedPassword) {
-      if (err) return next(err);
-      values.encryptedPassword = encryptedPassword;
-      // values.online= true;
-      next();
-    });
+    require('bcrypt')
+      .hash(values.encryptedPassword, 10, function passwordEncrypted(err, encryptedPassword) {
+        if (err) return next(err);
+        values.encryptedPassword = encryptedPassword;
+        // values.online= true;
+        next();
+      });
   }
 };

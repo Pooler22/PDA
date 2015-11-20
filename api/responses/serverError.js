@@ -58,7 +58,7 @@ module.exports = function serverError(data, options) {
   // but fall back to sending JSON(P) if any errors occur.
   else return res.view('500', {
     data: data
-  }, function(err, html) {
+  }, function (err, html) {
 
     // If a view error occured, fall back to JSON(P).
     if (err) {

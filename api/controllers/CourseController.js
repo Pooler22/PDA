@@ -6,11 +6,11 @@
  */
 
 module.exports = {
-  new: function(req, res) {
+  new: function (req, res) {
     res.view();
   },
 
-  create: function(req, res, next) {
+  create: function (req, res, next) {
     Course.create(req.params.all(), function ChapterCreated(err, course) {
       if (err) {
         req.session.flash = {
@@ -22,33 +22,37 @@ module.exports = {
     });
   },
 
-  show: function(req, res, next) {
+  show: function (req, res, next) {
     Course.findOne(req.params.id, function foundCourse(err, course) {
       if (err) return next(err);
       if (!course) return next(err);
-      Chapter.find().where({
-        owner: req.params.id
-      }).exec(function foundChapter(err, chapters) {
-        if (err) return next(err);
-        var ids = [];
-        for (var i = 0, len = chapters.length; i < len; i++) {
-          ids[i] = chapters[i].id;
-        }
-        Exercise.find().where({
-          owner: ids
-        }).exec(function foundChapter(err, exercises) {
+      Chapter.find()
+        .where({
+          owner: req.params.id
+        })
+        .exec(function foundChapter(err, chapters) {
           if (err) return next(err);
-          res.view({
-            course: course,
-            chapters: chapters,
-            exercises: exercises
-          });
+          var ids = [];
+          for (var i = 0, len = chapters.length; i < len; i++) {
+            ids[i] = chapters[i].id;
+          }
+          Exercise.find()
+            .where({
+              owner: ids
+            })
+            .exec(function foundChapter(err, exercises) {
+              if (err) return next(err);
+              res.view({
+                course: course,
+                chapters: chapters,
+                exercises: exercises
+              });
+            });
         });
-      });
     });
   },
 
-  index: function(req, res, next) {
+  index: function (req, res, next) {
     sails.log.error('2');
     var condition;
     if (req.path.indexOf('design-pattern') === 1) {
@@ -59,43 +63,49 @@ module.exports = {
       return next(err);
     }
     sails.log.error(req.path);
-    Course.find().where({
-      type: condition
-    }).exec(function foundCourse(err, courses) {
-      if (err) return next(err);
-      res.view({
-        courses: courses
+    Course.find()
+      .where({
+        type: condition
+      })
+      .exec(function foundCourse(err, courses) {
+        if (err) return next(err);
+        res.view({
+          courses: courses
+        });
       });
-    });
   },
 
-  edit: function(req, res, next) {
+  edit: function (req, res, next) {
     Course.findOne(req.params.id, function foundCourse(err, course) {
       if (err) return next(err);
       if (!course) return next(err);
-      Chapter.find().where({
-        owner: req.params.id
-      }).exec(function foundChapter(err, chapters) {
-        if (err) return next(err);
-        var ids = [];
-        for (var i = 0, len = chapters.length; i < len; i++) {
-          ids[i] = chapters[i].id;
-        }
-        Exercise.find().where({
-          owner: ids
-        }).exec(function foundChapter(err, exercises) {
+      Chapter.find()
+        .where({
+          owner: req.params.id
+        })
+        .exec(function foundChapter(err, chapters) {
           if (err) return next(err);
-          res.view({
-            course: course,
-            chapters: chapters,
-            exercises: exercises
-          });
+          var ids = [];
+          for (var i = 0, len = chapters.length; i < len; i++) {
+            ids[i] = chapters[i].id;
+          }
+          Exercise.find()
+            .where({
+              owner: ids
+            })
+            .exec(function foundChapter(err, exercises) {
+              if (err) return next(err);
+              res.view({
+                course: course,
+                chapters: chapters,
+                exercises: exercises
+              });
+            });
         });
-      });
     });
   },
 
-  update: function(req, res, next) {
+  update: function (req, res, next) {
     Course.update(req.params.id, req.params.all(), function updateCourse(err) {
       if (err) {
         return res.redirect('/course/edit/' + req.param('id'));
@@ -104,7 +114,7 @@ module.exports = {
     });
   },
 
-  destroy: function(req, res, next) {
+  destroy: function (req, res, next) {
     Course.findOne(req.param('id'), function foundCourse(err, course) {
       if (err) return next(err);
       if (!course) return next(err);

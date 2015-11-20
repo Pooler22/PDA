@@ -1,7 +1,7 @@
 /**
  * Allow any authenticated user.
  */
-module.exports = function(req, res, ok) {
+module.exports = function (req, res, ok) {
   if (req.session.User) {
     return ok();
   } else {

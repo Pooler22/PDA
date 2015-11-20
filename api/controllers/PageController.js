@@ -6,11 +6,11 @@
  */
 
 module.exports = {
-  showHomePage: function(req, res) {
+  showHomePage: function (req, res) {
     if (!req.session.authenticated) {
       return res.view('static/homepage');
     }
-    User.findOne(req.session.authenticated, function(err, user) {
+    User.findOne(req.session.authenticated, function (err, user) {
       if (err) {
         return res.negotiate(err);
       }
@@ -25,7 +25,7 @@ module.exports = {
     });
   },
 
-  showAboutPage: function(req, res) {
+  showAboutPage: function (req, res) {
     return res.view('static/about');
   }
 };
