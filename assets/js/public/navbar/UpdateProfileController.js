@@ -4,33 +4,25 @@ angular.module('PDAModule')
 
 
       $scope.updateProfileForm = function ($event) {
-        $http({
-            method: 'GET',
-            url: '/user/edit/1'
-          })
-          .then(function onSuccess(sailsResponse) {
-
-            var parentEl = angular.element(document.body);
-            $mdDialog.show({
-              parent: parentEl,
-              targetEvent: $event,
-              url: '/',
-              templateUrl: '../../templates/updateProfileForm.html',
-              controller: DialogController
-            });
-
-
-            $scope.updateProfileForm.name = sailsResponse.data.name;
-            $scope.updateProfileForm.nick = sailsResponse.data.nick;
-            $scope.updateProfileForm.email = sailsResponse.data.email;
-
-
+          var parentEl = angular.element(document.body);
+          $mdDialog.show({
+            parent: parentEl,
+            targetEvent: $event,
+            url: '/',
+            templateUrl: '../../templates/updateProfileForm.html',
+            controller: DialogController
           });
 
 
-
-
         function DialogController($scope, $mdDialog, $http) {
+          $http.get('/user/edit/1')
+          .then(function onSuccess(sailsResponse) {
+            $scope.updateProfileForm.name = sailsResponse.data.user.name;
+            $scope.updateProfileForm.nick = sailsResponse.data.user.nick;
+            $scope.updateProfileForm.email = sailsResponse.data.user.email;
+            console.log(sailsResponse);
+          });
+
           $scope.closeDialog = function () {
             $mdDialog.hide();
           };

@@ -1,31 +1,28 @@
 <md-dialog aria-label="Logowanie">
-  <md-form ng-submit="submitLoginForm()">
+  <md-form ng-submit="updateProfileForm()">
     <md-content flex layout-padding>
       <h2>Edycja profilu</h2>
       <md-form action="/user/update/1 %>" method="POST">
         <md-input-container>
           <label>Imię</label>
-          <input name="name" type="text" ng-model="updateProfileForm.name" />
+          <input name="name" type="text" ng-model="updateProfileForm.name" name="name">
+          </input>
         </md-input-container>
         <md-input-container>
           <label>Nick</label>
-          <input name="nick" type="text" ng-model="updateProfileForm.nick" />
+          <input name="nick" type="text" ng-model="updateProfileForm.nick" name="nick" />
         </md-input-container>
         <md-input-container>
           <label>Email</label>
-          <input name="email" type="text" ng-model="updateProfileForm.email" />
+          <input name="email" type="text" ng-model="updateProfileForm.email" name="email" />
         </md-input-container>
-        <% if (session.authenticated && session.User.admin) { %>
-          <md-input-container>
-            <label>Jest administratorem</label>
-            <input name="admin" type="text" ng-model="signupForm.isAdmin" />
-          </md-input-container>
-          <% } %>
-
-            <input class="md-button" type="submit" value="Zapisz" />
-            <input name="_csrf" type="hidden" value="<%= _csrf %>" />
-            </form>
     </md-content>
-
     </md-form>
+    <md-button ng-click="updateProfileForm()">
+      Zapisz
+    </md-button>
+    <md-button ng-click="updateProfileForm()">
+      Anuluj
+    </md-button>
+
 </md-dialog>
