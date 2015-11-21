@@ -26,37 +26,43 @@ window.SAILS_LOCALS = {
 
 <body ng-app="PDAModule">
   <!--BODY -->
-  <%- include navbar/nav.ejs %>
-    <%- body %>
-      <!--BODY END-->
+  <div layout="row">
+    <%- include nav.ejs %>
+      <section layout="column" flex>
+        <%- include toolbar.ejs %>
+          <%- body %>
+      </section>
 
-      <!--TEMPLATES-->
-      <script type="text/javascript" src="/jst.js"></script>
-      <!--TEMPLATES END-->
+  </div>
+  <!--BODY END-->
 
-      <!--SCRIPTS-->
-      <script src="/js/dependencies/sails.io.js"></script>
-      <script src="/js/dependencies/angular.js"></script>
-      <script src="/js/dependencies/angular-toastr.min.js"></script>
-      <script src="/js/dependencies/angular-toastr.tpls.min.js"></script>
-      <script src="/js/dependencies/angular-animate.min.js"></script>
-      <script src="/js/dependencies/angular-aria.min.js"></script>
-      <script src="/js/dependencies/angular-material.min.js"></script>
-      <script src="/js/dependencies/angular-mocks.js"></script>
-      <script src="/js/dependencies/angular-moment.js"></script>
-      <script src="/js/dependencies/angular-route.js"></script>
-      <script src="/js/dependencies/angular-sails.min.js"></script>
-      <script src="/js/dependencies/md-data-table.min.js"></script>
-      <script src="/js/dependencies/moment.min.js"></script>
-      <script src="/js/app.js"></script>
-      <script src="/js/compareTo.module.js"></script>
-      <script src="/js/private/DashboardController.js"></script>
-      <script src="/js/public/CourseController.js"></script>
-      <script src="/js/public/HomepageController.js"></script>
-      <script src="/js/public/LoginController.js"></script>
-      <script src="/js/public/NavbarController.js"></script>
-      <script src="/js/public/UpdateProfileController.js"></script>
-      <!--SCRIPTS END-->
+  <!--TEMPLATES-->
+  <script type="text/javascript" src="/jst.js"></script>
+  <!--TEMPLATES END-->
+
+  <!--SCRIPTS-->
+  <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/dependencies/angular.js"></script>
+  <script src="/js/dependencies/angular-toastr.min.js"></script>
+  <script src="/js/dependencies/angular-toastr.tpls.min.js"></script>
+  <script src="/js/dependencies/angular-animate.min.js"></script>
+  <script src="/js/dependencies/angular-aria.min.js"></script>
+  <script src="/js/dependencies/angular-material.min.js"></script>
+  <script src="/js/dependencies/angular-mocks.js"></script>
+  <script src="/js/dependencies/angular-moment.js"></script>
+  <script src="/js/dependencies/angular-route.js"></script>
+  <script src="/js/dependencies/angular-sails.min.js"></script>
+  <script src="/js/dependencies/md-data-table.min.js"></script>
+  <script src="/js/dependencies/moment.min.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/compareTo.module.js"></script>
+  <script src="/js/private/DashboardController.js"></script>
+  <script src="/js/public/CourseController.js"></script>
+  <script src="/js/public/HomepageController.js"></script>
+  <script src="/js/public/LoginController.js"></script>
+  <script src="/js/public/NavbarController.js"></script>
+  <script src="/js/public/UpdateProfileController.js"></script>
+  <!--SCRIPTS END-->
 
 </body>
 
