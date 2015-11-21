@@ -18,13 +18,13 @@
   <input name="_csrf" type="hidden" value="<%= _csrf %>">
 </form>
 <div class="md-actions" layout="row">
-  <md-button class="md-primary">
+  <md-button class="md-primary" ng-click="backToIndex()">
     Anuluj
   </md-button>
   <md-button class="md-primary" ng-click="submitUpdateCourseForm()">
     Zapisz
   </md-button>
-  <md-button class="md-primary" href="/course/destroy/<%= course.id %>">
+  <md-button class="md-primary" ng-click="deleteCourse()">
     Usuń
   </md-button>
 </div>
