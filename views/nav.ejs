@@ -1,4 +1,5 @@
-<md-divider></md-divider><div ng-cloak ng-controller="NavbarController">
+<md-divider></md-divider>
+<div ng-cloak ng-controller="NavbarController">
   <md-sidenav md-component-id="left" md-is-locked-close="$mdMedia('gt-md')">
     <md-list >
       <md-list-item ng-click="aboutPage()">
@@ -23,11 +24,6 @@
         <a class="md-button" href="/user">
           <%= __('users') %>
         </a>
-
-        <a class="md-button" href="/user/new">
-          <%= __('add-users') %>
-        </a>
-
       <% } %>
       <% if (session.authenticated) { %>
         <a class="md-button" href="/user/show/<%= session.User.id %>">Twój profil</a>

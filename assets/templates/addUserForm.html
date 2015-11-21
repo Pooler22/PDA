@@ -1,0 +1,48 @@
+<md-dialog aria-label="Dodawania użytkownika">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Zarejestruj się</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-svg-src="/images/delete.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <form ng-submit="submitSignupForm()">
+      <md-input-container>
+        <label>Imię</label>
+        <input type="text" ng-model="signupForm.name" ng-minlength="6" ng-maxlength="50" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Nick</label>
+        <input type="text" ng-model="signupForm.nick" ng-maxlength="50" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Adres email</label>
+        <input ng-model="signupForm.email" type="email" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Haslo</label>
+        <input ng-model="signupForm.password" type="password" ng-minlength="6" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Powtórz hasło</label>
+        <input type="password" ng-model="signupForm.confirmPassword" name="confirmPassword" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Jest administratorem</label>
+        <md-checkbox ng-model="signupForm.isAdmin"></md-checkbox>
+      </md-input-container>
+      <input type="hidden" ng-model="signupForm.csrf" value="<%= _csrf %>" />
+    </form>
+  </md-dialog-content>
+  <div class="md-actions">
+    <md-button ng-click="closeDialog()">
+      Anuluj
+    </md-button>
+    <md-button ng-click="submitSignupForm()" class="md-primary">
+      Zarejestruj
+    </md-button>
+  </div>
+</md-dialog>
