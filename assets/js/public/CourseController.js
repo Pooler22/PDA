@@ -9,25 +9,21 @@ angular.module('PDAModule')
             shortdescription: $scope.newCourseForm.shortdescription,
           })
           .then(function onSuccess(sailsResponse) {
-            var toast = $mdToast.simple()
+            $mdToast.show($mdToast.simple()
               .content('Kurs dodany')
               .action('OK')
-              .position('top right')
-              .highlightAction(false);
-            console.log(sailsResponse);
-            $mdToast.show(toast);
-            // window.location = '/course/edit/';
+              .position('bottom left')
+              .highlightAction(false));
+            window.location = '/course/edit/' + sailsResponse.data.id;
           })
           .catch(function onError(sailsResponse) {
-            var toast1 = $mdToast.simple()
+            $mdToast.show($mdToast.simple()
               .content('Wystąpił błąd, spróbuj ponownie.')
               .action('OK')
-              .position('top right')
-              .highlightAction(false);
-            $mdToast.show(toast1);
+              .position('bottom left')
+              .highlightAction(false));
             return;
-          })
-          .finally(function eitherWay() {});
+          });
       };
 
       $scope.submitUpdateCourseForm = function () {

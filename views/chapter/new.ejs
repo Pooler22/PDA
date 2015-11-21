@@ -1,18 +1,25 @@
-<form action="/chapter/create" class="form-create-pages" method="POST">
-  <dt>Tytuł rozdziału</dt>
-  <dd>
-    <input class=" form-control" name="name" placeholder="Dodaj tytuł rozdziału" type="text">
-  </dd>
-  <dt>Kolejność rozdziału</dt>
-  <dd>
-    <input class=" form-control" name="order" placeholder="Dodaj kolejsność" type="text">
-  </dd>
-  <dt>Treść rozdziału</dt>
-  <dd>
-    <input class=" form-control" name="content" placeholder="Treść rozdziału" type="text">
-    <br>
-    <button class="btn btn-success" type="submit">Dodaj rozdział</button>
-  </dd>
-  <input class="course-id form-control" name="owner" type="hidden" value="<%= course.id %>">
-  <input name="_csrf" type="hidden" value="<%= _csrf %>">
-</form>
+<md-card>
+  <md-card-content>
+    <h2>Dodaj zodział</h2>
+    <form action="/chapter/create" method="POST">
+      <md-input-container>
+        <label>Tytuł rozdziału</label>
+        <input name="name" require type="text">
+      </md-input-container>
+      <md-input-container>
+        <label>Kolejnośc rozdziału</label>
+        <input name="order" require type="text">
+      </md-input-container>
+      <md-input-container>
+        <label>Treść rozdziału</label>
+        <input name="content" require type="text">
+      </md-input-container>
+      <input class="form-control" name="owner" type="hidden" value="<%= course.id %>">
+      <input name='_csrf' type='hidden' value='<%= _csrf %>'>
+      <a type="submit">Dodaj rozdział</a>
+    </form>
+    <div class="md-actions" layout="row">
+      <a class="md-button" type="submit">Dodaj rozdział</a>
+    </div>
+  </md-card-content>
+</md-card>

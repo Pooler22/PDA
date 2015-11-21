@@ -1,36 +1,36 @@
 <md-content flex layout-padding>
   <h2>Utwórz konto</h2>
-  <md-form ng-submit="submitSignupForm()" id="sign-up-form" class="form-signin" name="signup">
+  <md-form class="form-signin" id="sign-up-form" name="signup" ng-submit="submitSignupForm()">
 
     <md-input-container>
       <label>Imię</label>
-      <input type="text" name="name" ng-model="signupForm.name" ng-maxlength="50" required>
+      <input name="name" ng-maxlength="50" ng-model="signupForm.name" required type="text">
     </md-input-container>
 
     <md-input-container>
       <label>Nick</label>
-      <input type="text" name="nick" ng-model="signupForm.nick " ng-maxlength="50" required>
+      <input name="nick" ng-maxlength="50" ng-model="signupForm.nick " required type="text">
     </md-input-container>
 
     <md-input-container>
       <label>Adress email</label>
-      <input type="email" name="email" ng-model="signupForm.email" required>
+      <input name="email" ng-model="signupForm.email" required type="email">
     </md-input-container>
 
     <md-input-container>
       <label>Hasło</label>
-      <input type="password" name="password" ng-model="signupForm.password" id="password" required ng-minlength="6" compare-to="signupForm.confirmPassword">
+      <input compare-to="signupForm.confirmPassword" id="password" name="password" ng-minlength="6" ng-model="signupForm.password" required type="password">
     </md-input-container>
 
     <md-input-container>
       <label>Powtórz hasło</label>
-      <input type="password" name="confirmation" ng-model="signupForm.confirmPassword" required>
+      <input name="confirmation" ng-model="signupForm.confirmPassword" required type="password">
     </md-input-container>
 
-    <a class="md-button" type="submit" ng-disabled="signup.$invalid">
-        Utwórz konto
+    <a class="md-button" ng-disabled="signup.$invalid" type="submit">
+      Utwórz konto
     </a>
 
-    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    <input name="_csrf" type="hidden" value="<%= _csrf %>"/>
   </md-form>
 </md-content>
