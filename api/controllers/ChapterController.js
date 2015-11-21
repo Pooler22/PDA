@@ -31,7 +31,7 @@ module.exports = {
   edit: function (req, res, next) {
     Chapter.findOne(req.params.id, function foundBoard(err, chapters) {
       if (err) return next(err);
-      if (!chapters) return next('Brak takiej strony.');
+      if (!chapters) return next(err);
       res.view({
         chapters: chapters
       });
@@ -40,9 +40,7 @@ module.exports = {
 
   update: function (req, res, next) {
     Chapter.update(req.params.id, req.params.all(), function updateBoard(err) {
-      if (err) {
-        return res.redirect('/course/edit/' + req.param('owner'));
-      }
+      if (err) return next(err);
       res.redirect('/course/edit/' + req.param('owner'));
     });
   },

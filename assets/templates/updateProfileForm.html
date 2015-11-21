@@ -12,13 +12,13 @@
     <form ng-submit="submitUpdateProfileForm()">
       <md-input-container>
         <label>Imię</label>
-        <input type="text" ng-model="updateProfileForm.name" value="{{ wow }}"></input>
+        <input type="text" ng-model="updateProfileForm.name"></input>
       </md-input-container>
-      <md-input-container value="{{ nick }}">
+      <md-input-container>
         <label>Nick</label>
         <input type="text" ng-model="updateProfileForm.nick"></input>
       </md-input-container>
-      <md-input-container md-value="{{ email }}">
+      <md-input-container>
         <label>Email</label>
         <input type="text" ng-model="updateProfileForm.email"></input>
       </md-input-container>
@@ -28,7 +28,7 @@
     <md-button ng-click="closeDialog()">
       Anuluj
     </md-button>
-    <md-button ng-click="updateProfileForm()" class="md-primary">
+    <md-button ng-click="submitUpdateProfileForm()" class="md-primary">
       Zapisz
     </md-button>
   </div>
