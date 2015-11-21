@@ -16,9 +16,9 @@ module.exports = {
         req.session.flash = {
           err: err
         };
-        return res.redirect('/course/edit/' + course.id);
+        return res.json({err:err});
       }
-      return res.redirect('/course/edit/' + course.id);
+      return res.json({id:course.id});
     });
   },
 

@@ -1,9 +1,15 @@
-<h3>Edytuj kurs</h3>
-<hr>
-<div ng-cloak ng-controller="SignupController">
-  <dl class="dl-horizontal">
+<md-card ng-cloak ng-controller="CourseController">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Edytuj kurs</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+  <md-card-content>
+
     <% include editheader.ejs %>
     <% include ../chapter/edit.ejs %>
     <% include ../chapter/new.ejs %>
-  </dl>
-</div>
+
+  </md-card-content>
+</md-card>
