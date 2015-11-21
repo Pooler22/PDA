@@ -1,17 +1,16 @@
-<div ng-cloak ng-controller="NavbarController">
-  <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-    <md-button ng-click="homePage()">Pattern Design Academy</md-button>
+<md-divider></md-divider><div ng-cloak ng-controller="NavbarController">
+  <md-sidenav md-component-id="left" md-is-locked-close="$mdMedia('gt-md')">
     <md-list >
       <md-list-item ng-click="aboutPage()">
-        <md-icon md-svg-icon="images/menu.svg"></md-icon>
+        <md-icon md-svg-icon="./images/menu.svg"></md-icon>
         <p>O projekcie</p>
       </md-list-item>
       <md-list-item ng-click="designPatternPage()">
-        <md-icon md-svg-icon="images/menu.svg"></md-icon>
+        <md-icon md-svg-icon="./images/menu.svg"></md-icon>
         <p>Wzorce projektowe</p>
       </md-list-item>
       <md-list-item ng-click="bestPracticePage()">
-        <md-icon md-svg-icon="images/menu.svg"></md-icon>
+        <md-icon md-svg-icon="./images/menu.svg"></md-icon>
         <p>Dobre praktyki</p>
       </md-list-item>
 
@@ -32,19 +31,19 @@
       <% } %>
       <% if (session.authenticated) { %>
         <a class="md-button" href="/user/show/<%= session.User.id %>">Twój profil</a>
-        
+
         <md-list-item ng-click="logOut()">
-          <md-icon md-svg-icon="images/menu.svg"></md-icon>
+          <md-icon md-svg-icon="./images/menu.svg"></md-icon>
           <p>Wyloguj się</p>
         </md-list-item>
       <% } %>
       <% if (!session.authenticated) { %>
         <md-list-item ng-click="logIn($event)">
-          <md-icon md-svg-icon="images/menu.svg"></md-icon>
+          <md-icon md-svg-icon="./images/menu.svg"></md-icon>
           <p>Zaloguj się</p>
         </md-list-item>
         <md-list-item ng-click="signUp($event)">
-          <md-icon md-svg-icon="images/menu.svg"></md-icon>
+          <md-icon md-svg-icon="./images/menu.svg"></md-icon>
           <p>Zarejestruj się</p>
         </md-list-item>
 

@@ -1,4 +1,4 @@
-<md-dialog aria-label="Logowanie">
+<md-dialog aria-label="Edytuj profil">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h2>Edycja profilu</h2>
@@ -8,29 +8,27 @@
       </md-button>
     </div>
   </md-toolbar>
-  <md-content flex layout-padding>
-    <form ng-submit="updateProfileForm()">
-      <!-- <form action="/user/update/1 %>" method="POST"> -->
+  <md-dialog-content>
+    <form ng-submit="submitUpdateProfileForm()">
       <md-input-container>
         <label>Imię</label>
-        <input name="name" type="text" ng-model="updateProfileForm.name" name="name">
-        </input>
+        <input type="text" ng-model="updateProfileForm.name" />
       </md-input-container>
       <md-input-container>
         <label>Nick</label>
-        <input name="nick" type="text" ng-model="updateProfileForm.nick" name="nick" />
+        <input type="text" ng-model="updateProfileForm.nick" />
       </md-input-container>
       <md-input-container>
         <label>Email</label>
-        <input name="email" type="text" ng-model="updateProfileForm.email" name="email" />
+        <input type="text" ng-model="updateProfileForm.email" />
       </md-input-container>
     </form>
-  </md-content>
+  </md-dialog-content>
   <div class="md-actions">
-    <md-button ng-click="closeDialog()" class="md-primary">
+    <md-button ng-click="closeDialog()">
       Anuluj
     </md-button>
-    <md-button ng-click="updateProfileForm()">
+    <md-button ng-click="updateProfileForm()" class="md-primary">
       Zapisz
     </md-button>
   </div>

@@ -27,11 +27,11 @@ window.SAILS_LOCALS = {
 <body ng-app="PDAModule">
   <!--BODY -->
   <div layout="row">
-    <%- include nav.ejs %>
-      <section layout="column" flex>
-        <%- include toolbar.ejs %>
-          <%- body %>
-      </section>
+    <section layout="column" flex>
+      <%- include nav.ejs %>
+      <%- include toolbar.ejs %>
+        <%- body %>
+    </section>
 
   </div>
   <!--BODY END-->

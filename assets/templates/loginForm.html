@@ -12,20 +12,20 @@
     <form ng-submit="submitLoginForm()">
       <md-input-container>
         <label>Email</label>
-        <input ng-model="loginForm.email" type="email" name="email">
+        <input ng-model="loginForm.email" type="email">
       </md-input-container>
       <md-input-container>
         <label>Haslo</label>
-        <input ng-model="loginForm.password" type="password" name="password">
+        <input ng-model="loginForm.password" type="password">
       </md-input-container>
-      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+      <input type="hidden" ng-model="loginForm.csrf" value="<%= _csrf %>" />
     </form>
   </md-dialog-content>
   <div class="md-actions">
-    <md-button ng-click="closeDialog()" class="md-primary">
+    <md-button ng-click="closeDialog()">
       Anuluj
     </md-button>
-    <md-button ng-click="submitLoginForm()">
+    <md-button ng-click="submitLoginForm()" class="md-primary">
       Zaloguj się
     </md-button>
   </div>

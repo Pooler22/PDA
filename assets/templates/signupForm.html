@@ -12,32 +12,32 @@
     <form ng-submit="submitSignupForm()">
       <md-input-container>
         <label>Imię</label>
-        <input type="text" ng-model="signupForm.name" ng-minlength="6" ng-maxlength="50" name="name" required>
+        <input type="text" ng-model="signupForm.name" ng-minlength="6" ng-maxlength="50" required>
       </md-input-container>
       <md-input-container>
         <label>Nick</label>
-        <input type="text" ng-model="signupForm.nick" ng-maxlength="50" name="nick" required>
+        <input type="text" ng-model="signupForm.nick" ng-maxlength="50" required>
       </md-input-container>
       <md-input-container>
         <label>Adres email</label>
-        <input ng-model="signupForm.email" type="email" name="email" required>
+        <input ng-model="signupForm.email" type="email" required>
       </md-input-container>
       <md-input-container>
         <label>Haslo</label>
-        <input ng-model="signupForm.password" type="password" name="password" ng-minlength="6" required>
+        <input ng-model="signupForm.password" type="password" ng-minlength="6" required>
       </md-input-container>
       <md-input-container>
         <label>Powtórz hasło</label>
         <input type="password" ng-model="signupForm.confirmPassword" name="confirmPassword" required>
       </md-input-container>
-      <nput type="hidden" name="_csrf" value="<%= _csrf %>" />
+      <input type="hidden" ng-model="signupForm.csrf" value="<%= _csrf %>" />
     </form>
   </md-dialog-content>
   <div class="md-actions">
-    <md-button ng-click="closeDialog()" class="md-primary">
+    <md-button ng-click="closeDialog()">
       Anuluj
     </md-button>
-    <md-button ng-click="submitSignupForm()">
+    <md-button ng-click="submitSignupForm()" class="md-primary">
       Zarejestruj się
     </md-button>
   </div>
