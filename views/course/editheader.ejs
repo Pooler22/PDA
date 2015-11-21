@@ -1,25 +1,30 @@
-<form action="/course/update/<%= course.id %>" class="form-update-course" method="POST">
-  <div class="form-group">
-    <dt>Nazwa kursu:</dt>
-    <dd>
-      <input class="form-control" name="name" placeholder="Dodaj nwazę wzorca" type="text" value="<%= course.name %>">
-    </dd>
-    <dt>Typ kursu:</dt>
-    <dd>
-      <select class="form-control" name="type">
-        <option>Pattern design</option>
-        <option>Best practice</option>
-      </select>
-    </dd>
-    <dt>Krótki opis:</dt>
-    <dd>
-      <textarea class="form-control" name="shortdescription" placeholder="Dodaj krótki opis" type="text"><%- course.shortdescription %></textarea>
-      <input name="_csrf" type="hidden" value="<%= _csrf %>">
-      <br>
-      <button class="btn btn-primary" type="submit">Zapisz</button>
-      <a class="btn btn-warning" href="/course">Anuluj</a>
-      <a class="btn btn-danger" href="/course/destroy/<%= course.id %>">Usuń</a>
-    </dd>
-  </div>
+<form submit="submitUpdateCourseForm()">
+  <md-input-container>
+    <label>Nazwa kursu</label>
+    <input ng-model="updateCourseForm.name" value="<%= course.name %>">
+  </md-input-container>
+  <md-input-container>
+    <label>Typ kursu</label>
+    <md-select ng-model="updateCourseForm.type">
+      <md-option>Pattern design</md-option>
+      <md-option>Best practice</md-option>
+    </md-select>
+  </md-input-container>
+  <md-input-container>
+    <label>Krótki opis</label>
+    <textarea columns="1" ng-model="updateCourseForm.shortdescription"><%- course.shortdescription %></textarea>
+  </md-input-container>
+  <input name="id" ng-model="updateCourseForm.id" type="hidden" value="<%= course.id %>">
+  <input name="_csrf" type="hidden" value="<%= _csrf %>">
 </form>
-<hr>
+<div class="md-actions" layout="row">
+  <md-button class="md-primary" ng-click="backToIndex()">
+    Anuluj
+  </md-button>
+  <md-button class="md-primary" ng-click="submitUpdateCourseForm()">
+    Zapisz
+  </md-button>
+  <md-button class="md-primary" ng-click="deleteCourse()">
+    Usuń
+  </md-button>
+</div>

@@ -1,27 +1,29 @@
 <% _.each(chapters, function(chapter) { %>
-  <form action="/chapter/update/<%= chapter.id %>/" class="form-update-course" method="POST">
-    <dt>Tytuł rozdziału</dt>
-    <dd>
-      <input class=" form-control" name="name" placeholder="Dodaj tytuł rozdziału" type="text" value="<%= chapter.name %>">
-    </dd>
-    <dt>Kolejność rozdziału</dt>
-    <dd>
-      <input class=" form-control" name="order" placeholder="Dodaj kolejsność" type="text" value="<%= chapter.order %>">
-    </dd>
-    <dt>Treść rozdziału</dt>
-    <dd>
-      <input class=" form-control" name="content" placeholder="Dodaj treść rozdziału" type="text" value="<%= chapter.content %>">
-      <input class="form-control" name="owner" type="hidden" value="<%= course.id %>">
-      <input name='_csrf' type='hidden' value='<%= _csrf %>'>
-      <br>
-      <button class="btn btn-success" type="submit">Uaktualnij rozdzial</button>
-      <a class="btn btn-danger" href="/chapter/destroy/<%= chapter.id %>">Usuń rozdzial</a>
-    </dd>
-  </form>
-  <hr>
-  <dd>
-    <% include ../exercise/index.ejs %>
-    <% include ../exercise/new.ejs %>
-  </dd>
-  <hr>
+  <md-card>
+    <md-card-content>
+      <form>
+        <md-input-container>
+          <label>Tytuł rozdziału</label>
+          <input name="name" type="text" value="<%= chapter.name %>">
+        </md-input-container>
+        <md-input-container>
+          <label>Kolejnośc rozdziału</label>
+          <input name="order" type="text" value="<%= chapter.order %>">
+        </md-input-container>
+        <md-input-container>
+          <label>Treść rozdziału</label>
+          <input name="content" type="text" value="<%= chapter.content %>">
+        </md-input-container>
+        <input class="form-control" name="owner" type="hidden" value="<%= course.id %>">
+        <input name='_csrf' type='hidden' value='<%= _csrf %>'>
+      </form>
+      <div class="md-actions" layout="row">
+        <a class="md-button" type="submit">Uaktualnij rozdzial</a>
+        <a class="-button" href="/chapter/destroy/<%= chapter.id %>">Usuń rozdzial</a>
+      </div>
+
+    </md-card-content>
+    <% include ../exercise/index.ejs %><% include ../exercise/new.ejs %>
+  </md-card>
+
 <% }) %>

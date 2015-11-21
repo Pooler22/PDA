@@ -1,0 +1,50 @@
+<md-toolbar class="md-toolbar-tools" ng-controller="NavbarController">
+  <md-button aria-label="Menu" class="md-icon-button" hide-gt-md ng-click="toggleLeft()">
+    <md-icon md-svg-icon="./images/menu.svg"></md-icon>
+  </md-button>
+  <md-button ng-click="homePage()">
+    <p>Pattern Design Academy</p>
+  </md-button>
+  <md-button ng-click="aboutPage()">
+    <p>O projekcie</p>
+  </md-button>
+  <md-button ng-click="designPatternPage()">
+    <p>Wzorce projektowe</p>
+  </md-button>
+  <md-button ng-click="bestPracticePage()">
+    <p>Dobre praktyki</p>
+  </md-button>
+  <div flex></div>
+  <% if (session.authenticated && session.User.admin) { %>
+
+    <a class="md-button" href="/course/new">
+      <%= __('add-course') %>
+    </a>
+
+    <a class="md-button" href="/user">
+      <%= __('users') %>
+    </a>
+
+    <a class="md-button" href="/user/new">
+      <%= __('add-users') %>
+    </a>
+
+  <% } %>
+  <% if (session.authenticated) { %>
+    <a class="md-button" href="/user/show/<%= session.User.id %>">Twój profil</a>
+
+    <md-button ng-click="logOut()">
+      <p>Wyloguj się</p>
+    </md-button>
+  <% } %>
+  <% if (!session.authenticated) { %>
+    <md-button ng-click="logIn($event)">
+      <p>Zaloguj się</p>
+    </md-button>
+    <md-button ng-click="signUp($event)">
+      <p>Zarejestruj się</p>
+    </md-button>
+
+  <% } %>
+
+</md-toolbar>

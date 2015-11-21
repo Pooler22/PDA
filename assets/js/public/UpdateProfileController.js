@@ -2,33 +2,39 @@ angular.module('PDAModule')
   .controller('UpdateProfileController', ['$scope', '$http', '$mdDialog', '$timeout', '$mdSidenav', '$log', '$mdToast',
     function ($scope, $http, $mdDialog, $timeout, $mdSidenav, $log, $mdToast) {
 
-
       $scope.updateProfileForm = function ($event) {
-          var parentEl = angular.element(document.body);
-          $mdDialog.show({
-            parent: parentEl,
-            targetEvent: $event,
-            url: '/',
-            templateUrl: '../../templates/updateProfileForm.html',
-            controller: DialogController
-          });
 
+        var parentEl = angular.element(document.body);
+        $mdDialog.show({
+          parent: parentEl,
+          targetEvent: $event,
+          url: '/',
+          templateUrl: '../../templates/updateProfileForm.html',
+          controller: DialogController,
+          locals: {
+            $scope: $scope
+          },
+        });
 
         function DialogController($scope, $mdDialog, $http) {
-          $http.get('/user/edit/1')
-          .then(function onSuccess(sailsResponse) {
-            $scope.updateProfileForm.name = sailsResponse.data.user.name;
-            $scope.updateProfileForm.nick = sailsResponse.data.user.nick;
-            $scope.updateProfileForm.email = sailsResponse.data.user.email;
-            console.log(sailsResponse);
-          });
+          $http.get('/user/edit/')
+            .then(function onSuccess(sailsResponse) {
+              // console.log(sailsResponse.data.user.name);
+              console.log(sailsResponse.data.user.nick);
+              console.log(sailsResponse.data.user.email);
+              $scope.wow = sailsResponse.data.user.name;
+
+              // $scope.name = sailsResponse.data.user.name;
+              // $scope.nick = sailsResponse.data.user.nick;
+              // $scope.email = sailsResponse.data.user.email;
+              console.log(sailsResponse);
+            });
 
           $scope.closeDialog = function () {
             $mdDialog.hide();
           };
 
           $scope.submitLoginForm = function () {
-            //$scope.loginForm.loading = true;
             $http.put('/login', {
                 email: $scope.loginForm.email,
                 password: $scope.loginForm.password

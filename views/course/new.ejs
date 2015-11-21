@@ -1,38 +1,28 @@
-<md-content flex layout-padding>
-  <label>Dodaj kurs</label>
-  <md-form ng-submit="submitLoginForm()">
+<div ng-cloak ng-controller="CourseController">
+  <md-content flex layout-align="center center">
     <md-dialog-content>
-
-      <md-input-container>
-        <label>Nazwa kursu</label>
-        <input name="name" ng-model="addCourseForm.name" type="text">
-      </md-input-container>
-
-      <md-input-container>
-        <label>Typ kursu</label>
-        <md-select ng-model="addCourseForm.type">
-          <md-option>
-            Pattern design
-          </md-option>
-          <md-option>
-            Best practice
-          </md-option>
-        </md-select>
-      </md-input-container>
-
-      <md-input-container>
-        <label>Krótki opis</label>
-        <input name="shortdescription" ng-model="addCourseForm.shortdescription" type="text">
-      </md-input-container>
-
+      <form submit="submitNewCourseForm()">
+        <md-input-container>
+          <label>Nazwa kursu</label>
+          <input name="name" ng-model="newCourseForm.name" type="text">
+        </md-input-container>
+        <md-input-container>
+          <label>Typ kursu</label>
+          <md-select ng-model="newCourseForm.type">
+            <md-option>Pattern design</md-option>
+            <md-option>Best practice</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container>
+          <label>Krótki opis</label>
+          <input name="shortdescription" ng-model="newCourseForm.shortdescription" type="text">
+        </md-input-container>
+      </form>
     </md-dialog-content>
-    <div class="md-actions">
-      <md-button ng-click="submitLoginForm()">
+    <div class="md-actions" layout="row">
+      <md-button ng-click="submitNewCourseForm()">
         Zapisz
       </md-button>
-      <md-button ng-click="submitLoginForm()">
-        Anulujs
-      </md-button>
     </div>
-  </md-form>
-</md-content>
+  </md-content>
+</div>
