@@ -1,4 +1,4 @@
-<form submit="submitUpdateCourseForm()">
+<form ng-submit="submitUpdateCourseForm(<%= course.id %>)">
   <md-input-container>
     <label>Nazwa kursu</label>
     <input ng-model="updateCourseForm.name" value="<%= course.name %>">
@@ -21,7 +21,7 @@
   <md-button class="md-primary" ng-click="backToIndex()">
     Anuluj
   </md-button>
-  <md-button class="md-primary" ng-click="submitUpdateCourseForm()">
+  <md-button class="md-primary" ng-click="submitUpdateCourseForm(<%= course.id %>)">
     Zapisz
   </md-button>
   <md-button class="md-primary" ng-click="deleteCourse()">

@@ -41,7 +41,10 @@ module.exports = {
   update: function (req, res, next) {
     Chapter.update(req.params.id, req.params.all(), function updateBoard(err) {
       if (err) return next(err);
-      res.redirect('/course/edit/' + req.param('owner'));
+      res.json({
+        result: true
+      });
+      //res.redirect('/course/edit/' + req.param('owner'));
     });
   },
 

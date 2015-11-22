@@ -14,7 +14,7 @@ angular.module('PDAModule')
               .action('OK')
               .position('bottom left')
               .highlightAction(false));
-            window.location = '/course/edit/' + sailsResponse.data.id;
+            //window.location = '/course/edit/' + sailsResponse.data.id;
           })
           .catch(function onError(sailsResponse) {
             $mdToast.show($mdToast.simple()
@@ -26,12 +26,11 @@ angular.module('PDAModule')
           });
       };
 
-      $scope.submitUpdateCourseForm = function () {
-        $http.post('/course/update', {
-            id: $scope.newCourseForm.id,
-            name: $scope.newCourseForm.name,
-            type: $scope.newCourseForm.type,
-            shortdescription: $scope.newCourseForm.shortdescription,
+      $scope.submitUpdateCourseForm = function ($event) {
+        $http.post('/course/update/' + $event, {
+            name: $scope.updateCourseForm.name,
+            type: $scope.updateCourseForm.type,
+            shortdescription: $scope.updateCourseForm.shortdescription,
           })
           .then(function onSuccess(sailsResponse) {
             var toast = $mdToast.simple()
@@ -39,7 +38,8 @@ angular.module('PDAModule')
               .action('OK')
               .position('top right')
               .highlightAction(false);
-            console.log(sailsResponse);
+            console.log($event);
+            console.log($scope.updateCourseForm);
             $mdToast.show(toast);
             // window.location = '/course/edit/';
           })

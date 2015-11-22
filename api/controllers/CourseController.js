@@ -16,9 +16,13 @@ module.exports = {
         req.session.flash = {
           err: err
         };
-        return res.json({err:err});
+        return res.json({
+          err: err
+        });
       }
-      return res.json({id:course.id});
+      return res.json({
+        id: course.id
+      });
     });
   },
 
@@ -107,10 +111,12 @@ module.exports = {
 
   update: function (req, res, next) {
     Course.update(req.params.id, req.params.all(), function updateCourse(err) {
-      if (err) {
-        return res.redirect('/course/edit/' + req.param('id'));
-      }
-      res.redirect('/course/edit/' + req.param('id'));
+      //if (err) next(err);
+      return res.json({
+        result: true
+      });
+
+      //      res.redirect('/course/edit/' + req.param('id'));
     });
   },
 
