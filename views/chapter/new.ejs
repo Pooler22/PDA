@@ -1,25 +1,25 @@
 <md-card>
   <md-card-content>
     <h2>Dodaj zodział</h2>
-    <form action="/chapter/create" method="POST">
+    <form action="/chapter/create" ng-submit="submitAddChapterForm(<%= course.id %>)">
       <md-input-container>
         <label>Tytuł rozdziału</label>
-        <input name="name" require type="text">
+        <input ng-model="createChapterForm.name">
       </md-input-container>
       <md-input-container>
         <label>Kolejnośc rozdziału</label>
-        <input name="order" require type="text">
+        <input ng-model="createChapterForm.order">
       </md-input-container>
       <md-input-container>
         <label>Treść rozdziału</label>
-        <input name="content" require type="text">
+        <input ng-model="createChapterForm.content">
       </md-input-container>
-      <input class="form-control" name="owner" type="hidden" value="<%= course.id %>">
       <input name='_csrf' type='hidden' value='<%= _csrf %>'>
-      <a type="submit">Dodaj rozdział</a>
     </form>
     <div class="md-actions" layout="row">
-      <a class="md-button" type="submit">Dodaj rozdział</a>
+      <md-button class="md-primary" ng-click="submitAddChapterForm(<%= course.id %>)">
+        Dodaj rozdział
+      </md-button>
     </div>
   </md-card-content>
 </md-card>

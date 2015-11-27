@@ -57,5 +57,36 @@ angular.module('PDAModule')
           })
           .finally(function eitherWay() {});
       };
+
+      $scope.submitAddChapterForm = function ($owner) {
+        $http.post('/chapter/create', {
+            name: $scope.createChapterForm.name,
+            order: $scope.createChapterForm.order,
+            content: $scope.createChapterForm.content,
+            owner: $owner
+          })
+          .then(function onSuccess(sailsResponse) {
+            var toast = $mdToast.simple()
+              .content('Rozdział dodany')
+              .action('OK')
+              .position('top right')
+              .highlightAction(false);
+            console.log($owner);
+            console.log($scope.updateCourseForm);
+            $mdToast.show(toast);
+            // window.location = '/course/edit/';
+          })
+          .catch(function onError(sailsResponse) {
+            var toast1 = $mdToast.simple()
+              .content('Wystąpił błąd, spróbuj ponownie.')
+              .action('OK')
+              .position('top right')
+              .highlightAction(false);
+            $mdToast.show(toast1);
+            return;
+          })
+          .finally(function eitherWay() {});
+      };
+
     }
 ]);
