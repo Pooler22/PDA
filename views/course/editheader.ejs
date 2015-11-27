@@ -1,18 +1,18 @@
-<form submit="submitUpdateCourseForm()">
+<form ng-submit="submitUpdateCourseForm(<%= course.id %>)">
   <md-input-container>
     <label>Nazwa kursu</label>
-    <input ng-model="updateCourseForm.name" value="<%= course.name %>">
+    <input ng-model="updateCourseForm.name" ng-init="updateCourseForm.name = '<%= course.name %>'">
   </md-input-container>
   <md-input-container>
     <label>Typ kursu</label>
-    <md-select ng-model="updateCourseForm.type">
+    <md-select ng-model="updateCourseForm.type" ng-init="updateCourseForm.type = '<%= course.type %>'">
       <md-option>Pattern design</md-option>
       <md-option>Best practice</md-option>
     </md-select>
   </md-input-container>
   <md-input-container>
     <label>Krótki opis</label>
-    <textarea columns="1" ng-model="updateCourseForm.shortdescription"><%- course.shortdescription %></textarea>
+    <textarea columns="1" ng-model="updateCourseForm.shortdescription" ng-init="updateCourseForm.shortdescription = '<%= course.shortdescription %>'"></textarea>
   </md-input-container>
   <input name="id" ng-model="updateCourseForm.id" type="hidden" value="<%= course.id %>">
   <input name="_csrf" type="hidden" value="<%= _csrf %>">
@@ -21,7 +21,7 @@
   <md-button class="md-primary" ng-click="backToIndex()">
     Anuluj
   </md-button>
-  <md-button class="md-primary" ng-click="submitUpdateCourseForm()">
+  <md-button class="md-primary" ng-click="submitUpdateCourseForm(<%= course.id %>)">
     Zapisz
   </md-button>
   <md-button class="md-primary" ng-click="deleteCourse()">

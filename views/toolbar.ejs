@@ -17,21 +17,20 @@
   <div flex></div>
   <% if (session.authenticated && session.User.admin) { %>
 
-    <a class="md-button" href="/course/new">
-      <%= __('add-course') %>
-    </a>
+    <md-button ng-click="addCoursePage()">
+      <p>Dodaj kurs</p>
+    </md-button>
 
-    <a class="md-button" href="/user">
-      <%= __('users') %>
-    </a>
-
-    <a class="md-button" href="/user/new">
-      <%= __('add-users') %>
-    </a>
+    <md-button ng-click="usersPage()">
+      <p>Użytkownicy</p>
+    </md-button>
 
   <% } %>
   <% if (session.authenticated) { %>
-    <a class="md-button" href="/user/show/<%= session.User.id %>">Twój profil</a>
+
+    <md-button ng-click="userProfilePage(<%= session.User.id %>)">
+      <p>Twój profil</p>
+    </md-button>
 
     <md-button ng-click="logOut()">
       <p>Wyloguj się</p>

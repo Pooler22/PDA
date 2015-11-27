@@ -14,7 +14,7 @@
     <%= user.email %>
   </h3>
   <div ng-cloak ng-controller="UpdateProfileController">
-    <md-button class="md-button md-primary md-raised" ng-click="updateProfileForm()">
+    <md-button class="md-button md-primary md-raised" ng-click="updateProfileForm(<%= user.id %>)">
       Edytuj profil
     </md-button>
   </div>

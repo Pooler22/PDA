@@ -9,6 +9,6 @@ angular.module('PDAModule', ['ngMaterial', 'ngSails'])
           url: '/logout'
         });
       };
-
+      
     }
   ]);

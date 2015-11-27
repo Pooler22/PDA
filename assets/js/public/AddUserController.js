@@ -1,21 +1,9 @@
 angular.module('PDAModule')
-  .controller('NavbarController', ['$scope', '$http', '$mdDialog', '$timeout', '$mdSidenav', '$log', '$mdToast',
+  .controller('AddUserController', ['$scope', '$http', '$mdDialog', '$timeout', '$mdSidenav', '$log', '$mdToast',
     function ($scope, $http, $mdDialog, $timeout, $mdSidenav, $log, $mdToast) {
 
       $scope.closeDialog = function () {
         $mdDialog.hide();
-      };
-
-      $scope.addCoursePage = function () {
-        window.location = '/course/new';
-      };
-
-      $scope.usersPage = function () {
-        window.location = '/user';
-      };
-
-      $scope.userProfilePage = function ($event) {
-        window.location = 'user/show/' + $event;
       };
 
 
@@ -25,7 +13,7 @@ angular.module('PDAModule')
           parent: parentEl,
           targetEvent: $event,
           url: '/',
-          templateUrl: './templates/signupForm.html',
+          templateUrl: './templates/addUserForm.html',
           controller: DialogController
         });
 
@@ -35,7 +23,7 @@ angular.module('PDAModule')
           };
 
           $scope.submitSignupForm = function () {
-            $http.post('/signup', {
+            $http.post('/user/adduser', {
                 name: $scope.signupForm.name,
                 nick: $scope.signupForm.nick,
                 email: $scope.signupForm.email,
@@ -43,7 +31,7 @@ angular.module('PDAModule')
               })
               .then(function onSuccess(sailsResponse) {
                 var toast = $mdToast.simple()
-                  .content('Zostałeś zarejestrowany')
+                  .content('Użytkownik zarejestrowany')
                   .action('OK')
                   .position('top right')
                   .highlightAction(false);
@@ -69,7 +57,8 @@ angular.module('PDAModule')
 
               })
               .finally(function eitherWay() {
-                window.location = '/';
+                //window.location = '/';
+
               });
           };
         }
@@ -80,24 +69,6 @@ angular.module('PDAModule')
         $mdDialog.hide();
       };
 
-
-      $scope.logOut = function () {
-        console.log('logout');
-        $http.get('/session/destroy')
-          .finally(function eitherWay() {
-            var toast = $mdToast.simple()
-              .content('Zostałeś wylogowany')
-              .action('OK')
-              .position('top right')
-              .highlightAction(false);
-            $mdToast.show(toast);
-            $timeout(funtxt, 3000);
-
-            function funtxt() {
-              window.location = '/';
-            }
-          });
-      };
 
 
       $scope.logIn = function ($event) {
@@ -122,7 +93,7 @@ angular.module('PDAModule')
                 password: $scope.loginForm.password
               })
               .then(function onSuccess() {
-                window.location = '/';
+                //window.location = '/';
                 var toast1 = $mdToast.simple()
                   .content('Zostałeś zalogowany.')
                   .action('OK')
@@ -154,91 +125,5 @@ angular.module('PDAModule')
           };
         }
       };
-
-
-      $scope.homePage = function () {
-        window.location = '/';
-      };
-
-      $scope.aboutPage = function () {
-        window.location = '/about';
-      };
-
-      $scope.designPatternPage = function () {
-        window.location = '/design-pattern';
-      };
-
-      $scope.bestPracticePage = function () {
-        window.location = '/best-practice';
-      };
-
-      $scope.toggleSidenav = function (menuId) {
-        $mdSidenav(menuId)
-          .toggle();
-      };
-
-      $scope.toggleLeft = buildDelayedToggler('left');
-      $scope.toggleRight = buildToggler('right');
-      $scope.isOpenRight = function () {
-        return $mdSidenav('right')
-          .isOpen();
-      };
-      /**
-       * Supplies a function that will continue to operate until the
-       * time is up.
-       */
-      function debounce(func, wait, context) {
-        var timer;
-        return function debounced() {
-          var context = $scope,
-            args = Array.prototype.slice.call(arguments);
-          $timeout.cancel(timer);
-          timer = $timeout(function () {
-            timer = undefined;
-            func.apply(context, args);
-          }, wait || 10);
-        };
-      }
-      /**
-       * Build handler to open/close a SideNav; when animation finishes
-       * report completion in console
-       */
-      function buildDelayedToggler(navID) {
-        return debounce(function () {
-          $mdSidenav(navID)
-            .toggle()
-            .then(function () {
-              $log.debug("toggle " + navID + " is done");
-            });
-        }, 200);
-      }
-
-      function buildToggler(navID) {
-        return function () {
-          $mdSidenav(navID)
-            .toggle()
-            .then(function () {
-              $log.debug("toggle " + navID + " is done");
-            });
-        };
-      }
     }
-  ])
-  .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-      $mdSidenav('left')
-        .close()
-        .then(function () {
-          $log.debug("close LEFT is done");
-        });
-    };
-  })
-  .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-      $mdSidenav('right')
-        .close()
-        .then(function () {
-          $log.debug("close RIGHT is done");
-        });
-    };
-  });
+  ]);

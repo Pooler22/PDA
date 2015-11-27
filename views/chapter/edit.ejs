@@ -1,29 +1,33 @@
 <% _.each(chapters, function(chapter) { %>
   <md-card>
     <md-card-content>
-      <form>
+      <h2>Edytuj rozdział</h2>
+      <form ng-submit="submitUpdateChapterForm(<%= chapter.id %>)">
         <md-input-container>
           <label>Tytuł rozdziału</label>
-          <input name="name" type="text" value="<%= chapter.name %>">
+          <input name="name" ng-model="updateChapterForm.name" type="text" ng-init="updateChapterForm.name = '<%= chapter.name %>'">
         </md-input-container>
         <md-input-container>
           <label>Kolejnośc rozdziału</label>
-          <input name="order" type="text" value="<%= chapter.order %>">
+          <input name="order" ng-model="updateChapterForm.order" type="text" ng-init="updateChapterForm.order = '<%= chapter.order %>'">
         </md-input-container>
         <md-input-container>
           <label>Treść rozdziału</label>
-          <input name="content" type="text" value="<%= chapter.content %>">
+          <input name="content" ng-model="updateChapterForm.content" type="text" ng-init="updateChapterForm.content = '<%= chapter.content %>'">
         </md-input-container>
-        <input class="form-control" name="owner" type="hidden" value="<%= course.id %>">
+        <input class="form-control" name="owner" ng-model="updateChapterForm.owner" type="hidden" ng-init="updateChapterForm.owner = '<%= chapter.owner %>'">
         <input name='_csrf' type='hidden' value='<%= _csrf %>'>
       </form>
       <div class="md-actions" layout="row">
-        <a class="md-button" type="submit">Uaktualnij rozdzial</a>
-        <a class="-button" href="/chapter/destroy/<%= chapter.id %>">Usuń rozdzial</a>
+        <md-button class="md-primary" ng-click="submitUpdateChapterForm(<%= chapter.id %>)">
+          Uaktualnij rozdział
+        </md-button>
+        <md-button class="md-primary" ng-click="submitDestroyChapterForm(<%= chapter.id %>)">
+          Usuń rozdział
+        </md-button>
       </div>
 
     </md-card-content>
     <% include ../exercise/index.ejs %><% include ../exercise/new.ejs %>
   </md-card>
-
 <% }) %>
