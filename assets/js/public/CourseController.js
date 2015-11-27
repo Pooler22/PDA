@@ -119,5 +119,32 @@ angular.module('PDAModule')
           .finally(function eitherWay() {});
       };
 
+      $scope.submitDestroyChapterForm = function ($chapter) {
+        $http.post('/chapter/destroy/', {
+            id: $chapter
+          })
+          .then(function onSuccess(sailsResponse) {
+            var toast = $mdToast.simple()
+              .content('Rozdział usunięty')
+              .action('OK')
+              .position('top right')
+              .highlightAction(false);
+            //console.log($owner);
+            //console.log($scope.updateChapterForm);
+            $mdToast.show(toast);
+            // window.location = '/course/edit/';
+          })
+          .catch(function onError(sailsResponse) {
+            var toast1 = $mdToast.simple()
+              .content('Wystąpił błąd, spróbuj ponownie.')
+              .action('OK')
+              .position('top right')
+              .highlightAction(false);
+            $mdToast.show(toast1);
+            return;
+          })
+          .finally(function eitherWay() {});
+      };
+
     }
 ]);
