@@ -6,6 +6,18 @@ angular.module('PDAModule')
         $mdDialog.hide();
       };
 
+      $scope.addCoursePage = function () {
+        window.location = '/course/new';
+      };
+
+      $scope.usersPage = function () {
+        window.location = '/user';
+      };
+
+      $scope.userProfilePage = function ($event) {
+        window.location = 'user/show/' + $event;
+      };
+
 
       $scope.signUp = function ($event) {
         var parentEl = angular.element(document.body);

@@ -2,14 +2,17 @@
 <div ng-cloak ng-controller="NavbarController">
   <md-sidenav md-component-id="left" md-is-locked-close="$mdMedia('gt-md')">
     <md-list >
+
       <md-list-item ng-click="aboutPage()">
         <md-icon md-svg-icon="./images/menu.svg"></md-icon>
         <p>O projekcie</p>
       </md-list-item>
+
       <md-list-item ng-click="designPatternPage()">
         <md-icon md-svg-icon="./images/menu.svg"></md-icon>
         <p>Wzorce projektowe</p>
       </md-list-item>
+
       <md-list-item ng-click="bestPracticePage()">
         <md-icon md-svg-icon="./images/menu.svg"></md-icon>
         <p>Dobre praktyki</p>
@@ -17,27 +20,37 @@
 
       <% if (session.authenticated && session.User.admin) { %>
 
-        <a class="md-button" href="/course/new">
-          <%= __('add-course') %>
-        </a>
+        <md-list-item ng-click="addCoursePage()">
+          <md-icon md-svg-icon="./images/menu.svg"></md-icon>
+          <p><%= __('add-course') %></p>
+        </md-list-item>
 
-        <a class="md-button" href="/user">
-          <%= __('users') %>
-        </a>
+        <md-list-item ng-click="usersPage()">
+          <md-icon md-svg-icon="./images/menu.svg"></md-icon>
+          <p><%= __('users') %></p>
+        </md-list-itema>
+
       <% } %>
       <% if (session.authenticated) { %>
-        <a class="md-button" href="/user/show/<%= session.User.id %>">Twój profil</a>
+
+        <md-list-item ng-click="userProfilePage(<%= session.User.id %>)">
+          <md-icon md-svg-icon="./images/menu.svg"></md-icon>
+          <p>Twój profil</p>
+        </md-list-item>
 
         <md-list-item ng-click="logOut()">
           <md-icon md-svg-icon="./images/menu.svg"></md-icon>
           <p>Wyloguj się</p>
         </md-list-item>
+
       <% } %>
       <% if (!session.authenticated) { %>
+
         <md-list-item ng-click="logIn($event)">
           <md-icon md-svg-icon="./images/menu.svg"></md-icon>
           <p>Zaloguj się</p>
         </md-list-item>
+
         <md-list-item ng-click="signUp($event)">
           <md-icon md-svg-icon="./images/menu.svg"></md-icon>
           <p>Zarejestruj się</p>

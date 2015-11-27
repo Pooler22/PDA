@@ -2,6 +2,7 @@ angular.module('PDAModule')
   .controller('CourseController', ['$scope', '$http', '$mdDialog', '$timeout', '$mdSidenav', '$log', '$mdToast',
     function ($scope, $http, $mdDialog, $timeout, $mdSidenav, $log, $mdToast) {
 
+
       $scope.submitNewCourseForm = function () {
         $http.post('/course/create', {
             name: $scope.newCourseForm.name,
@@ -14,7 +15,8 @@ angular.module('PDAModule')
               .action('OK')
               .position('bottom left')
               .highlightAction(false));
-            //window.location = '/course/edit/' + sailsResponse.data.id;
+              console.log(sailsResponse.data.id);
+              window.location = '/course/edit/' + sailsResponse.data.id;
           })
           .catch(function onError(sailsResponse) {
             $mdToast.show($mdToast.simple()
@@ -22,7 +24,8 @@ angular.module('PDAModule')
               .action('OK')
               .position('bottom left')
               .highlightAction(false));
-            return;
+              console.log(sailsResponse);
+  //          window.location = '/course/edit/';
           });
       };
 
